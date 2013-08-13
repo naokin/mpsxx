@@ -2,26 +2,20 @@
 #include <iomanip>
 
 #include <vector>
-#include <cstring>
 
 #include <btas/QSPARSE/QSDArray.h>
+
+#include <MpSite.h>
+#include <driver/fileio.h>
 
 #include "generate_qc_operators.h"
 #include "generate_site_operator.h"
 #include "boundary_opinfo.h"
 #include "get_product_ops.h"
 #include "prime_operators.h"
-#include "fileio.h"
-
-std::string mpsxx::fermionic::get_mpofile(const std::string& prefix, const int& index)
-{
-  std::stringstream filename;
-  filename << prefix << "qc_mpo_site-" << index << /* mpigetrank() << */ ".tmp";
-  return filename.str();
-}
 
 void mpsxx::fermionic::generate_qc_operators
-(mpsxx::fermionic::MpOperators& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir)
+(mpsxx::MpOperators<mpsxx::fermionic::Quantum>& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir, const std::string& prefix)
 {
   size_t N = mpos.size();
 
@@ -54,10 +48,17 @@ void mpsxx::fermionic::generate_qc_operators
     mpos[i].clear();
     bool swap_sweep_dir = (l_ops.direction() != r_ops.direction());
     std::cout << "\t\t\tresizing site operator array..." << std::flush;
-    if(swap_sweep_dir)
-      mpos[i].resize(Quantum::zero(), make_array(l_ops.get_qshape(), fock(),-fock(), r_ops.get_qshape()));
-    else
-      mpos[i].resize(Quantum::zero(), make_array(l_ops.get_qshape(), fock(),-fock(),-r_ops.get_qshape()));
+    if(enable_swap_sweep_dir) {
+      if     (swap_sweep_dir)
+        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()));
+      else if(l_ops.direction() == boundary_opinfo::FORWARD)
+        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()));
+      else
+        mpos[i].resize(Quantum::zero(), make_array(-l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()));
+    }
+    else {
+        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()));
+    }
     std::cout << "done" << std::endl;
     // 'dot with sys' in Block code
     size_t nnz_local = 0;
@@ -107,7 +108,7 @@ void mpsxx::fermionic::generate_qc_operators
     l_ops = r_ops;
     l_indxs.push_back(i); r_indxs.pop_back();
     std::cout << "\t\t\tsaving site operator array..." << std::flush;
-    save(mpos[i], get_mpofile("./", i));
+    save(mpos[i], get_mpofile(prefix, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
   }

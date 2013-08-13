@@ -11,8 +11,8 @@ BOOSTINC=-I$(BOOSTDIR)/include
 BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
 BTASDIR=/home/naokin/btas-0.3.0/c++11
-BTASINC=-I$(BTASDIR)/include
-BTASLIB=  $(BTASDIR)/lib/libbtas.a
+BTASINC=-I. -I.. -I$(BTASDIR)/include
+BTASLIB= $(BTASDIR)/lib/libbtas.a
 
 INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)

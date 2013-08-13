@@ -7,7 +7,7 @@
 
 #include <btas/QSPARSE/Qshapes.h>
 
-#include "Fermion/Quantum.h"
+#include <symmetry/Fermion/Quantum.h>
 #include "bit_operator_type.h"
 
 namespace mpsxx     {

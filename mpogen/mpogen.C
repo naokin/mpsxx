@@ -9,7 +9,7 @@
 
 int main(int argc, char* argv[])
 {
-  using namespace mpsxx::fermionic;
+  using namespace mpsxx;
 
   bool enable_swap_sweep_dir = false;
   int iprint = 0;
@@ -31,8 +31,8 @@ int main(int argc, char* argv[])
   std::ifstream ist_dump(f_dump.c_str());
   parsing_fcidump(ist_dump, Norbs, Nelec, Ecore, oneint, twoint);
 
-  MpOperators mpos(Norbs);
-  generate_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir);
+  MpOperators<fermionic::Quantum> mpos(Norbs);
+  fermionic::generate_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir);
 
   return 0;
 }

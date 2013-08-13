@@ -3,7 +3,7 @@
 
 #include <cstring>
 
-#include "Fermion/Quantum.h"
+#include <symmetry/Fermion/Quantum.h>
 
 namespace mpsxx     {
 

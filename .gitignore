@@ -2,7 +2,11 @@
 *.x
 *.so
 *.a
+
 *~
+*log
+
 *.della
 *.tmp
-*.log
+
+work/

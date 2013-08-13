@@ -12,36 +12,33 @@
 #include <btas/TVector.h>
 #include <btas/QSPARSE/QSDArray.h>
 
-#include "Fermion/Quantum.h"
+#include <MpSite.h>
+#include <symmetry/Fermion/Quantum.h>
 
 namespace mpsxx     {
 
 namespace fermionic {
 
 //! Physical index, i.e. |0>, |u>, |d>, |ud>
-enum PHYSICAL_INDEX { vacuum = 0, alpha = 1, beta = 2, pair = 3 };
-
-inline btas::Qshapes<Quantum> fock()
-{
-  btas::Qshapes<Quantum> q(4);
-  q[vacuum] = Quantum(0, 0);
-  q[alpha ] = Quantum(1, 1);
-  q[beta  ] = Quantum(1,-1);
-  q[pair  ] = Quantum(2, 0);
-  return std::move(q);
-}
+/*! This is the same as MpSite<fermionic::Quantum>::PHYSICAL_INDEX */
+enum _PHYSICAL_INDEX {
+  vacuum = MpSite<Quantum>::vacuum,
+  alpha  = MpSite<Quantum>::alpha,
+  beta   = MpSite<Quantum>::beta,
+  pair   = MpSite<Quantum>::pair
+};
 
 //! Non-zero component of primitive operator
 struct prime_op_component {
   //! Constructor
   prime_op_component
-  (const PHYSICAL_INDEX& _bra, const PHYSICAL_INDEX& _ket, const double& _data) : bra(_bra), ket(_ket), data(_data) { }
+  (const _PHYSICAL_INDEX& _bra, const _PHYSICAL_INDEX& _ket, const double& _data) : bra(_bra), ket(_ket), data(_data) { }
   //! Return true if bra index has odd particle number
   bool parity() const { return (bra == alpha || bra == beta); }
 
-  PHYSICAL_INDEX
+  _PHYSICAL_INDEX
     bra;   //!< bra index
-  PHYSICAL_INDEX
+  _PHYSICAL_INDEX
     ket;   //!< ket index
   double
     data;  //!< non-zero element
