@@ -1,0 +1,27 @@
+#ifndef _MPSXX_CXX11_FILEIO_H
+#define _MPSXX_CXX11_FILEIO_H 1
+
+#include <fstream>
+
+#include <boost/archive/binary_iarchive.hpp>
+#include <boost/archive/binary_oarchive.hpp>
+
+template<class T>
+void load(      T& obj, const std::string& f_name)
+{
+  std::ofstream f_load(f_name.c_str());
+  boost::archive::binary_iarchive ia(f_load);
+  ia & obj;
+  return;
+}
+
+template<class T>
+void save(const T& obj, const std::string& f_name)
+{
+  std::ofstream f_save(f_name.c_str());
+  boost::archive::binary_oarchive oa(f_save);
+  oa & obj;
+  return;
+}
+
+#endif // _MPSXX_CXX11_FILEIO_H

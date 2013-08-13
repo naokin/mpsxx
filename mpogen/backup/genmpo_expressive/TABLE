@@ -1,0 +1,68 @@
+Site-Operator Table (sweep swap == false)
+-----+------------------------------+---------------------+
+L \ R| I    H    Ci   Di   Rl   Sl  | CiCj CiDj DiCj DiDj |
+-----+------------------------------+---------------------+
+I    | I    H    Cj   Dj   Ri   Si  | CjCj CjDj DjCj DjDj |
+H    | 0    I    0    0    0    0   | 0    0    0    0    |
+Ci   | 0    Dj   I    0    CjDj DjDj| Cj   Dj   0    0    |
+Di   | 0    Cj   0    I    CjCj CjDj| 0    0    Cj   Dj   |
+Rl   | 0    Dl   0    0    I    0   | 0    0    0    0    |
+Sl   | 0    Cl   0    0    0    I   | 0    0    0    0    |
+-----+------------------------------+---------------------+
+CiCj | 0    DkDk 0    0    Dk   0   | I    0    0    0    |
+CiDj | 0    CkDk 0    0    Ck   Dk  | 0    I    0    0    |
+DiCj | 0    CkDk 0    0    Ck   Dk  | 0    0    I    0    |
+DiDj | 0    CkCk 0    0    0    Ck  | 0    0    0    I    |
+-----+------------------------------+---------------------+
+
+Right-Operator Table (sweep swap == false)
+-----+------------------------------+---------------------+
+L \ S| I    H    Ck   Dk   Rl   Sl  | CkCk CkDk DkCk DkDk |
+-----+------------------------------+---------------------+
+I    | I    H    Ck   Dk   Rl   Sl  | CkCk CkDk DkCk DkDk |
+H    | H    0    0    0    0    0   | 0    0    0    0    |
+Ci   | Ci   0    CiCk CiDk 0    H   | 0    Rl   Rl   Sl   |
+Di   | Di   0    DiCk DiDk H    0   | Rl   Sl   Sl   0    |
+Rl   | Rl   0    0    H    0    0   | 0    0    0    0    |
+Sl   | Sl   0    H    0    0    0   | 0    0    0    0    |
+-----+------------------------------+---------------------+
+CiCj | CiCj 0    0    Rl   0    0   | 0    0    0    H    |
+CiDj | CiDj 0    Rl   Sl   0    0   | 0    H    H    0    |
+DiCj | DiCj 0    Rl   Sl   0    0   | 0    H    H    0    |
+DiDj | DiDj 0    Sl   0    0    0   | H    0    0    0    |
+-----+------------------------------+---------------------+
+
+IF     (S == IDEN)
+  IF   (L == DOBL && SWAP)
+	R := L^SCNJ | [ R::index, R::index ]
+  ELSE
+	R := L
+ELSE IF(L == IDEN)
+  IF   (S == DOBL && SWAP)
+	R := S^SCNJ | [ R::index, R::index ]
+  ELIF (S != COMP)
+	R := S
+  ELSE
+	R := S | [ R::index ]
+ELSE IF(L == SNGL && S == SNGL)
+  IF   (L != COMP && S != COMP)
+	R := L | S >>
+  ELIF (L == COMP && (L & NRML)^SCNJ == S)
+        R := HAML
+  ELIF (L == NRML && (L^SCNJ & MASK) == (S & NRML))
+        R := HAML
+ELSE IF(L == DOBL && S == SNGL && S == NRML || S == DOBL && L == SNGL && L == NRML)
+	Q(LS) = Q(L) + Q(S)
+  IF   (Q(LS) == Q(CRE_A))
+	R := DES_A | COMP [ R::index ]
+  IF   (Q(LS) == Q(CRE_B))
+	R := DES_B | COMP [ R::index ]
+  IF   (Q(LS) == Q(DES_A))
+	R := CRE_A | COMP [ R::index ]
+  IF   (Q(LS) == Q(DES_B))
+	R := CRE_B | COMP [ R::index ]
+ELSE IF(L == DOBL && S == DOBL)
+	Q(LS) = Q(L) + Q(S)
+  IF   (Q(LS) == Q(0))
+	R := HAML
+ENDIF

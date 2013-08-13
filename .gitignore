@@ -1,0 +1,8 @@
+*.o
+*.x
+*.so
+*.a
+*~
+*.della
+*.tmp
+*.log
