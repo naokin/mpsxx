@@ -9,4 +9,5 @@
 *.della
 *.tmp
 
+test/
 work/

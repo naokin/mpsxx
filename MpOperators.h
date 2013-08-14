@@ -9,15 +9,10 @@
 
 namespace mpsxx     {
 
+enum MPO_TYPE { HEISENBERG, FERMION_HUBBARD, MOLECULAR };
+
 template<class Q>
 using MpOperators = std::vector<btas::QSDArray<4, Q>>;
-
-inline std::string get_mpofile(const std::string& prefix, const int& index)
-{
-  std::stringstream filename;
-  filename << prefix << "mpo_site-" << index << /* mpigetrank() << */ ".tmp";
-  return filename.str();
-}
 
 }; // namespace mpsxx
 

@@ -9,15 +9,10 @@
 
 namespace mpsxx     {
 
+enum MPS_TYPE { WAVEFUNCTION, LEFTCANONICAL, RIGHTCANONICAL };
+
 template<class Q>
 using MpStates = std::vector<btas::QSDArray<3, Q>>;
-
-inline std::string get_mpsfile(const std::string& prefix, const int& index)
-{
-  std::stringstream filename;
-  filename << prefix << "mps_site-" << index << /* mpigetrank() << */ ".tmp";
-  return filename.str();
-}
 
 }; // namespace mpsxx
 

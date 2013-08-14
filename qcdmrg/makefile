@@ -1,5 +1,5 @@
 CXX=/home/naokin/gnu/gcc/4.7.1/bin/g++ -std=c++0x -I. -I/home/naokin/gnu/gcc/4.7.1/include -I/home/naokin/gnu/gcc/4.7.1/c++/4.7.1
-CXXFLAGS=-g -O3 -fopenmp -D_HAS_CBLAS -D_HAS_INTEL_MKL
+CXXFLAGS=-g -O2 -fopenmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
 
 BLASDIR=
 BLASINC=
@@ -11,13 +11,13 @@ BOOSTINC=-I$(BOOSTDIR)/include
 BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
 BTASDIR=/home/naokin/btas-0.3.0/c++11
-BTASINC=-I$(BTASDIR)/include
-BTASLIB=  $(BTASDIR)/lib/libbtas.a
+BTASINC=-I. -I.. -I$(BTASDIR)/include
+BTASLIB= $(BTASDIR)/lib/libbtas.a
 
 INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)
 
-SRC_DMRG = main.C dmrg.C lrt.C driver.C btas_template_specialize.C
+SRC_DMRG = dmrg.C main.C btas_template_specialize.C ../driver/fileio.C
 
 OBJ_DMRG = $(SRC_DMRG:.C=.o)
 

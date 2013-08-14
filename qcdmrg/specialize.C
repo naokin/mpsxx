@@ -16,11 +16,11 @@ int main()
   ofstream fout("btas_template_specialize.h");
 
   fout << "#ifndef _BTAS_DBLAS_TEMPLATE_SPECIALIZE"   << endl;
-  fout << "#define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1" << endl;
-  fout << "#include <btas/Dblas.h>"                  << endl;
-  fout << "namespace btas" << endl;
-  fout << "{" << endl << endl;
-  fout << "// specialize for Dblas" << endl;
+  fout << "#define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
+  fout << "#include <btas/DENSE/Dblas.h>"             << endl << endl;
+  fout << "namespace btas {"                          << endl << endl;
+  fout << "// specialize for Dblas"                   << endl << endl;
+
   for(int na = 1; na < NA_max; ++na) {
     for(int nb = 1; nb < NB_max; ++nb) {
       for(int nc = 1; nc < NC_max; ++nc) {
@@ -57,15 +57,15 @@ int main()
       }
     }
   }
-  fout << endl << "} // namespace btas" << endl << endl;
-  fout << "#endif // _BTAS_DBLAS_TEMPLATE_SPECIALIZE"   << endl;
+  fout << endl << "} // namespace btas"                << endl << endl;
+  fout << "#endif // _BTAS_DBLAS_TEMPLATE_SPECIALIZE"  << endl << endl;
 
   fout << "#ifndef _BTAS_SDBLAS_TEMPLATE_SPECIALIZE"   << endl;
-  fout << "#define _BTAS_SDBLAS_TEMPLATE_SPECIALIZE 1" << endl;
-  fout << "#include <btas/SDblas.h>"                  << endl;
-  fout << "namespace btas" << endl;
-  fout << "{" << endl << endl;
-  fout << "// specialize for SDblas" << endl;
+  fout << "#define _BTAS_SDBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
+  fout << "#include <btas/SPARSE/SDblas.h>"            << endl << endl;
+  fout << "namespace btas {"                           << endl << endl;
+  fout << "// specialize for SDblas"                   << endl << endl;
+
   for(int na = 1; na < NA_max; ++na) {
     for(int nb = 1; nb < NB_max; ++nb) {
       for(int nc = 1; nc < NC_max; ++nc) {
@@ -74,8 +74,6 @@ int main()
           fout << "template<> void SDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
                << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, "
                << "const double& beta, SDArray<" << nc << ">& c);" << endl;
-//        fout << "template<> void ThreadSDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
-//             << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c);" << endl;
         }
       }
     }
@@ -87,8 +85,6 @@ int main()
         if(nc != na + nb) {
           fout << "template<> void SDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
                << "const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c);" << endl;
-//        fout << "template<> void ThreadSDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
-//             << "const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c);" << endl;
         }
       }
     }
@@ -102,29 +98,28 @@ int main()
           fout << "template<> void SDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
                << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, "
                << "const double& beta, SDArray<" << nc << ">& c);" << endl;
-//        fout << "template<> void ThreadSDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
-//             << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c);" << endl;
         }
       }
     }
   }
-  fout << endl << "} // namespace btas" << endl << endl;
-  fout << "#endif // _BTAS_SDBLAS_TEMPLATE_SPECIALIZE"   << endl;
+  fout << endl << "} // namespace btas"                 << endl << endl;
+  fout << "#endif // _BTAS_SDBLAS_TEMPLATE_SPECIALIZE"  << endl << endl;
 
   fout << "#ifndef _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE"   << endl;
-  fout << "#define _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE 1" << endl;
-  fout << "#include <btas/QSDblas.h>"                  << endl;
-  fout << "namespace btas" << endl;
-  fout << "{" << endl << endl;
-  fout << "// specialize for QSDblas" << endl;
+  fout << "#define _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
+  fout << "#include <symmetry/Fermion/Quantum.h>"       << endl;
+  fout << "#include <btas/QSPARSE/QSDblas.h>"           << endl << endl;
+  fout << "namespace btas {"                            << endl << endl;
+  fout << "// specialize for QSDblas"                   << endl << endl;
+
   for(int na = 1; na < NA_max; ++na) {
     for(int nb = 1; nb < NB_max; ++nb) {
       for(int nc = 1; nc < NC_max; ++nc) {
         // QSDgemv
         if(nc != na - nb) {
-          fout << "template<> void QSDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
-               << "const double& alpha, const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, "
-               << "const double& beta, QSDArray<" << nc << ">& c);" << endl;
+          fout << "template<> void QSDgemv<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const BTAS_TRANSPOSE& transa, "
+               << "const double& alpha, const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, "
+               << "const double& beta, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c);" << endl;
         }
       }
     }
@@ -134,8 +129,8 @@ int main()
       for(int nc = 1; nc < NC_max; ++nc) {
         // QSDger
         if(nc != na + nb) {
-          fout << "template<> void QSDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
-               << "const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, QSDArray<" << nc << ">& c);" << endl;
+          fout << "template<> void QSDger<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const double& alpha, "
+               << "const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c);" << endl;
         }
       }
     }
@@ -146,9 +141,9 @@ int main()
         // QSDgemm
         int k2 = na + nb - nc;
         if(k2 % 2 != 0 || k2 / 2 <= 0) {
-          fout << "template<> void QSDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
-               << "const double& alpha, const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, "
-               << "const double& beta, QSDArray<" << nc << ">& c);" << endl;
+          fout << "template<> void QSDgemm<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
+               << "const double& alpha, const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, "
+               << "const double& beta, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c);" << endl;
         }
       }
     }
@@ -165,14 +160,9 @@ int main()
 
   ofstream fout("btas_template_specialize.C");
 
-  fout << "#include \"FermiQuantum.h\"" << endl;
-  fout << "namespace btas { typedef FermiQuantum Quantum; }" << endl;
   fout << endl;
-  fout << "#include <btas/Dblas.h>" << endl;
-  fout << "#include <btas/SDblas.h>" << endl;
-  fout << "#include <btas/QSDblas.h>" << endl;
-  fout << "namespace btas" << endl;
-  fout << "{" << endl << endl;
+  fout << "#include \"btas_template_specialize.h\"" << endl << endl;
+  fout << "namespace btas {"                        << endl << endl;
 
   fout << "// specialize for Dblas" << endl;
   for(int na = 1; na < NA_max; ++na) {
@@ -222,8 +212,6 @@ int main()
           fout << "template<> void SDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
                << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, "
                << "const double& beta, SDArray<" << nc << ">& c) { }" << endl;
-//        fout << "template<> void ThreadSDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
-//             << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c) { }" << endl;
         }
       }
     }
@@ -235,8 +223,6 @@ int main()
         if(nc != na + nb) {
           fout << "template<> void SDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
                << "const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c) { }" << endl;
-//        fout << "template<> void ThreadSDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
-//             << "const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c) { }" << endl;
         }
       }
     }
@@ -250,8 +236,6 @@ int main()
           fout << "template<> void SDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
                << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, "
                << "const double& beta, SDArray<" << nc << ">& c) { }" << endl;
-//        fout << "template<> void ThreadSDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
-//             << "const double& alpha, const SDArray<" << na << ">& a, const SDArray<" << nb << ">& b, SDArray<" << nc << ">& c) { }" << endl;
         }
       }
     }
@@ -264,9 +248,9 @@ int main()
       for(int nc = 1; nc < NC_max; ++nc) {
         // QSDgemv
         if(nc != na - nb) {
-          fout << "template<> void QSDgemv<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, "
-               << "const double& alpha, const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, "
-               << "const double& beta, QSDArray<" << nc << ">& c) { }" << endl;
+          fout << "template<> void QSDgemv<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const BTAS_TRANSPOSE& transa, "
+               << "const double& alpha, const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, "
+               << "const double& beta, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c) { }" << endl;
         }
       }
     }
@@ -276,8 +260,8 @@ int main()
       for(int nc = 1; nc < NC_max; ++nc) {
         // QSDger
         if(nc != na + nb) {
-          fout << "template<> void QSDger<" << na << "," << nb << "," << nc << ">(const double& alpha, "
-               << "const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, QSDArray<" << nc << ">& c) { }" << endl;
+          fout << "template<> void QSDger<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const double& alpha, "
+               << "const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c) { }" << endl;
         }
       }
     }
@@ -288,9 +272,9 @@ int main()
         // QSDgemm
         int k2 = na + nb - nc;
         if(k2 % 2 != 0 || k2 / 2 <= 0) {
-          fout << "template<> void QSDgemm<" << na << "," << nb << "," << nc << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
-               << "const double& alpha, const QSDArray<" << na << ">& a, const QSDArray<" << nb << ">& b, "
-               << "const double& beta, QSDArray<" << nc << ">& c) { }" << endl;
+          fout << "template<> void QSDgemm<" << na << "," << nb << "," << nc << "," << "mpsxx::fermionic::Quantum" << ">(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE& transb, "
+               << "const double& alpha, const QSDArray<" << na << "," << "mpsxx::fermionic::Quantum" << ">& a, const QSDArray<" << nb << "," << "mpsxx::fermionic::Quantum" << ">& b, "
+               << "const double& beta, QSDArray<" << nc << "," << "mpsxx::fermionic::Quantum" << ">& c) { }" << endl;
         }
       }
     }

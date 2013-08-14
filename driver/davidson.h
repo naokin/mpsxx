@@ -11,20 +11,18 @@
 
 #include <btas/QSPARSE/QSDArray.h>
 
-#include "btas_template_specialize.h"
-
 namespace davidson {
 
-template<size_t N>
-using Functor = boost::function<void(const btas::QSDArray<N>&, btas::QSDArray<N>&)>;
+template<size_t N, class Q>
+using Functor = boost::function<void(const btas::QSDArray<N, Q>&, btas::QSDArray<N, Q>&)>;
 
 //
 // Davidson's precondition
 //
 
-template<size_t N>
+template<size_t N, class Q>
 void precondition
-(const double& eval, const btas::QSDArray<N>& diag, btas::QSDArray<N>& errv)
+(const double& eval, const btas::QSDArray<N, Q>& diag, btas::QSDArray<N, Q>& errv)
 {
   for(auto ir = errv.begin(); ir != errv.end(); ++ir) {
     auto id = diag.find(ir->first);
@@ -47,17 +45,17 @@ void precondition
 // Davidson eigen solver
 //
 
-template<size_t N>
+template<size_t N, class Q>
 double diagonalize
-(const Functor<N>& f_contract, const btas::QSDArray<N>& diag, btas::QSDArray<N>& wfnc)
+(const Functor<N, Q>& f_contract, const btas::QSDArray<N, Q>& diag, btas::QSDArray<N, Q>& wfnc)
 {
   int max_ritz = 20;
 
   double eval = 0.0;
 
   // reserve working space
-  std::vector<btas::QSDArray<N>> trial(max_ritz);
-  std::vector<btas::QSDArray<N>> sigma(max_ritz);
+  std::vector<btas::QSDArray<N, Q>> trial(max_ritz);
+  std::vector<btas::QSDArray<N, Q>> sigma(max_ritz);
 
   btas::QSDcopy(wfnc, trial[0]);
   btas::QSDnormalize(trial[0]);
@@ -88,8 +86,8 @@ double diagonalize
       Dsyev(heff, rval, rvec);
       eval = rval(0);
       // rotate trial & sigma vectors by Ritz vector
-      std::vector<btas::QSDArray<N>> trial_save(m);
-      std::vector<btas::QSDArray<N>> sigma_save(m);
+      std::vector<btas::QSDArray<N, Q>> trial_save(m);
+      std::vector<btas::QSDArray<N, Q>> sigma_save(m);
       for(int i = 0; i < m; ++i) {
         btas::QSDcopy(trial[i], trial_save[i]);
         btas::QSDcopy(sigma[i], sigma_save[i]);
@@ -105,8 +103,8 @@ double diagonalize
         }
       }
       // compute error vector
-      btas::QSDArray<N> evec;
-      btas::QSDArray<N> errv;
+      btas::QSDArray<N, Q> evec;
+      btas::QSDArray<N, Q> errv;
       btas::QSDcopy( trial[0], evec);
       btas::QSDcopy( sigma[0], errv);
       btas::QSDaxpy(-eval, evec, errv);

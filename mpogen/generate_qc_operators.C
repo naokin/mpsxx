@@ -108,7 +108,7 @@ void mpsxx::fermionic::generate_qc_operators
     l_ops = r_ops;
     l_indxs.push_back(i); r_indxs.pop_back();
     std::cout << "\t\t\tsaving site operator array..." << std::flush;
-    save(mpos[i], get_mpofile(prefix, i));
+    save(mpos[i], get_mpofile(prefix, MOLECULAR, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
   }

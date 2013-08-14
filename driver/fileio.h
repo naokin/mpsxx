@@ -9,7 +9,7 @@
 template<class T>
 void load(      T& obj, const std::string& f_name)
 {
-  std::ofstream f_load(f_name.c_str());
+  std::ifstream f_load(f_name.c_str());
   boost::archive::binary_iarchive ia(f_load);
   ia & obj;
   return;
@@ -23,5 +23,16 @@ void save(const T& obj, const std::string& f_name)
   oa & obj;
   return;
 }
+
+#include <MpOperators.h>
+#include <MpStates.h>
+
+namespace mpsxx {
+
+std::string get_mpofile(const std::string& prefix, const MPO_TYPE& _type, const int& index);
+std::string get_mpsfile(const std::string& prefix, const MPS_TYPE& _type, const int& index);
+std::string get_oprfile(const std::string& prefix, const MPS_TYPE& _type, const int& index);
+
+}; // namespace mpsxx
 
 #endif // _MPSXX_CXX11_FILEIO_H

@@ -19,26 +19,17 @@ namespace mpsxx     {
 
 namespace fermionic {
 
-//! Physical index, i.e. |0>, |u>, |d>, |ud>
-/*! This is the same as MpSite<fermionic::Quantum>::PHYSICAL_INDEX */
-enum _PHYSICAL_INDEX {
-  vacuum = MpSite<Quantum>::vacuum,
-  alpha  = MpSite<Quantum>::alpha,
-  beta   = MpSite<Quantum>::beta,
-  pair   = MpSite<Quantum>::pair
-};
-
 //! Non-zero component of primitive operator
 struct prime_op_component {
   //! Constructor
   prime_op_component
-  (const _PHYSICAL_INDEX& _bra, const _PHYSICAL_INDEX& _ket, const double& _data) : bra(_bra), ket(_ket), data(_data) { }
+  (const PHYSICAL_INDEX& _bra, const PHYSICAL_INDEX& _ket, const double& _data) : bra(_bra), ket(_ket), data(_data) { }
   //! Return true if bra index has odd particle number
   bool parity() const { return (bra == alpha || bra == beta); }
 
-  _PHYSICAL_INDEX
+  PHYSICAL_INDEX
     bra;   //!< bra index
-  _PHYSICAL_INDEX
+  PHYSICAL_INDEX
     ket;   //!< ket index
   double
     data;  //!< non-zero element
