@@ -43,17 +43,25 @@ void compute_diagonal_elements
   btas::SDArray<2> lopr_diag;
   btas::SDArray<2> ropr_diag;
 
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::01");
   btas::SDdiagonal(lmpo, btas::shape(1, 2), lmpo_diag);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::02");
   btas::SDdiagonal(rmpo, btas::shape(1, 2), rmpo_diag);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::03");
   btas::SDdiagonal(lopr, btas::shape(0, 2), lopr_diag);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::04");
   btas::SDdiagonal(ropr, btas::shape(0, 2), ropr_diag);
 
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::05");
   btas::SDArray<3> scr1;
   btas::SDcontract(1.0, lopr_diag, btas::shape(1), lmpo_diag, btas::shape(0), 1.0, scr1);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::06");
   btas::SDArray<4> scr2;
   btas::SDcontract(1.0, scr1,      btas::shape(2), rmpo_diag, btas::shape(0), 1.0, scr2);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::07");
   btas::SDArray<4> scr3;
   btas::SDcontract(1.0, scr2,      btas::shape(3), ropr_diag, btas::shape(1), 1.0, scr3);
+//MPSXX_DEBUG("DEBUG[compute_diagonal_elements(2)]::08");
   btas::SDcopy(scr3, diag, 1); // preserve quantum number of diag
 }
 

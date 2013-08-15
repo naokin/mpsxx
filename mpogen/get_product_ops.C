@@ -1,4 +1,6 @@
 
+#include <algorithm>
+
 #include "get_product_ops.h"
 
 // Site-Operator Table (sweep swap == false)
@@ -75,8 +77,19 @@ std::vector<mpsxx::fermionic::BIT_OPERATOR_TYPE> mpsxx::fermionic::get_product_o
       }
     }
     // L = Ci or CiComp -> R = DiComp or Di, etc...
-    else if((l_op & NORMAL & TYPE) == SINGLE && _swap_sweep_dir) {
-      ls_ops.push_back(l_op ^ CONJ_S ^ COMP);
+    else if((l_op & NORMAL & TYPE) == SINGLE) {
+      // Needs conjugation due to swap sweep direction?
+      BIT_OPERATOR_TYPE conj = _swap_sweep_dir ? (CONJ_S | COMP) : ZERO;
+      // Create product block operators
+      if(l_op & COMP) {
+        size_t ix = (l_op & INDEX & FIRST) >> INDEX_SHIFT;
+        if(std::find(r_indxs.begin(), r_indxs.end(), ix) != r_indxs.end()) {
+          ls_ops.push_back(l_op ^ conj);
+        }
+      }
+      else {
+        ls_ops.push_back(l_op ^ conj);
+      }
     }
     else if(l_op & IDEN) {
       // Needs conjugation due to swap sweep direction?

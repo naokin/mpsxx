@@ -102,7 +102,7 @@ void initialize_mpstates
 {
   size_t N = mpos.size();
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::01");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::01");
   mpss.resize(N);
 
   btas::Qshapes<Q> qz(1, Q::zero());
@@ -113,34 +113,36 @@ void initialize_mpstates
   btas::Qshapes<Q> qr;
   btas::Dshapes    dr;
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::02");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::02");
   std::vector<btas::Qshapes<Q>> qn(N);
   std::vector<btas::Dshapes   > dn(N);
   for(size_t i = 0; i < N; ++i) {
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::03");
-    load(mpos[i], get_mpofile(prefix, MOLECULAR, i));
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::03");
+//  load(mpos[i], get_mpofile(prefix, MOLECULAR, i));
+    load(mpos[i], get_mpofile(prefix, i));
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]:: printing MPO[" << i << "] " << std::endl << mpos[i]);
     qn[i] = -mpos[i].qshape(2);
     dn[i] = btas::Dshapes(qn[i].size(), 1);
     mpos[i].clear();
   }
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::04");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::04");
   std::vector<btas::Qshapes<Q>> qb = generate_quantum_states(qn, qt, _max_quantum_blocks);
 
   btas::TVector<btas::Qshapes<Q>, 3> q_shape;
   btas::TVector<btas::Dshapes,    3> d_shape;
   for(size_t i = 0; i < N-1; ++i) {
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::05");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::05");
     qr = qb[i];
     dr = btas::Dshapes(qr.size(), 1);
 
     q_shape = btas::make_array( ql, qn[i],-qr);
     d_shape = btas::make_array( dl, dn[i], dr);
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::06");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::06");
     mpss[i].resize(Q::zero(), q_shape, d_shape);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::07");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::07");
     mpss[i].generate(gen);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::08");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::08");
     save(mpss[i], get_mpsfile(prefix, WAVEFUNCTION, i));
 
     mpss[i].clear();
@@ -148,63 +150,64 @@ void initialize_mpstates
     ql = qr;
     dl = dr;
   }
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::09");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::09");
   qr = qz; // qb[N-1] is not used
   dr = btas::Dshapes(qr.size(), 1);
 
   q_shape = btas::make_array( ql, qn[N-1],-qr);
   d_shape = btas::make_array( dl, dn[N-1], dr);
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::10");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::10");
   mpss[N-1].resize(qt, q_shape, d_shape); // set qt as a total quantum number of array
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::11");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::11");
   mpss[N-1].generate(gen);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::12");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::12");
   btas::QSDnormalize(mpss[N-1]);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::13");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::13");
   save(mpss[N-1], get_mpsfile(prefix, WAVEFUNCTION, N-1));
 
   // initial canonicalization
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::14");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::14");
   btas::QSDArray<3, Q> ropr_0(Q::zero(), btas::make_array(qz, qz, qz));
   ropr_0.insert(btas::shape(0, 0, 0), btas::DArray<3>(1, 1, 1));
   ropr_0.fill(1.0);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::15");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::15");
   save(ropr_0, get_oprfile(prefix, RIGHTCANONICAL, N-1));
   for(size_t i = N-1; i > 0; --i) {
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::16");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::16");
     btas::QSDArray<3, Q> rmps;
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::17");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::17");
     canonicalize(0, mpss[i], rmps, _max_quantum_blocks);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::18");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::18");
     save(rmps, get_mpsfile(prefix, RIGHTCANONICAL, i));
 
     btas::QSDArray<3, Q> ropr_1;
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::19");
-    load(mpos[i], get_mpofile(prefix, MOLECULAR, i));
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::20");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::19");
+//  load(mpos[i], get_mpofile(prefix, MOLECULAR, i));
+    load(mpos[i], get_mpofile(prefix, i));
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::20");
     renormalize(0, mpos[i], ropr_0, rmps, rmps, ropr_1);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::21");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::21");
     save(ropr_1, get_oprfile(prefix, RIGHTCANONICAL, i-1));
     ropr_0 = ropr_1;
 
     mpos[i].clear();
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::22");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::22");
     load(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::23");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::23");
     btas::QSDArray<3, Q> lmps(mpss[i-1]);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::24");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::24");
     mpss[i-1].clear();
     compute_guesswave(0, rmps, mpss[i], lmps, mpss[i-1]);
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::25");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::25");
     save(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
 
     mpss[i].clear();
   }
   mpss[0].clear();
 
-  MPSXX_DEBUG("DEBUG[initialize_mpstates]::26");
+//MPSXX_DEBUG("DEBUG[initialize_mpstates]::26");
   btas::QSDArray<3, Q> lopr_0(Q::zero(), btas::make_array(qz, qz, qz));
   lopr_0.insert(btas::shape(0, 0, 0), btas::DArray<3>(1, 1, 1));
   lopr_0.fill(1.0);

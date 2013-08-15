@@ -30,6 +30,8 @@ void mpsxx::fermionic::boundary_opinfo::reset(size_t index)
   m_bn_ops.insert(std::make_pair((COMP | DES_A | (index << INDEX_SHIFT)), nop++));
   m_bn_ops.insert(std::make_pair((COMP | DES_B | (index << INDEX_SHIFT)), nop++));
 
+///* DEBUG */ return;
+
   // CreCre, CreDes, DesCre, and DesDes
   m_bn_ops.insert(std::make_pair((CRE_A_DES_A | (index << INDEX_SHIFT) | index), nop++));
   m_bn_ops.insert(std::make_pair((CRE_B_DES_B | (index << INDEX_SHIFT) | index), nop++));
@@ -92,6 +94,8 @@ void mpsxx::fermionic::boundary_opinfo::reset(size_t L, size_t N, bool _enable_s
     m_bn_ops.insert(std::make_pair((comp_type | DES_B | (i << INDEX_SHIFT)), nop++));
   }
 
+///* DEBUG */ return;
+
   // CreCre, CreDes, DesCre, and DesDes
   for(size_t i = 0; i < loop_indices.size(); ++i) {
     size_t ix = loop_indices[i];
@@ -145,7 +149,7 @@ btas::Qshapes<mpsxx::fermionic::Quantum> mpsxx::fermionic::boundary_opinfo::get_
 std::ostream& operator<< (std::ostream& ost, const mpsxx::fermionic::boundary_opinfo& info)
 {
   for(auto it = info.begin(); it != info.end(); ++it)
-    ost << mpsxx::fermionic::translate(it->first) << std::endl;
+    ost << "\t[ " << it->second << " ] : " << mpsxx::fermionic::translate(it->first) << std::endl;
   return ost;
 }
 

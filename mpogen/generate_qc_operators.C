@@ -44,6 +44,7 @@ void mpsxx::fermionic::generate_qc_operators
     std::cout << "\t\t\tL-BLOCK: " << std::setw(3) << l_indxs.size() << " sites ( " << std::setw(6) << l_ops.size() << " ops. ) " << std::endl;
     std::cout << "\t\t\tR-BLOCK: " << std::setw(3) << r_indxs.size() << " sites ( " << std::setw(6) << r_ops.size() << " ops. ) " << std::endl;
     std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
+//  std::cout << "DEBUG: L-BLOCK operators " << std::endl << l_ops << std::endl;
     // resize mpo array
     mpos[i].clear();
     bool swap_sweep_dir = (l_ops.direction() != r_ops.direction());
@@ -77,6 +78,7 @@ void mpsxx::fermionic::generate_qc_operators
 //            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t\t                               ..." << std::flush;
 //            std::cout << "DEBUG[generate_qc_operators]: " << translate(l->first) << " x " << translate(s->first) << " -> " << translate(r->first) << std::endl;
               generate_site_operator(mpos[i], l->first, l->second, s->first, r->first, r->second, oneint, twoint);
+//            std::cout << translate(l->first) << " x " << translate(s->first) << " -> " << translate(r->first) << std::endl;
             }
           }
         }
@@ -98,6 +100,7 @@ void mpsxx::fermionic::generate_qc_operators
 //            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t\t                               ..." << std::flush;
 //            std::cout << "DEBUG[generate_qc_operators]: " << translate(l->first) << " <- " << translate(s->first) << " x " << translate(r->first) << std::endl;
               generate_site_operator(mpos[i], l->first, l->second, s->first, r->first, r->second, oneint, twoint);
+//            std::cout << translate(l->first) << " <- " << translate(s->first) << " x " << translate(r->first) << std::endl;
             }
           }
         }
@@ -108,7 +111,8 @@ void mpsxx::fermionic::generate_qc_operators
     l_ops = r_ops;
     l_indxs.push_back(i); r_indxs.pop_back();
     std::cout << "\t\t\tsaving site operator array..." << std::flush;
-    save(mpos[i], get_mpofile(prefix, MOLECULAR, i));
+//  save(mpos[i], get_mpofile(prefix, MOLECULAR, i));
+    save(mpos[i], get_mpofile(prefix, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
   }

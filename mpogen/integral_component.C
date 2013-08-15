@@ -14,29 +14,35 @@ double mpsxx::fermionic::int1e_component
   BIT_OPERATOR_TYPE op_indx = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
   switch(l_op & NORMAL & TYPE) {
     case SINGLE:
-      indxs[n++] = (l_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (l_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      indxs[n++] = (l_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (l_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       break;
     case DOUBLE:
-      indxs[n++] = (l_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (l_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      indxs[n++] = (l_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (l_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       indxs[n++] = (l_op & INDEX & SECOND);
-      itype |= (l_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 4);
+      itype     |= (l_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
       break;
     default:
       break;
   }
   switch(s_op & TYPE) {
     case SINGLE:
+      indxs[n++] = (s_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      break;
     case SINGLE_COMP:
       indxs[n++] = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (s_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      if((l_op & TYPE) == SINGLE_COMP)
+        itype   |= (s_op & MASK  & FIRST ^ CONJ_S) >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      else
+        itype   |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       break;
     case DOUBLE:
-      indxs[n++] = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (s_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      indxs[n++] = (s_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       indxs[n++] = (s_op & INDEX & SECOND);
-      itype |= (s_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 4);
+      itype     |= (s_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
       break;
     case HAM:
       // CreDesCreDes
@@ -46,16 +52,23 @@ double mpsxx::fermionic::int1e_component
     default:
       break;
   }
-  switch(r_op & NORMAL & TYPE) {
+  switch(r_op & TYPE) {
     case SINGLE:
-      indxs[n++] = (r_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (r_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (r_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      break;
+    case SINGLE_COMP:
+      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      if((s_op & TYPE) == SINGLE_COMP)
+        itype   |= (r_op & MASK & FIRST ^ CONJ_S)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      else
+        itype   |= (r_op & MASK & FIRST)           >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       break;
     case DOUBLE:
-      indxs[n++] = (r_op & INDEX & FIRST) >> INDEX_SHIFT;
-      itype |= (r_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
+      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
+      itype     |= (r_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
       indxs[n++] = (r_op & INDEX & SECOND);
-      itype |= (r_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 4);
+      itype     |= (r_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
       break;
     default:
       break;

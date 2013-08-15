@@ -9,7 +9,7 @@
 
 namespace mpsxx     {
 
-enum MPO_TYPE { HEISENBERG, FERMION_HUBBARD, MOLECULAR };
+//enum MPO_TYPE { HEISENBERG, FERMION_HUBBARD, MOLECULAR };
 
 template<class Q>
 using MpOperators = std::vector<btas::QSDArray<4, Q>>;

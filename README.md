@@ -1,4 +1,4 @@
 mpsxx
 =====
 
-MPS/MPO multi-linear algebra package implemented in C++11
+MPS/MPO Multi-Linear Algebra Package Implemented in C++11

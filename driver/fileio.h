@@ -29,7 +29,8 @@ void save(const T& obj, const std::string& f_name)
 
 namespace mpsxx {
 
-std::string get_mpofile(const std::string& prefix, const MPO_TYPE& _type, const int& index);
+//std::string get_mpofile(const std::string& prefix, const MPO_TYPE& _type, const int& index);
+std::string get_mpofile(const std::string& prefix,                        const int& index);
 std::string get_mpsfile(const std::string& prefix, const MPS_TYPE& _type, const int& index);
 std::string get_oprfile(const std::string& prefix, const MPS_TYPE& _type, const int& index);
 
