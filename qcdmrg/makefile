@@ -1,12 +1,12 @@
-CXX=/home/naokin/gnu/gcc/4.7.1/bin/g++ -std=c++0x -I. -I/home/naokin/gnu/gcc/4.7.1/include -I/home/naokin/gnu/gcc/4.7.1/c++/4.7.1
-CXXFLAGS=-g -O3 -fopenmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
+CXX=icpc -std=c++0x
+CXXFLAGS=-g -O3 -openmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
 
 BLASDIR=
 BLASINC=
 BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_sequential
 #BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lguide -lpthread
 
-BOOSTDIR=/home/naokin/boost/1.52.0
+BOOSTDIR=/home/naokin/boost/1.54.0
 BOOSTINC=-I$(BOOSTDIR)/include
 BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
