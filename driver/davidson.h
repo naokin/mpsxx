@@ -49,7 +49,7 @@ template<size_t N, class Q>
 double diagonalize
 (const Functor<N, Q>& f_contract, const btas::QSDArray<N, Q>& diag, btas::QSDArray<N, Q>& wfnc)
 {
-  int max_ritz = 20;
+  int max_ritz = 10;
 
   double eval = 0.0;
 
@@ -63,7 +63,7 @@ double diagonalize
 
   int niter = 0;
   int iconv = 0;
-  while(iconv < 1 && niter < 20) {
+  while(iconv < 1 && niter < 4) {
     for(int m = 1; m <= max_ritz; ++m) {
       // compute small Hamiltonian matrix
       btas::DArray<2> heff(m, m);

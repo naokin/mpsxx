@@ -17,6 +17,9 @@ void mpsxx::fermionic::generate_site_operator
   double v_int1e = 0.0;
   double v_int2e = 0.0;
   if((s_op & TYPE) == IDEN) {
+    // SWAP SWEEP:
+    // CiCi x I -> DkDk * Vijkl
+    // DiDi <- I x CkCk * Vijkl
     v_int2e = 1.0;
     if((l_op & TYPE) == DOUBLE && (r_op & TYPE) == DOUBLE && (l_op & INDEX) != (r_op & INDEX)) {
       v_int2e = int2e_component(l_op, s_op, r_op, twoint);
@@ -24,22 +27,29 @@ void mpsxx::fermionic::generate_site_operator
     prime_op_generator<_identity>(op, l_index, r_index, v_int2e);
   }
   else if((s_op & TYPE) == HAM) {
-    v_int1e = int1e_component(l_op, s_op, r_op, oneint) * 0.5;
+    // I x H -> H
+    // H <- H x I
+    v_int1e = int1e_component(l_op, s_op, r_op, oneint);
     v_int2e = int2e_component(l_op, s_op, r_op, twoint);
     prime_op_generator<_cre_a_des_a>            (op, l_index, r_index, v_int1e);
     prime_op_generator<_cre_b_des_b>            (op, l_index, r_index, v_int1e);
     prime_op_generator<_cre_a_des_a_cre_b_des_b>(op, l_index, r_index, v_int2e);
   }
   else if((s_op & TYPE) == SINGLE) {
+    // FORWARD:
+    //   Ci x Cj -> CiCj
+    // CiCi x Dj -> Qk
+    //
+    // SWAP SWEEP:
+    //   Ci x Cj -> DkDk
+    // CiCi x Dj -> Dk
     v_int2e = 1.0;
-//  if     ((l_op & TYPE) == SINGLE && (r_op & TYPE) == DOUBLE) {
     if     ((l_op & NORMAL & TYPE) == SINGLE && (r_op & TYPE) == DOUBLE) {
       BIT_OPERATOR_TYPE conj = (l_op & COMP) ? (COMP | CONJ_S) : ZERO;
       if((DOUBLE | (l_op ^ conj) & FIRST | (s_op & FIRST) >> INDEX_SHIFT) != r_op) {
         v_int2e = int2e_component((l_op ^ conj), s_op, r_op, twoint);
       }
     }
-//  else if((l_op & TYPE) == DOUBLE && (r_op & TYPE) == SINGLE) {
     else if((l_op & TYPE) == DOUBLE && (r_op & NORMAL & TYPE) == SINGLE) {
       BIT_OPERATOR_TYPE conj = (r_op & COMP) ? (COMP | CONJ_S) : ZERO;
       if((DOUBLE | s_op & FIRST | ((r_op ^ conj) & FIRST) >> INDEX_SHIFT) != l_op) {
@@ -64,8 +74,23 @@ void mpsxx::fermionic::generate_site_operator
     }
   }
   else if((s_op & TYPE) == SINGLE_COMP) {
-    v_int1e = int1e_component(l_op, s_op, r_op, oneint) * 0.5;
-    v_int2e = int2e_component(l_op, s_op, r_op, twoint);
+    // FORWARD:
+    // Ci x Qi -> H
+    // I  x Qk -> Qk
+    //
+    // SWAP SWEEP:
+    // Ci x Qi -> I
+    // I  x Qk -> Dk
+    if     ((l_op & NORMAL & TYPE) == SINGLE) {
+      BIT_OPERATOR_TYPE conj = (l_op & COMP) ? (COMP | CONJ_S) : ZERO;
+      v_int1e = int1e_component((l_op ^ conj), s_op, r_op, oneint) * 0.5;
+      v_int2e = int2e_component((l_op ^ conj), s_op, r_op, twoint);
+    }
+    else if((r_op & NORMAL & TYPE) == SINGLE) {
+      BIT_OPERATOR_TYPE conj = (r_op & COMP) ? (COMP | CONJ_S) : ZERO;
+      v_int1e = int1e_component(l_op, s_op, (r_op ^ conj), oneint) * 0.5;
+      v_int2e = int2e_component(l_op, s_op, (r_op ^ conj), twoint);
+    }
     switch(s_op & MASK) {
       case CRE_A:
         prime_op_generator<_cre_a>            (op, l_index, r_index, v_int1e);
@@ -89,11 +114,14 @@ void mpsxx::fermionic::generate_site_operator
   }
   else if((s_op & TYPE) == DOUBLE) {
     v_int2e = 1.0;
-    if     ((l_op & TYPE) == SINGLE && (r_op & TYPE) == SINGLE_COMP) {
+    if     ((l_op & TYPE) == SINGLE && (r_op & TYPE) == SINGLE) { // swap sweep dir.
       v_int2e = int2e_component(l_op, s_op, r_op, twoint);
     }
+    else if((l_op & TYPE) == SINGLE && (r_op & TYPE) == SINGLE_COMP) {
+      v_int2e = int2e_component(l_op, s_op, (r_op ^ COMP ^ CONJ_S), twoint);
+    }
     else if((r_op & TYPE) == SINGLE && (l_op & TYPE) == SINGLE_COMP) {
-      v_int2e = int2e_component(l_op, s_op, r_op, twoint);
+      v_int2e = int2e_component((l_op ^ COMP ^ CONJ_S), s_op, r_op, twoint);
     }
     else if((l_op & TYPE) == DOUBLE && (l_op & INDEX) != (s_op & INDEX)) {
       v_int2e = int2e_component(l_op, s_op, r_op, twoint);
@@ -126,7 +154,8 @@ void mpsxx::fermionic::generate_site_operator
         break;
     }
   }
-//std::cout << "v1 = " << v_int1e << ", v2 = " << v_int2e << " :: " << std::flush;
+//std::cout << "v1 = " << std::setprecision(2) << std::setw(5) << v_int1e << " :: "
+//          << "v2 = " << std::setprecision(2) << std::setw(5) << v_int2e << " :: " << std::flush;
   return;
 }
 

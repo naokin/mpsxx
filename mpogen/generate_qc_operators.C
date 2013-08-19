@@ -35,7 +35,7 @@ void mpsxx::fermionic::generate_qc_operators
   for(size_t i = N-1; i > 0; --i) r_indxs.push_back(i);
 
   size_t nnz = 0;
-  for(size_t i = 0; i < N; ++i) {
+  for(int i = 0; i < N; ++i) {
     std::cout << "\t\t====================================================================================================" << std::endl;
     std::cout << "\t\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
     std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
@@ -44,21 +44,27 @@ void mpsxx::fermionic::generate_qc_operators
     std::cout << "\t\t\tL-BLOCK: " << std::setw(3) << l_indxs.size() << " sites ( " << std::setw(6) << l_ops.size() << " ops. ) " << std::endl;
     std::cout << "\t\t\tR-BLOCK: " << std::setw(3) << r_indxs.size() << " sites ( " << std::setw(6) << r_ops.size() << " ops. ) " << std::endl;
     std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
-//  std::cout << "DEBUG: L-BLOCK operators " << std::endl << l_ops << std::endl;
+
     // resize mpo array
+    std::cout << "\t\t\tresizing site operator array..." << std::flush;
+
     mpos[i].clear();
     bool swap_sweep_dir = (l_ops.direction() != r_ops.direction());
-    std::cout << "\t\t\tresizing site operator array..." << std::flush;
+
+    btas::Dshapes l_dshape(l_ops.size(), 0);
+    btas::Dshapes s_dshape(MpSite<Quantum>::quanta().size(), 1);
+    btas::Dshapes r_dshape(r_ops.size(), 0);
+
     if(enable_swap_sweep_dir) {
       if     (swap_sweep_dir)
-        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()));
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
       else if(l_ops.direction() == boundary_opinfo::FORWARD)
-        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()));
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
       else
-        mpos[i].resize(Quantum::zero(), make_array(-l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()));
+        mpos[i].resize(Quantum::zero(), btas::make_array(-l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
     }
     else {
-        mpos[i].resize(Quantum::zero(), make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()));
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
     }
     std::cout << "done" << std::endl;
     // 'dot with sys' in Block code
@@ -108,14 +114,73 @@ void mpsxx::fermionic::generate_qc_operators
     }
     nnz += nnz_local;
     std::cout << "done ( " << nnz_local << " ops. are generated ) " << std::endl;
+
+    std::cout << "\t\t\tremoving zero contributed terms (fwd)..." << std::flush;
+
+    btas::TVector<btas::Dshapes, 4> mpo_dshape = mpos[i].check_net_dshape();
+    btas::TVector<btas::Dshapes, 4> nz_indices;
+    for(size_t x = 0; x < mpo_dshape[0].size(); ++x) nz_indices[0].push_back(x);
+    for(size_t x = 0; x < mpo_dshape[1].size(); ++x) nz_indices[1].push_back(x);
+    for(size_t x = 0; x < mpo_dshape[2].size(); ++x) nz_indices[2].push_back(x);
+    for(size_t x = 0; x < mpo_dshape[3].size(); ++x) if(mpo_dshape[3][x] > 0) nz_indices[3].push_back(x);
+
+    mpos[i] = mpos[i].subarray(nz_indices);
+    r_ops.clean(mpo_dshape[3]);
+
+    std::cout << "done ( non-zero elements: " << mpos[i].nnz() << " ) " << std::endl;
+
     l_ops = r_ops;
     l_indxs.push_back(i); r_indxs.pop_back();
+
     std::cout << "\t\t\tsaving site operator array..." << std::flush;
-//  save(mpos[i], get_mpofile(prefix, MOLECULAR, i));
     save(mpos[i], get_mpofile(prefix, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
   }
+
+  btas::Dshapes r_nz_index(1, 0);
+  for(int i = N-1; i >= 0; --i) {
+    std::cout << "\t\t====================================================================================================" << std::endl;
+    std::cout << "\t\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
+    std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "\t\t\tloading site operator array..." << std::flush;
+    load(mpos[i], get_mpofile(prefix, i));
+    std::cout << "done" << std::endl;
+
+    std::cout << "\t\t\tremoving zero contributed terms (bwd)..." << std::flush;
+
+    btas::TVector<btas::Dshapes, 4> mpo_dshape = mpos[i].check_net_dshape();
+    btas::TVector<btas::Dshapes, 4> nz_indices;
+
+    for(size_t x = 0; x < mpo_dshape[0].size(); ++x) if(mpo_dshape[0][x] > 0) nz_indices[0].push_back(x);
+    for(size_t x = 0; x < mpo_dshape[1].size(); ++x) nz_indices[1].push_back(x);
+    for(size_t x = 0; x < mpo_dshape[2].size(); ++x) nz_indices[2].push_back(x);
+                                                     nz_indices[3] = r_nz_index;
+
+    mpos[i] = mpos[i].subarray(nz_indices);
+    btas::Dshapes nz_index_save = nz_indices[0];
+
+    mpo_dshape = mpos[i].check_net_dshape();
+    nz_indices[0].clear(); r_nz_index.clear();
+    for(size_t x = 0; x < mpo_dshape[0].size(); ++x)
+      if(mpo_dshape[0][x] > 0) {
+        nz_indices[0].push_back(x);
+        r_nz_index.push_back(nz_index_save[x]);
+      }
+
+    nz_indices[3].clear();
+    for(size_t x = 0; x < mpo_dshape[3].size(); ++x) nz_indices[3].push_back(x);
+
+    mpos[i] = mpos[i].subarray(nz_indices);
+
+    std::cout << "done ( non-zero elements: " << mpos[i].nnz() << " ) " << std::endl;
+
+    std::cout << "\t\t\tsaving site operator array..." << std::flush;
+    save(mpos[i], get_mpofile(prefix, i));
+    mpos[i].clear();
+    std::cout << "done" << std::endl;
+  }
+
     std::cout << "\t\t====================================================================================================" << std::endl;
     std::cout << "\t\t\tTotal number of operator elements: " << nnz << std::endl;
 }

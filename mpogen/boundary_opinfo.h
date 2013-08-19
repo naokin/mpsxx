@@ -60,6 +60,8 @@ public:
 
   btas::Qshapes<Quantum> get_qshape() const;
 
+  void clean(const btas::Dshapes& _dn_shape);
+
 private:
   DIRECTION
     m_bn_dir;

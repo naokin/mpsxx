@@ -1,5 +1,5 @@
 CXX=/home/naokin/gnu/gcc/4.7.1/bin/g++ -std=c++0x -I. -I/home/naokin/gnu/gcc/4.7.1/include -I/home/naokin/gnu/gcc/4.7.1/c++/4.7.1
-CXXFLAGS=-g -O2 -fopenmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
+CXXFLAGS=-g -O3 -fopenmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
 
 BLASDIR=
 BLASINC=

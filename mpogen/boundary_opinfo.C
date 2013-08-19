@@ -146,6 +146,23 @@ btas::Qshapes<mpsxx::fermionic::Quantum> mpsxx::fermionic::boundary_opinfo::get_
   return std::move(q);
 }
 
+void mpsxx::fermionic::boundary_opinfo::clean(const btas::Dshapes& _dn_shape)
+{
+  std::map<size_t, BIT_OPERATOR_TYPE> _bn_map;
+  for(auto it = m_bn_ops.begin(); it != m_bn_ops.end();) {
+    if(_dn_shape[it->second] > 0) {
+      _bn_map.insert(std::make_pair(it->second, it->first));
+      ++it;
+    }
+    else {
+      it = m_bn_ops.erase(it);
+    }
+  }
+  size_t nnz = 0;
+  for(auto it = _bn_map.begin(); it != _bn_map.end(); ++it, ++nnz)
+    m_bn_ops.find(it->second)->second = nnz;
+}
+
 std::ostream& operator<< (std::ostream& ost, const mpsxx::fermionic::boundary_opinfo& info)
 {
   for(auto it = info.begin(); it != info.end(); ++it)

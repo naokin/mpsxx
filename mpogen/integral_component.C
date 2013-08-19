@@ -11,67 +11,24 @@ double mpsxx::fermionic::int1e_component
   using namespace bit_operator;
   btas::IVector<2> indxs;
   unsigned int itype = 0, n = 0;
-  BIT_OPERATOR_TYPE op_indx = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-  switch(l_op & NORMAL & TYPE) {
-    case SINGLE:
-      indxs[n++] = (l_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (l_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      break;
-    case DOUBLE:
-      indxs[n++] = (l_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (l_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      indxs[n++] = (l_op & INDEX & SECOND);
-      itype     |= (l_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
-      break;
-    default:
-      break;
+  if((l_op & NORMAL & TYPE) == SINGLE) {
+    indxs[n++] = (l_op & INDEX & FIRST) >>  INDEX_SHIFT;
+    itype     |= (l_op & MASK  & FIRST) >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
   }
-  switch(s_op & TYPE) {
-    case SINGLE:
-      indxs[n++] = (s_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      break;
-    case SINGLE_COMP:
-      indxs[n++] = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-      if((l_op & TYPE) == SINGLE_COMP)
-        itype   |= (s_op & MASK  & FIRST ^ CONJ_S) >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      else
-        itype   |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      break;
-    case DOUBLE:
-      indxs[n++] = (s_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (s_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      indxs[n++] = (s_op & INDEX & SECOND);
-      itype     |= (s_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
-      break;
-    case HAM:
-      // CreDesCreDes
-      op_indx = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-      for(; n < 2; n++) indxs[n] = op_indx;
-      itype = 0x0000000d; // 11 01 = Cre(A)Des(A) [ = Cre(B)Des(B) ]
-    default:
-      break;
+  if((s_op & NORMAL & TYPE) == SINGLE) {
+    indxs[n++] = (s_op & INDEX & FIRST) >>  INDEX_SHIFT;
+    itype     |= (s_op & MASK  & FIRST) >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
   }
-  switch(r_op & TYPE) {
-    case SINGLE:
-      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (r_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      break;
-    case SINGLE_COMP:
-      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      if((s_op & TYPE) == SINGLE_COMP)
-        itype   |= (r_op & MASK & FIRST ^ CONJ_S)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      else
-        itype   |= (r_op & MASK & FIRST)           >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      break;
-    case DOUBLE:
-      indxs[n++] = (r_op & INDEX & FIRST)          >>  INDEX_SHIFT;
-      itype     |= (r_op & MASK  & FIRST)          >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
-      indxs[n++] = (r_op & INDEX & SECOND);
-      itype     |= (r_op & MASK  & SECOND)         >>               (FIELD_SHIFT + 2*n - 4);
-      break;
-    default:
-      break;
+  if((s_op & TYPE) == HAM) {
+    // CreDes
+    BIT_OPERATOR_TYPE op_index = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
+    indxs[n++] = op_index;
+    indxs[n++] = op_index;
+    itype = 0x0000000d; // 11 01 = Cre(A)Des(A) [ = Cre(B)Des(B) ]
+  }
+  if((r_op & NORMAL & TYPE) == SINGLE) {
+    indxs[n++] = (r_op & INDEX & FIRST) >>  INDEX_SHIFT;
+    itype     |= (r_op & MASK  & FIRST) >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 4);
   }
   assert(n == 2);
 
@@ -206,19 +163,13 @@ double mpsxx::fermionic::int2e_component
   BIT_OPERATOR_TYPE op_indx;
   switch(l_op & NORMAL & TYPE) {
     case SINGLE:
-//std::cout << "DEBUG[int2e_component]: 01" << std::endl;
       indxs[n++] = (l_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 02" << std::endl;
       itype |= (l_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
       break;
     case DOUBLE:
-//std::cout << "DEBUG[int2e_component]: 03" << std::endl;
       indxs[n++] = (l_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 04" << std::endl;
       itype |= (l_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
-//std::cout << "DEBUG[int2e_component]: 05" << std::endl;
       indxs[n++] = (l_op & INDEX & SECOND);
-//std::cout << "DEBUG[int2e_component]: 06" << std::endl;
       itype |= (l_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 8);
       break;
     default:
@@ -226,52 +177,38 @@ double mpsxx::fermionic::int2e_component
   }
   switch(s_op & TYPE) {
     case SINGLE:
-//std::cout << "DEBUG[int2e_component]: 07" << std::endl;
       indxs[n++] = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 08" << std::endl;
       itype |= (s_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
       break;
     case DOUBLE:
-//std::cout << "DEBUG[int2e_component]: 09" << std::endl;
       indxs[n++] = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 10 -- n::" << n << std::endl;
       itype |= (s_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
-//std::cout << "DEBUG[int2e_component]: 11" << std::endl;
       indxs[n++] = (s_op & INDEX & SECOND);
-//std::cout << "DEBUG[int2e_component]: 12 -- n::" << n << std::endl;
       itype |= (s_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 8);
       break;
     case SINGLE_COMP:
-//std::cout << "DEBUG[int2e_component]: 13" << std::endl;
       op_comp = (s_op & MASK & FIRST) >> (INDEX_SHIFT + FIELD_SHIFT);
-//std::cout << "DEBUG[int2e_component]: 14" << std::endl;
       op_indx = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
       // CreCreDes
       if(op_comp & 2) {
-//std::cout << "DEBUG[int2e_component]: 15" << std::endl;
         indxs[n++] = op_indx; itype |=  (op_comp      << (8 - 2*n)); // Cre(S)
-//std::cout << "DEBUG[int2e_component]: 16" << std::endl;
         indxs[n++] = op_indx; itype |= ((op_comp ^ 1) << (8 - 2*n)); // Cre(S*)
-//std::cout << "DEBUG[int2e_component]: 17" << std::endl;
         indxs[n++] = op_indx; itype |= ((op_comp ^ 3) << (8 - 2*n)); // Des(S*)
       }
       // CreDesDes
       else {
-//std::cout << "DEBUG[int2e_component]: 18" << std::endl;
         indxs[n++] = op_indx; itype |= ((op_comp ^ 3) << (8 - 2*n)); // Cre(S*)
-//std::cout << "DEBUG[int2e_component]: 19" << std::endl;
         indxs[n++] = op_indx; itype |= ((op_comp ^ 1) << (8 - 2*n)); // Des(S*)
-//std::cout << "DEBUG[int2e_component]: 20" << std::endl;
         indxs[n++] = op_indx; itype |=  (op_comp      << (8 - 2*n)); // Des(S)
       }
       break;
     case HAM:
       // CreDesCreDes
-//std::cout << "DEBUG[int2e_component]: 21" << std::endl;
       op_indx = (s_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 22" << std::endl;
-      for(; n < 4; n++) indxs[n] = op_indx;
-//std::cout << "DEBUG[int2e_component]: 23" << std::endl;
+      indxs[n++] = op_indx;
+      indxs[n++] = op_indx;
+      indxs[n++] = op_indx;
+      indxs[n++] = op_indx;
       itype = 0x000000d8; // 11 01 10 00 = Cre(A)Des(A)Cre(B)Des(B)
       break;
     default:
@@ -279,27 +216,25 @@ double mpsxx::fermionic::int2e_component
   }
   switch(r_op & NORMAL & TYPE) {
     case SINGLE:
-//std::cout << "DEBUG[int2e_component]: 24" << std::endl;
       indxs[n++] = (r_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 25 -- n::" << n << std::endl;
       itype |= (r_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
       break;
     case DOUBLE:
-//std::cout << "DEBUG[int2e_component]: 26" << std::endl;
       indxs[n++] = (r_op & INDEX & FIRST) >> INDEX_SHIFT;
-//std::cout << "DEBUG[int2e_component]: 27 -- n::" << n << std::endl;
       itype |= (r_op & MASK & FIRST)  >> (INDEX_SHIFT + FIELD_SHIFT + 2*n - 8);
-//std::cout << "DEBUG[int2e_component]: 28" << std::endl;
       indxs[n++] = (r_op & INDEX & SECOND);
-//std::cout << "DEBUG[int2e_component]: 29 -- n::" << n << std::endl;
       itype |= (r_op & MASK & SECOND) >>               (FIELD_SHIFT + 2*n - 8);
       break;
     default:
       break;
   }
-//std::cout << "DEBUG[int2e_component]: 30" << std::endl;
   assert(n == 4 && itype < 256);
   unsigned int m_type = m_int2e_table[itype];
+//std::cout << "type = " << ((itype & 0x80) > 0) << ((itype & 0x40) > 0) << " "
+//                       << ((itype & 0x20) > 0) << ((itype & 0x10) > 0) << " "
+//                       << ((itype & 0x08) > 0) << ((itype & 0x04) > 0) << " "
+//                       << ((itype & 0x02) > 0) << ((itype & 0x01) > 0) << " ["
+//                       << std::setw(2) << m_type << "] :: " << std::flush;
 
   /*! Return scaling factor for complementary operator
    * 
@@ -318,26 +253,23 @@ double mpsxx::fermionic::int2e_component
   int& jx = indxs[1];
   int& kx = indxs[2];
   int& lx = indxs[3];
+//std::cout << "[" << ix << "," << jx << "," << kx << "," << lx << "] :: " << std::flush;
 
   double value = 0.0;
   // get commutation type
   switch(m_type % 4) {
     case 1:
-//std::cout << "DEBUG[int2e_component]: 31" << std::endl;
       value += _int2e(ix,jx,lx,kx); if(m_type & 8) value -= _int2e(ix,jx,kx,lx);
       break;
     case 2:
-//std::cout << "DEBUG[int2e_component]: 32 -- ix::" << ix << " jx::" << jx << " kx::" << kx << " lx::" << lx << std::endl;
       value += _int2e(ix,jx,kx,lx); if(m_type & 8) value -= _int2e(ix,kx,jx,lx);
       break;
     case 3:
-//std::cout << "DEBUG[int2e_component]: 33" << std::endl;
       value += _int2e(ix,kx,jx,lx); if(m_type & 8) value -= _int2e(ix,jx,lx,kx);
       break;
     default:
       break;
   }
-//std::cout << "DEBUG[int2e_component]: 34" << std::endl;
   // get scaling +/-
   return (m_type & 4) ? -value : value;
 }
