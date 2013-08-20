@@ -10,7 +10,7 @@ BOOSTDIR=/home/naokin/boost/1.54.0
 BOOSTINC=-I$(BOOSTDIR)/include
 BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
-BTASDIR=/home/naokin/btas-0.3.0/c++11
+BTASDIR=/home/naokin/btas-0.3.0
 BTASINC=-I. -I.. -I$(BTASDIR)/include
 BTASLIB= $(BTASDIR)/lib/libbtas.a
 
