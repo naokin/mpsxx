@@ -26,6 +26,8 @@ int main(int argc, char* argv[])
     std::ifstream fin(f_inp.c_str());
     std::string entry;
     while(fin >> entry) {
+      if(entry == "restart")
+        input.restart = true;
       if(entry == "N")
         fin >> input.N_sites;
       if(entry == "spin")

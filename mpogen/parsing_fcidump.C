@@ -51,7 +51,7 @@ void parsing_fcidump
   oneint.resize(norbs, norbs);
   twoint.resize(norbs, norbs, norbs, norbs);
   // find &END control
-  while(1) {
+  while(!fdump.eof()) {
     tok = gettoken(fdump);
     if(tok[0] == "&END" || tok[0] == "/") break;
   }
@@ -101,9 +101,9 @@ void parsing_fcidump
   oneint.resize(norbs, norbs);
   twoint.resize(norbs, norbs, norbs, norbs);
   // find &END control
-  while(1) {
+  while(!fdump.eof()) {
     tok = gettoken(fdump);
-    if(tok[0] == "&END") break;
+    if(tok[0] == "&END" || tok[0] == "/") break;
   }
   // read integrals
   while((tok = gettoken(fdump)).size() > 1) {

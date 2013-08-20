@@ -9,6 +9,8 @@
 #include <driver/guesswave.h>
 #include <driver/fileio.h>
 
+#include <symmetry/Fermion/Quantum.h>
+
 namespace mpsxx {
 
 //! Generate quantum numbers for each boundary from MPO
@@ -67,6 +69,82 @@ std::vector<btas::Qshapes<Q>> generate_quantum_states
     if(_max_quantum_blocks > 0 && ql.size() > _max_quantum_blocks) {
       size_t offs = (ql.size()-_max_quantum_blocks)/2;
       ql = btas::Qshapes<Q>(ql.begin()+offs, ql.begin()+offs+_max_quantum_blocks);
+
+      // check non-zero for each qr index
+      auto rt = qr.begin();
+      while(rt != qr.end()) {
+        bool non_zero = false;
+        for(size_t l = 0; l < ql.size(); ++l) {
+          for(size_t p = 0; p < qn.size(); ++p) {
+            non_zero |= (*rt == (ql[l] * qn[p]));
+          }
+        }
+        if(non_zero)
+          ++rt;
+        else
+          qr.erase(rt);
+      }
+      assert(qr.size() > 0);
+    }
+  }
+  return std::move(qb);
+}
+
+//! Specialize for Fermion
+template<>
+std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
+(const std::vector<btas::Qshapes<fermionic::Quantum>>& sites, const fermionic::Quantum& qt, size_t _max_quantum_blocks)
+{
+  size_t N = sites.size();
+
+  // zero quantum number
+  btas::Qshapes<fermionic::Quantum> qz(1, fermionic::Quantum::zero());
+
+  // boundary quantum numbers
+  std::vector<btas::Qshapes<fermionic::Quantum>> qb(N);
+
+  // generate quantum number blocks for MPS
+  qb[0] = sites[0];
+  for(size_t i = 1; i < N-1; ++i) {
+    btas::Qshapes<fermionic::Quantum> qb_bare = qb[i-1] & sites[i]; // get unique elements of { q(l) x q(n) }
+    qb[i].clear();
+    qb[i].reserve(qb_bare.size());
+    for(size_t j = 0; j < qb_bare.size(); ++j)
+      if(qb_bare[j].p() <= qt.p()) qb[i].push_back(qb_bare[j]);
+  }
+  qb[N-1] = btas::Qshapes<fermionic::Quantum>(1, qt); // used for checking quantum states
+
+  // reduce zero quantum blocks
+  for(size_t i = N-1; i > 0; --i) {
+    const btas::Qshapes<fermionic::Quantum>& qn = sites[i];
+          btas::Qshapes<fermionic::Quantum>& ql = qb[i-1];
+          btas::Qshapes<fermionic::Quantum>& qr = qb[i];
+
+    // check non-zero for each ql index
+    auto lt = ql.begin();
+    while(lt != ql.end()) {
+      bool non_zero = false;
+      for(size_t p = 0; p < qn.size(); ++p) {
+        for(size_t r = 0; r < qr.size(); ++r) {
+          non_zero |= (qr[r] == (qn[p] * (*lt)));
+        }
+      }
+      if(non_zero)
+        ++lt;
+      else
+        ql.erase(lt);
+    }
+    assert(ql.size() > 0);
+  }
+  for(size_t i = 0; i < N-1; ++i) {
+    const btas::Qshapes<fermionic::Quantum>& qn = sites[i];
+          btas::Qshapes<fermionic::Quantum>& ql = qb[i];
+          btas::Qshapes<fermionic::Quantum>& qr = qb[i+1];
+
+    // further reduction
+    if(_max_quantum_blocks > 0 && ql.size() > _max_quantum_blocks) {
+      size_t offs = (ql.size()-_max_quantum_blocks)/2;
+      ql = btas::Qshapes<fermionic::Quantum>(ql.begin()+offs, ql.begin()+offs+_max_quantum_blocks);
 
       // check non-zero for each qr index
       auto rt = qr.begin();

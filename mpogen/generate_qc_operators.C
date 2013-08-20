@@ -36,17 +36,17 @@ void mpsxx::fermionic::generate_qc_operators
 
   size_t nnz = 0;
   for(int i = 0; i < N; ++i) {
-    std::cout << "\t\t====================================================================================================" << std::endl;
-    std::cout << "\t\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
-    std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "\t====================================================================================================" << std::endl;
+    std::cout << "\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
+    std::cout << "\t----------------------------------------------------------------------------------------------------" << std::endl;
     // get boundary operators
     s_ops.reset(i); r_ops.reset(i+1, N, enable_swap_sweep_dir);
-    std::cout << "\t\t\tL-BLOCK: " << std::setw(3) << l_indxs.size() << " sites ( " << std::setw(6) << l_ops.size() << " ops. ) " << std::endl;
-    std::cout << "\t\t\tR-BLOCK: " << std::setw(3) << r_indxs.size() << " sites ( " << std::setw(6) << r_ops.size() << " ops. ) " << std::endl;
-    std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "\t\tL-BLOCK: " << std::setw(3) << l_indxs.size() << " sites ( " << std::setw(6) << l_ops.size() << " ops. ) " << std::endl;
+    std::cout << "\t\tR-BLOCK: " << std::setw(3) << r_indxs.size() << " sites ( " << std::setw(6) << r_ops.size() << " ops. ) " << std::endl;
+    std::cout << "\t----------------------------------------------------------------------------------------------------" << std::endl;
 
     // resize mpo array
-    std::cout << "\t\t\tresizing site operator array..." << std::flush;
+    std::cout << "\t\tresizing site operator array..." << std::flush;
 
     mpos[i].clear();
     bool swap_sweep_dir = (l_ops.direction() != r_ops.direction());
@@ -70,7 +70,7 @@ void mpsxx::fermionic::generate_qc_operators
     // 'dot with sys' in Block code
     size_t nnz_local = 0;
     if(l_ops.direction() == boundary_opinfo::FORWARD) {
-      std::cout << "\t\t\tgenerating site operators (fwd)..." << std::flush;
+      std::cout << "\t\tgenerating site operators (fwd)..." << std::flush;
       for(auto l = l_ops.begin(); l != l_ops.end(); ++l) {
         for(auto s = s_ops.begin(); s != s_ops.end(); ++s) {
           // prod. operator O_l*O_s
@@ -81,7 +81,7 @@ void mpsxx::fermionic::generate_qc_operators
             if(r != r_ops.end()) {
               ++nnz_local;
 //            if(nnz_local %  100 == 0) std::cout << nnz_local / 100 << "..." << std::flush;
-//            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t\t                               ..." << std::flush;
+//            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t                               ..." << std::flush;
 //            std::cout << "DEBUG[generate_qc_operators]: " << translate(l->first) << " x " << translate(s->first) << " -> " << translate(r->first) << std::endl;
               generate_site_operator(mpos[i], l->first, l->second, s->first, r->first, r->second, oneint, twoint);
 //            std::cout << translate(l->first) << " x " << translate(s->first) << " -> " << translate(r->first) << std::endl;
@@ -92,7 +92,7 @@ void mpsxx::fermionic::generate_qc_operators
     }
     // 'dot with env'
     else {
-      std::cout << "\t\t\tgenerating site operators (bwd)..." << std::flush;
+      std::cout << "\t\tgenerating site operators (bwd)..." << std::flush;
       for(auto r = r_ops.begin(); r != r_ops.end(); ++r) {
         for(auto s = s_ops.begin(); s != s_ops.end(); ++s) {
           // prod. operator O_s*O_r
@@ -103,7 +103,7 @@ void mpsxx::fermionic::generate_qc_operators
             if(l != l_ops.end()) {
               ++nnz_local;
 //            if(nnz_local %  100 == 0) std::cout << nnz_local / 100 << "..." << std::flush;
-//            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t\t                               ..." << std::flush;
+//            if(nnz_local % 1000 == 0) std::cout << std::endl << "\t\t                               ..." << std::flush;
 //            std::cout << "DEBUG[generate_qc_operators]: " << translate(l->first) << " <- " << translate(s->first) << " x " << translate(r->first) << std::endl;
               generate_site_operator(mpos[i], l->first, l->second, s->first, r->first, r->second, oneint, twoint);
 //            std::cout << translate(l->first) << " <- " << translate(s->first) << " x " << translate(r->first) << std::endl;
@@ -115,7 +115,7 @@ void mpsxx::fermionic::generate_qc_operators
     nnz += nnz_local;
     std::cout << "done ( " << nnz_local << " ops. are generated ) " << std::endl;
 
-    std::cout << "\t\t\tremoving zero contributed terms (fwd)..." << std::flush;
+    std::cout << "\t\tremoving zero contributed terms (fwd)..." << std::flush;
 
     btas::TVector<btas::Dshapes, 4> mpo_dshape = mpos[i].check_net_dshape();
     btas::TVector<btas::Dshapes, 4> nz_indices;
@@ -132,7 +132,7 @@ void mpsxx::fermionic::generate_qc_operators
     l_ops = r_ops;
     l_indxs.push_back(i); r_indxs.pop_back();
 
-    std::cout << "\t\t\tsaving site operator array..." << std::flush;
+    std::cout << "\t\tsaving site operator array..." << std::flush;
     save(mpos[i], get_mpofile(prefix, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
@@ -140,14 +140,14 @@ void mpsxx::fermionic::generate_qc_operators
 
   btas::Dshapes r_nz_index(1, 0);
   for(int i = N-1; i >= 0; --i) {
-    std::cout << "\t\t====================================================================================================" << std::endl;
-    std::cout << "\t\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
-    std::cout << "\t\t----------------------------------------------------------------------------------------------------" << std::endl;
-    std::cout << "\t\t\tloading site operator array..." << std::flush;
+    std::cout << "\t====================================================================================================" << std::endl;
+    std::cout << "\t\tSITE [ " << std::setw(3) << i << " ] " << std::endl;
+    std::cout << "\t----------------------------------------------------------------------------------------------------" << std::endl;
+    std::cout << "\t\tloading site operator array..." << std::flush;
     load(mpos[i], get_mpofile(prefix, i));
     std::cout << "done" << std::endl;
 
-    std::cout << "\t\t\tremoving zero contributed terms (bwd)..." << std::flush;
+    std::cout << "\t\tremoving zero contributed terms (bwd)..." << std::flush;
 
     btas::TVector<btas::Dshapes, 4> mpo_dshape = mpos[i].check_net_dshape();
     btas::TVector<btas::Dshapes, 4> nz_indices;
@@ -175,13 +175,13 @@ void mpsxx::fermionic::generate_qc_operators
 
     std::cout << "done ( non-zero elements: " << mpos[i].nnz() << " ) " << std::endl;
 
-    std::cout << "\t\t\tsaving site operator array..." << std::flush;
+    std::cout << "\t\tsaving site operator array..." << std::flush;
     save(mpos[i], get_mpofile(prefix, i));
     mpos[i].clear();
     std::cout << "done" << std::endl;
   }
 
-    std::cout << "\t\t====================================================================================================" << std::endl;
-    std::cout << "\t\t\tTotal number of operator elements: " << nnz << std::endl;
+    std::cout << "\t====================================================================================================" << std::endl;
+    std::cout << "\t\tTotal number of operator elements: " << nnz << std::endl;
 }
 

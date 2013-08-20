@@ -28,7 +28,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   MpOperators<fermionic::Quantum> mpos(N);
   MpStates   <fermionic::Quantum> mpss(N);
 
-  initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
+  if(!input.restart)
+    initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
 
   double esav = 1.0e8;
 
