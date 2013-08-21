@@ -26,15 +26,15 @@ private:
   friend class boost::serialization::access;
   template<class Archive>
   void serialize(Archive& ar, const unsigned int version) {
-    boost_serialize::mf_serialize<Archive, Q, Qs...>(ar, version);
+    ar & boost::serialization::base_object<Q>(*this);
+    mf_boost_serialize(ar, version, boost::serialization::base_object<Qs>(*this)...);
   }
 
+  template<class Archive, class P, class... Ps>
+  inline void mf_boost_serialize(Archive ar, const unsigned int version, P& x, Ps&... xs) { ar & x; mf_boost_serialize(ar, version, xs...); }
+
   template<class Archive>
-  struct boost_serialize {
-    template<class P, class... Ps>
-    inline void mf_serialize(Archive ar, const unsigned int version) { ar & boost::base_object<P>(*this); mf_serialize<Archive, Ps...>(ar, version); }
-    inline void mf_serialize(Archive ar, const unsigned int version) { }
-  };
+  inline void mf_boost_serialize(Archive ar, const unsigned int version) { }
 
   template<class P, class... Ps>
   inline bool mf_equal_to    (const P& x, const Ps&... xs) const { return (static_cast<const P&>(*this) == x) ? mf_equal_to    (xs...) : false; }
@@ -65,13 +65,13 @@ private:
 //inline double mf_clebsch() const { return 1.0; }
 
   template<class P, class... Ps>
-  inline std::ostream& mf_printf(std::ostream& ost, const P& x, const Ps&... xs) const { return ost << "," << x << mf_printf(ost, xs...); }
-  inline std::ostream& mf_printf(std::ostream& ost) const { return ost; }
+  inline void mf_printf(std::ostream& ost, const P& x, const Ps&... xs) const { ost << "," << x; mf_printf(ost, xs...); }
+  inline void mf_printf(std::ostream& ost) const {  }
 
 public:
   const static GenericQuantum zero() { return GenericQuantum(Q::zero(), Qs::zero()...); }
 
-  GenericQuantum() : { }
+  GenericQuantum() { }
 
   GenericQuantum(const Q& q, const Qs&... qs)  : Q(q), Qs(qs)... { }
 
@@ -93,7 +93,12 @@ public:
 
 //double clebsch() const { return mf_clebsch(static_cast<const Q&>(*this), static_cast<const Qs&>(*this)...); }
 
-  friend std::ostream& operator<< (std::ostream& ost, const GenericQuantum& q) { return ost << " { " << static_cast<const Q&>(q) << q.mf_printf(ost, static_cast<const Qs&>(q)...) << " } "; }
+  friend std::ostream& operator<< (std::ostream& ost, const GenericQuantum& q) {
+    ost << " { " << static_cast<const Q&>(q);
+    q.mf_printf(ost, static_cast<const Qs&>(q)...);
+    ost << " } ";
+    return ost;
+  }
 
 };
 

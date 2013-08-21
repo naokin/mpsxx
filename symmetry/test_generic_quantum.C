@@ -19,16 +19,16 @@ int main() {
   MyQuantum q3 = MyQuantum::zero();
 
   std::cout << "q1 = " << q1 << std::endl;
-//std::cout << "q2 = " << q2 << std::endl;
-//std::cout << "q3 = " << q3 << std::endl;
+  std::cout << "q2 = " << q2 << std::endl;
+  std::cout << "q3 = " << q3 << std::endl;
 
-//if(q1 == q2) std::cout << "q1 == q2" << std::endl;
-//if(q1 != q2) std::cout << "q1 != q2" << std::endl;
-//if(q1 <  q2) std::cout << "q1 <  q2" << std::endl;
-//if(q1 >  q2) std::cout << "q1 >  q2" << std::endl;
+  if(q1 == q2) std::cout << "q1 == q2" << std::endl;
+  if(q1 != q2) std::cout << "q1 != q2" << std::endl;
+  if(q1 <  q2) std::cout << "q1 <  q2" << std::endl;
+  if(q1 >  q2) std::cout << "q1 >  q2" << std::endl;
 
-//q3 = q1 * q2;
-//std::cout << "q3 := q1 * q2 = " << q3 << std::endl;
+  q3 = q1 * q2;
+  std::cout << "q3 := q1 * q2 = " << q3 << std::endl;
 
   return 0;
 }
