@@ -56,12 +56,14 @@ double optimize_onesite
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<3, Q> lmps;
     btas::QSDArray<2, Q> gaug;
     canonicalize(1, wfn0, lmps, gaug, M);
     wfn0 = lmps;
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
+    cout << "\t\tcompute guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, gaug, wfn1, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
@@ -74,12 +76,14 @@ double optimize_onesite
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<3, Q> rmps;
     btas::QSDArray<2, Q> gaug;
     canonicalize(0, wfn0, rmps, gaug, M);
     wfn0 = rmps;
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
+    cout << "\t\tcompute guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, wfn1, gaug, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
@@ -135,7 +139,7 @@ double optimize_twosite
   double energy = davidson::diagonalize(f_sigmavector, diag, wfn2);
 
   if(forward) {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(1, wfn2, lwfn, rwfn, M);
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
@@ -146,7 +150,7 @@ double optimize_twosite
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(0, wfn2, rwfn, lwfn, M);
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
@@ -172,6 +176,14 @@ void compute_merged_block
                      btas::QSDArray<3, Q>& opr0,
                      btas::QSDArray<3, Q>& oprm)
 {
+  using std::cout;
+  using std::endl;
+  using std::flush;
+  using std::setw;
+  using std::setprecision;
+  using std::fixed;
+  using std::scientific;
+
   using btas::shape;
 
   if(forward) {
@@ -235,15 +247,14 @@ double optimize_onesite_merged
   using std::fixed;
   using std::scientific;
 
-  time_stamp ts;
-
-  cout << "\t\tmerging operators and wavefunction..." << flush;
-
   btas::QSDArray<3, Q> lopr_mg;
   btas::QSDArray<3, Q> ropr_mg;
   btas::QSDArray<2, Q> wfnc_mg;
   btas::QSTmergeInfo<2, Q> q_mg_ket;
 
+  time_stamp ts;
+
+  cout << "\t\tconstructing merged super blocks..." << flush;
   if(forward) {
     const btas::Qshapes<Q>& q_l_ket =-lopr.qshape(2);
     const btas::Qshapes<Q>& q_n_ket =-mpo0.qshape(2);
@@ -281,12 +292,17 @@ double optimize_onesite_merged
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<2, Q> lmps_mg;
     btas::QSDArray<2, Q> gaug;
     canonicalize(1, wfnc_mg, lmps_mg, gaug, M);
-    btas::QSTexpand(q_mg_ket, lmps_mg, wfn0);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
+    cout << "\t\texpanding wavefunction..." << flush;
+    btas::QSTexpand(q_mg_ket, lmps_mg, wfn0);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+
+    cout << "\t\tcomputing guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, gaug, wfn1, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
@@ -298,12 +314,17 @@ double optimize_onesite_merged
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<2, Q> rmps_mg;
     btas::QSDArray<2, Q> gaug;
     canonicalize(0, wfnc_mg, rmps_mg, gaug, M);
-    btas::QSTexpand(rmps_mg, q_mg_ket, wfn0);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
+    cout << "\t\texpanding wavefunction..." << flush;
+    btas::QSTexpand(rmps_mg, q_mg_ket, wfn0);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+
+    cout << "\t\tcomputing guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, wfn1, gaug, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
@@ -340,7 +361,7 @@ double optimize_twosite_merged
 
   time_stamp ts;
 
-  cout << "\t\tmerging operators and wavefunction..." << flush;
+  cout << "\t\tconstructing merged super blocks..." << flush;
 
   const btas::Qshapes<Q>& q_l_ket =-lopr.qshape(2);
   const btas::Qshapes<Q>& q_m_ket =-lmpo.qshape(2);
@@ -383,8 +404,11 @@ double optimize_twosite_merged
   btas::QSDArray<2, Q> rwfn_mg;
 
   if(forward) {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(1, wfnc_mg, lwfn_mg, rwfn_mg, M);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+
+    cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(q_lmg_ket, lwfn_mg, lwfn);
     btas::QSTexpand(rwfn_mg, q_rmg_ket, rwfn);
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
@@ -395,8 +419,11 @@ double optimize_twosite_merged
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
-    cout << "\t\tdoing SVD and expand wavefunction..." << flush;
+    cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(0, wfnc_mg, rwfn_mg, lwfn_mg, M);
+    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+
+    cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(q_lmg_ket, lwfn_mg, lwfn);
     btas::QSTexpand(rwfn_mg, q_rmg_ket, rwfn);
     cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
@@ -506,14 +533,14 @@ double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, DMRGALGORITHM algo, c
     if(algo == ONESITE) {
       cout << "\t\toptimizing wavefunction: 1-site algorithm " << endl;
       load(lopr,      get_oprfile(input.prefix, LEFTCANONICAL, i));
-      eswp = optimize_onesite(0, mpos[i],            lopr, ropr, mpss[i], mpss[i-1], 0.1*T, M);
-//    eswp = optimize_onesite_merged(0, mpos[i],            lopr, ropr, mpss[i], mpss[i-1], 0.1*T, M);
+//    eswp = optimize_onesite(0, mpos[i],            lopr, ropr, mpss[i], mpss[i-1], 0.1*T, M);
+      eswp = optimize_onesite_merged(0, mpos[i],            lopr, ropr, mpss[i], mpss[i-1], 0.1*T, M);
     }
     else {
       cout << "\t\toptimizing wavefunction: 2-site algorithm " << endl;
       load(lopr,      get_oprfile(input.prefix, LEFTCANONICAL, i-1));
-      eswp = optimize_twosite(0, mpos[i-1], mpos[i], lopr, ropr, mpss[i-1], mpss[i], 0.1*T, M);
-//    eswp = optimize_twosite_merged(0, mpos[i-1], mpos[i], lopr, ropr, mpss[i-1], mpss[i], 0.1*T, M);
+//    eswp = optimize_twosite(0, mpos[i-1], mpos[i], lopr, ropr, mpss[i-1], mpss[i], 0.1*T, M);
+      eswp = optimize_twosite_merged(0, mpos[i-1], mpos[i], lopr, ropr, mpss[i-1], mpss[i], 0.1*T, M);
     }
     if(eswp < emin) emin = eswp;
     // print result

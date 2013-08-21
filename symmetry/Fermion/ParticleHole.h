@@ -1,6 +1,9 @@
 #ifndef _MPSXX_CXX11_PARTICLE_HOLE_SYMMETRY_H
 #define _MPSXX_CXX11_PARTICLE_HOLE_SYMMETRY_H 1
 
+#include <iostream>
+#include <boost/serialization/serialization.hpp>
+
 namespace mpsxx     {
 
 namespace fermionic {
@@ -9,37 +12,67 @@ class ParticleHole {
 private:
   friend class boost::serialization::access;
   template <class Archive>
-  void serialize(Archive& ar, const unsigned int version) { ar & m_np_ref & m_ph_sym; }
+  void serialize(Archive& ar, const unsigned int version) { ar & m_np & m_pc & m_hc; }
 
 public:
-  const static ParticleHole zero() { return ParticleHole(0, 0); }
+  const static ParticleHole zero() { return ParticleHole(0, 0, 0); }
 
-  ParticleHole(int _np_ref = 0, int _ph_lev = 0) : m_np_ref(_np_ref), m_ph_lev(_ph_lev) { }
+  ParticleHole(int _np = 0, int _pc = 0, int _hc = 0) : m_np(_np), m_pc(_pc), m_hc(_hc) { }
 
-  bool operator== (const ParticleHole& other) const { return (m_np_ref == other.m_np_ref && m_ph_lev == other.m_ph_lev); }
-  bool operator!= (const ParticleHole& other) const { return (m_np_ref != other.m_np_ref || m_ph_lev != other.m_ph_lev); }
-  bool operator<  (const ParticleHole& other) const { return (m_np_ref == other.m_np_ref) ? (m_ph_lev < other.m_ph_lev) : (m_np_ref < other.m_np_ref); }
-  bool operator>  (const ParticleHole& other) const { return (m_np_ref == other.m_np_ref) ? (m_ph_lev > other.m_ph_lev) : (m_np_ref > other.m_np_ref); }
+  bool operator== (const ParticleHole& other) const { return (m_np == other.m_np && m_pc == other.m_pc && m_hc == other.m_hc); }
+  bool operator!= (const ParticleHole& other) const { return (m_np != other.m_np || m_pc != other.m_pc || m_hc != other.m_hc); }
 
-  ParticleHole operator* (const ParticleHole& other) const { return ParticleHole(m_np_ref+other.m_np_ref, m_ph_lev+other.m_ph_lev); }
+  bool operator<  (const ParticleHole& other) const {
+    if(m_np == other.m_np) {
+      if(m_pc == other.m_pc) {
+        return (m_hc < other.m_hc);
+      }
+      else {
+        return (m_pc < other.m_pc);
+      }
+    }
+    else {
+        return (m_np < other.m_np);
+    }
+  }
+  bool operator>  (const ParticleHole& other) const {
+    if(m_np == other.m_np) {
+      if(m_pc == other.m_pc) {
+        return (m_hc > other.m_hc);
+      }
+      else {
+        return (m_pc > other.m_pc);
+      }
+    }
+    else {
+        return (m_np > other.m_np);
+    }
+  }
 
-  ParticleHole operator+ (const ParticleHole& other) const { return ParticleHole(m_np_ref+other.m_np_ref, m_ph_lev+other.m_ph_lev); }
-  ParticleHole operator- (const ParticleHole& other) const { return ParticleHole(m_np_ref-other.m_np_ref, m_ph_lev-other.m_ph_lev); }
+  ParticleHole operator* (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
 
-  ParticleHole operator+ () const { return ParticleHole(+m_np_ref, +m_ph_lev); }
-  ParticleHole operator- () const { return ParticleHole(-m_np_ref, -m_ph_lev); }
+  ParticleHole operator+ (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
+  ParticleHole operator- (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
 
-  const int& p() const { return m_np_ref+m_ph_lev; }
+  ParticleHole operator+ () const { return ParticleHole(+m_np, +m_pc, +m_hc); }
+  ParticleHole operator- () const { return ParticleHole(-m_np, -m_pc, -m_hc); }
 
-  const int& np_ref() const { return m_np_ref; }
-  const int& ph_lev() const { return m_ph_lev; }
+  const int& p () const { return m_np; }
+
+  const int& pc() const { return m_pc; }
+  const int& hc() const { return m_hc; }
+
+  friend std::ostream& operator<< (std::ostream& ost, const ParticleHole& q) { return ost << q.m_np << ":[" << q.m_pc << "," << q.m_hc << "]"; }
 
 private:
-  //! Number of particles in ref. state
-  int m_np_ref;
+  //! Number of particles
+  int m_np;
 
-  //! Number of particles(+)/holes(-) added to ref. state
-  int m_ph_lev;
+  //! Number of particles created to the ref. state
+  int m_pc;
+
+  //! Number of holes     created to the ref. state
+  int m_hc;
 };
 
 }; // namespace fermionic

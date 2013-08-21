@@ -1,6 +1,9 @@
 #ifndef _MPSXX_CXX_POINT_GROUP_D2H_H
 #define _MPSXX_CXX_POINT_GROUP_D2H_H 1
 
+#include <iostream>
+#include <boost/serialization/serialization.hpp>
+
 namespace mpsxx {
 
 namespace pointgroup {
@@ -38,17 +41,19 @@ public:
 
   const IRREP& Irrep() const { return m_irrep; }
 
+  friend std::ostream& operator<< (std::ostream& ost, const D2h& q) { return ost << q.m_irrep; }
+
 private:
   //! Product table
   const static IRREP
-    m_product_table[Nrep()*Nrep()];
+    m_product_table[64];
 
   //! Irreducible representation
   IRREP
     m_irrep;
 };
 
-const static D2h::IRREP D2h::m_product_table[D2h::Nrep()*D2h::Nrep()] =
+const D2h::IRREP D2h::m_product_table[64] =
 {
   Ag , B3u, B2u, B1g, B1u, B2g, B3g, Au ,
   B3u, Ag , B1g, B2u, B2g, B1u, Au , B3g,
