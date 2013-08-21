@@ -9,17 +9,17 @@ namespace mpsxx {
 template<class Q>
 void canonicalize
 (bool forward, const btas::QSDArray<3, Q>& wfn0,
-                     btas::QSDArray<3, Q>& mps0, int M = 0)
+                     btas::QSDArray<3, Q>& mps0,
+                     btas::QSDArray<2, Q>& wfn1, int M = 0)
 {
+  btas::SDArray<1> s;
   if(forward) {
-    btas:: SDArray<1>    s;
-    btas::QSDArray<2, Q> v;
-    btas::QSDgesvd(btas::LeftArrow,  wfn0, s, mps0, v, M);
+    btas::QSDgesvd(btas::LeftArrow,  wfn0, s, mps0, wfn1, M);
+    btas::SDdidm(s, wfn1);
   }
   else {
-    btas:: SDArray<1>    s;
-    btas::QSDArray<2, Q> u;
-    btas::QSDgesvd(btas::RightArrow, wfn0, s, u, mps0, M);
+    btas::QSDgesvd(btas::RightArrow, wfn0, s, wfn1, mps0, M);
+    btas::SDdimd(wfn1, s);
   }
 }
 
@@ -30,13 +30,30 @@ void canonicalize
                      btas::QSDArray<3, Q>& mps0,
                      btas::QSDArray<3, Q>& wfn1, int M = 0)
 {
+  btas::SDArray<1> s;
   if(forward) {
-    btas::SDArray<1> s;
     btas::QSDgesvd(btas::LeftArrow,  wfnx, s, mps0, wfn1, M);
     btas::SDdidm(s, wfn1);
   }
   else {
-    btas::SDArray<1> s;
+    btas::QSDgesvd(btas::RightArrow, wfnx, s, wfn1, mps0, M);
+    btas::SDdimd(wfn1, s);
+  }
+}
+
+//! Canonicalize merged MPS
+template<class Q>
+void canonicalize
+(bool forward, const btas::QSDArray<2, Q>& wfnx,
+                     btas::QSDArray<2, Q>& mps0,
+                     btas::QSDArray<2, Q>& wfn1, int M = 0)
+{
+  btas::SDArray<1> s;
+  if(forward) {
+    btas::QSDgesvd(btas::LeftArrow,  wfnx, s, mps0, wfn1, M);
+    btas::SDdidm(s, wfn1);
+  }
+  else {
     btas::QSDgesvd(btas::RightArrow, wfnx, s, wfn1, mps0, M);
     btas::SDdimd(wfn1, s);
   }

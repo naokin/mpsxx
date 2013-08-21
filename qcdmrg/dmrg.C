@@ -1,4 +1,6 @@
 
+#include <time_stamp.h>
+
 #include <symmetry/Fermion/Quantum.h>
 
 #include "dmrg.h"
@@ -19,6 +21,7 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   using std::cout;
   using std::endl;
   using std::setw;
+  using std::setprecision;
   using std::fixed;
   using std::scientific;
 
@@ -32,6 +35,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
 
   double esav = 1.0e8;
+
+  time_stamp ts;
 
   //
   // two-site optimization
@@ -48,6 +53,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     cout << "\t\t\tSweep Energy = " << setw(24) << fixed << eswp << " ( delta E = ";
     cout.precision(2);
     cout << setw(8) << scientific << edif << " ) " << endl;
+    cout << "\t----------------------------------------------------------------------------------------------------" << endl;
+    cout << "\t\tTotal elapsed time: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. "          << endl;
     cout << "\t====================================================================================================" << endl;
     cout << endl;
     esav = eswp;
@@ -69,6 +76,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     cout << "\t\t\tSweep Energy = " << setw(24) << fixed << eswp << " ( delta E = ";
     cout.precision(2);
     cout << setw(8) << scientific << edif << " ) " << endl;
+    cout << "\t----------------------------------------------------------------------------------------------------" << endl;
+    cout << "\t\tTotal elapsed time: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. "          << endl;
     cout << "\t====================================================================================================" << endl;
     cout << endl;
     esav = eswp;

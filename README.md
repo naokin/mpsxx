@@ -3,16 +3,13 @@ MPS++
 
 MPS/MPO Multi-Linear Algebra Package implemented in C++11
 
-CONTENTS
---------
+###CONTENTS
 
 1. MPO generator for Hubbard and Molecular Hamiltonians
 
 2. Simple DMRG code implemented in terms of MPS/MPO language
 
-
-DEPENDENCY
-----------
+###DEPENDENCY
 
 1. Boost Library (<http://www.boost.org/>)
 

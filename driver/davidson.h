@@ -58,12 +58,14 @@ double diagonalize
   std::vector<btas::QSDArray<N, Q>> sigma(max_ritz);
 
   btas::QSDcopy(wfnc, trial[0]);
-  btas::QSDnormalize(trial[0]);
-  f_contract(trial[0], sigma[0]);
 
   int niter = 0;
   int iconv = 0;
   while(iconv < 1 && niter < 4) {
+    // to keep numerical stability
+    btas::QSDnormalize(trial[0]);
+    sigma[0].clear();
+    f_contract(trial[0], sigma[0]);
     for(int m = 1; m <= max_ritz; ++m) {
       // compute small Hamiltonian matrix
       btas::DArray<2> heff(m, m);

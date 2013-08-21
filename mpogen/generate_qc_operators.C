@@ -57,14 +57,14 @@ void mpsxx::fermionic::generate_qc_operators
 
     if(enable_swap_sweep_dir) {
       if     (swap_sweep_dir)
-        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), false);
       else if(l_ops.direction() == boundary_opinfo::FORWARD)
-        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), false);
       else
-        mpos[i].resize(Quantum::zero(), btas::make_array(-l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
+        mpos[i].resize(Quantum::zero(), btas::make_array(-l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), false);
     }
     else {
-        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), true);
+        mpos[i].resize(Quantum::zero(), btas::make_array( l_ops.get_qshape(), MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(),-r_ops.get_qshape()), btas::make_array(l_dshape, s_dshape, s_dshape, r_dshape), false);
     }
     std::cout << "done" << std::endl;
     // 'dot with sys' in Block code
