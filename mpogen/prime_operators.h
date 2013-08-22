@@ -173,7 +173,7 @@ void prime_op_generator
   const Quantum& r_quanta = op.qshape(3)[r_index];
 
 //std::cout << "DEBUG[prime_op_generator]: q(L)::" << l_quanta << " + q(R)::" << r_quanta << " =? (-) q(S)::" << prime_op_obj::q() << std::endl;
-  assert((r_quanta + l_quanta) == -prime_op_obj::q());
+  assert((r_quanta * l_quanta) == -prime_op_obj::q());
   if(std::fabs(scale) < 1.0e-20) return;
 
   btas::DArray<4> block(1,1,1,1);
