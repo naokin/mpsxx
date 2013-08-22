@@ -2,6 +2,7 @@
 #define _MPSXX_CXX11_PARTICLE_HOLE_SYMMETRY_H 1
 
 #include <iostream>
+#include <iomanip>
 #include <boost/serialization/serialization.hpp>
 
 namespace mpsxx     {
@@ -51,18 +52,18 @@ public:
 
   ParticleHole operator* (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
 
-  ParticleHole operator+ (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
-  ParticleHole operator- (const ParticleHole& other) const { return ParticleHole(m_np+other.m_np, m_pc+other.m_pc, m_hc+other.m_hc); }
-
   ParticleHole operator+ () const { return ParticleHole(+m_np, +m_pc, +m_hc); }
   ParticleHole operator- () const { return ParticleHole(-m_np, -m_pc, -m_hc); }
+
+  bool   parity () const { return m_np & 1; }
+  double clebsch() const { return 1.0; }
 
   const int& p () const { return m_np; }
 
   const int& pc() const { return m_pc; }
   const int& hc() const { return m_hc; }
 
-  friend std::ostream& operator<< (std::ostream& ost, const ParticleHole& q) { return ost << q.m_np << ":[" << q.m_pc << "," << q.m_hc << "]"; }
+  friend std::ostream& operator<< (std::ostream& ost, const ParticleHole& q) { return ost << std::setw(2) << q.m_np << ":[" << std::setw(2) << q.m_pc << "," << std::setw(2) << q.m_hc << "]"; }
 
 private:
   //! Number of particles

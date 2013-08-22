@@ -24,8 +24,6 @@
 
 namespace mpsxx {
 
-enum DMRGALGORITHM { ONESITE, TWOSITE };
-
 template<class Q>
 double optimize_onesite
 (bool forward, const btas::QSDArray<4, Q>& mpo0,
@@ -440,7 +438,7 @@ double optimize_twosite_merged
 }
 
 template<class Q>
-double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, DMRGALGORITHM algo, const DmrgInput& input)
+double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, const DmrgInput& input)
 {
   using std::cout;
   using std::endl;
@@ -483,7 +481,7 @@ double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, DMRGALGORITHM algo, c
 
     // diagonalize
     double eswp;
-    if(algo == ONESITE) {
+    if(input.algorithm == ONESITE) {
       cout << "\t\toptimizing wavefunction: 1-site algorithm " << endl;
       load(ropr, get_oprfile(input.prefix, RIGHTCANONICAL, i));
 //    eswp = optimize_onesite(1, mpos[i],            lopr, ropr, mpss[i], mpss[i+1], 0.1*T, M);
@@ -530,7 +528,7 @@ double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, DMRGALGORITHM algo, c
 
     // diagonalize
     double eswp;
-    if(algo == ONESITE) {
+    if(input.algorithm == ONESITE) {
       cout << "\t\toptimizing wavefunction: 1-site algorithm " << endl;
       load(lopr,      get_oprfile(input.prefix, LEFTCANONICAL, i));
 //    eswp = optimize_onesite(0, mpos[i],            lopr, ropr, mpss[i], mpss[i-1], 0.1*T, M);

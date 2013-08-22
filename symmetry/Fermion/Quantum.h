@@ -1,5 +1,5 @@
-#ifndef _MPSXX_FERMIONIC_QUANTUM_H
-#define _MPSXX_FERMIONIC_QUANTUM_H 1
+#ifndef _MPSXX_CXX11_FERMIONIC_QUANTUM_H
+#define _MPSXX_CXX11_FERMIONIC_QUANTUM_H 1
 
 #include <iostream>
 #include <iomanip>
@@ -28,17 +28,16 @@ public:
 
   Quantum operator* (const Quantum& other) const { return Quantum(m_nptcl+other.m_nptcl, m_nspin+other.m_nspin); }
 
-  Quantum operator+ (const Quantum& other) const { return Quantum(m_nptcl+other.m_nptcl, m_nspin+other.m_nspin); }
-  Quantum operator- (const Quantum& other) const { return Quantum(m_nptcl-other.m_nptcl, m_nspin-other.m_nspin); }
-
-  bool parity() const { return m_nptcl & 1; }
-  double clebsch() const { return 1.0; }
-
   Quantum operator+ () const { return Quantum(+m_nptcl, +m_nspin); }
   Quantum operator- () const { return Quantum(-m_nptcl, -m_nspin); }
 
+  bool   parity () const { return m_nptcl & 1; }
+  double clebsch() const { return 1.0; }
+
   const int& p() const { return m_nptcl; }
   const int& s() const { return m_nspin; }
+
+  friend std::ostream& operator<< (std::ostream& ost, const Quantum& q) { return ost << "{" << std::setw(2) << q.m_nptcl << "," << std::setw(2) << q.m_nspin << "}"; }
 
 private:
   int
@@ -51,9 +50,4 @@ private:
 
 }; // mpsxx
 
-inline std::ostream& operator<< (std::ostream& ost, const mpsxx::fermionic::Quantum& q) {
-  ost << "(" << std::setw(2) << q.p() << "," << std::setw(2) << q.s() << ")";
-  return ost;
-}
-
-#endif // _MPSXX_FERMIONIC_QUANTUM_H
+#endif // _MPSXX_CXX11_FERMIONIC_QUANTUM_H

@@ -5,6 +5,8 @@
 
 namespace mpsxx {
 
+enum DMRGALGORITHM { ONESITE, TWOSITE };
+
 struct DmrgInput {
 
   bool
@@ -24,6 +26,9 @@ struct DmrgInput {
     N_roots;
   int
     N_max_states;
+
+  DMRGALGORITHM
+    algorithm;
 
   size_t
     N_max_sweep_iter;
@@ -45,6 +50,8 @@ struct DmrgInput {
 
     N_roots          = 1;
     N_max_states     = 0;
+
+    algorithm        = ONESITE;
 
     N_max_sweep_iter = 100;
     tolerance        = 1.0e-8;

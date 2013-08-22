@@ -60,9 +60,10 @@ private:
   inline void mf_move_assignment(      P&& x,       Ps&&... xs) { static_cast<P&>(*this) = x; mf_move_assignment(xs...); }
   inline void mf_move_assignment() { }
 
-//template<class P, class... Ps>
-//inline double mf_clebsch(const P& x, const P&... xs) const { return static_cast<const P&>(x).clebsch() * mf_clebsch(xs...); }
-//inline double mf_clebsch() const { return 1.0; }
+  // FIXME: Is this correct for SU(2) x SU(2) symmetry?
+  template<class P, class... Ps>
+  inline double mf_clebsch(const P& x, const Ps&... xs) const { return static_cast<const P&>(x).clebsch() * mf_clebsch(xs...); }
+  inline double mf_clebsch() const { return 1.0; }
 
   template<class P, class... Ps>
   inline void mf_printf(std::ostream& ost, const P& x, const Ps&... xs) const { ost << "," << x; mf_printf(ost, xs...); }
@@ -91,12 +92,11 @@ public:
   GenericQuantum operator+ () const { return GenericQuantum(Q::operator+ (), Qs::operator+ ()...); }
   GenericQuantum operator- () const { return GenericQuantum(Q::operator- (), Qs::operator- ()...); }
 
-//double clebsch() const { return mf_clebsch(static_cast<const Q&>(*this), static_cast<const Qs&>(*this)...); }
+  double clebsch() const { return mf_clebsch(static_cast<const Q&>(*this), static_cast<const Qs&>(*this)...); }
 
+  //! FIXME: Causes an error in Intel C++ compiler version 13.0
   friend std::ostream& operator<< (std::ostream& ost, const GenericQuantum& q) {
-    ost << " { " << static_cast<const Q&>(q);
-    q.mf_printf(ost, static_cast<const Qs&>(q)...);
-    ost << " } ";
+    ost << "{" << static_cast<const Q&>(q); q.mf_printf(ost, static_cast<const Qs&>(q)...); ost << "}";
     return ost;
   }
 

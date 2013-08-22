@@ -40,6 +40,12 @@ int main(int argc, char* argv[])
         fin >> input.N_roots;
       if(entry == "tole" || entry == "tolerance")
         fin >> input.tolerance;
+      if(entry == "onesite" || entry == "onedot")
+        input.algorithm = mpsxx::ONESITE;
+      if(entry == "twosite" || entry == "twodot")
+        input.algorithm = mpsxx::TWOSITE;
+      if(entry == "maxiter")
+        fin >> input.N_max_sweep_iter;
     }
   }
 

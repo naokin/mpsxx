@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Fermion/ParticleHole.h"
+#include "Particle/ParticleHole.h"
 #include "Spin/Spin.h"
 #include "PointGroup/D2h.h"
 #include "GenericQuantum.h"
