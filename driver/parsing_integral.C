@@ -1,5 +1,5 @@
 //
-// parsing molpro FCIDUMP file
+// parsing integral files
 //
 
 #include <iomanip>
@@ -7,7 +7,7 @@
 #include <cmath>
 #include <boost/algorithm/string.hpp>
 
-#include "parsing_fcidump.h"
+#include "parsing_integral.h"
 
 std::vector<std::string> gettoken(std::ifstream& fin)
 {
@@ -21,6 +21,8 @@ std::vector<std::string> gettoken(std::ifstream& fin)
   return tok;
 }
 
+//
+// reading orbital ordering
 void parsing_reorder
 (std::ifstream& frord, std::vector<int>& reorder)
 {
@@ -30,6 +32,70 @@ void parsing_reorder
   for(int i = 0; i < tok.size(); ++i) reindex.push_back(atoi(tok[i].c_str())-1);
   reorder.resize(reindex.size(), 0);
   for(int i = 0; i < reindex.size(); ++i) reorder[reindex[i]] = i;
+}
+
+//
+// reading 1-particle integrals from general format
+//
+void parsing_oneint
+(std::ifstream& fint1, int& norbs, btas::DArray<2>& oneint)
+{
+  fint1 >> norbs;
+  oneint.resize(norbs, norbs);
+  oneint.fill(0.0);
+  size_t ix, jx;
+  double value;
+  while(fint1 >> ix >> jx >> value) {
+    oneint(ix, jx) = value;
+  }
+}
+
+void parsing_oneint
+(std::ifstream& fint1, int& norbs, btas::DArray<2>& oneint, const std::vector<int>& reorder)
+{
+  fint1 >> norbs;
+  oneint.resize(norbs, norbs);
+  oneint.fill(0.0);
+  size_t ix, jx;
+  double value;
+  while(fint1 >> ix >> jx >> value) {
+    size_t ir = reorder[ix];
+    size_t jr = reorder[jx];
+    oneint(ir, jr) = value;
+  }
+}
+
+//
+// reading 2-particle integrals from general format
+//
+void parsing_twoint
+(std::ifstream& fint2, int& norbs, btas::DArray<4>& twoint)
+{
+  fint2 >> norbs;
+  twoint.resize(norbs, norbs, norbs, norbs);
+  twoint.fill(0.0);
+  size_t ix, jx, kx, lx;
+  double value;
+  while(fint2 >> ix >> jx >> kx >> lx >> value) {
+    twoint(ix, jx, kx, lx) = value;
+  }
+}
+
+void parsing_twoint
+(std::ifstream& fint2, int& norbs, btas::DArray<4>& twoint, const std::vector<int>& reorder)
+{
+  fint2 >> norbs;
+  twoint.resize(norbs, norbs, norbs, norbs);
+  twoint.fill(0.0);
+  size_t ix, jx, kx, lx;
+  double value;
+  while(fint2 >> ix >> jx >> kx >> lx >> value) {
+    size_t ir = reorder[ix];
+    size_t jr = reorder[jx];
+    size_t kr = reorder[kx];
+    size_t lr = reorder[lx];
+    twoint(ir, jr, kr, lr) = value;
+  }
 }
 
 //

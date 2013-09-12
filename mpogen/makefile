@@ -17,8 +17,8 @@ BTASLIB= $(BTASDIR)/lib/libbtas.a
 INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)
 
-SRC_MPOGEN  = bit_operator_type.C boundary_opinfo.C generate_qc_operators.C generate_site_operator.C get_product_ops.C integral_component.C parsing_fcidump.C prime_operators.C mpogen.C ../driver/fileio.C
-SRC_HUBGEN  = bit_operator_type.C boundary_opinfo.C generate_hubbard_operators.C generate_site_operator.C get_product_ops.C integral_component.C parsing_fcidump.C prime_operators.C hubgen.C ../driver/fileio.C
+SRC_MPOGEN  = bit_operator_type.C boundary_opinfo.C generate_qc_operators.C generate_site_operator.C get_product_ops.C integral_component.C ../driver/parsing_integral.C prime_operators.C mpogen.C ../driver/fileio.C
+SRC_HUBGEN  = bit_operator_type.C boundary_opinfo.C generate_hubbard_operators.C generate_site_operator.C get_product_ops.C integral_component.C ../driver/parsing_integral.C prime_operators.C hubgen.C ../driver/fileio.C
 SRC_TESTGEN = bit_operator_type.C boundary_opinfo.C get_product_ops.C testgen.C
 
 OBJ_MPOGEN  = $(SRC_MPOGEN:.C=.o)

@@ -5,7 +5,7 @@
 #include <btas/DENSE/DArray.h>
 
 #include "generate_qc_operators.h"
-#include "parsing_fcidump.h"
+#include "driver/parsing_integral.h"
 
 int main(int argc, char* argv[])
 {
