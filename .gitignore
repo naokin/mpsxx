@@ -9,6 +9,6 @@
 *.della
 *.tiger
 *.tmp
-
+.*.swp
 test/
 work/

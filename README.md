@@ -18,5 +18,3 @@ MPS/MPO Multi-Linear Algebra Package implemented in C++11
 3. GNU GCC 4.7.0 or Later / Intel C/C++ Compiler 13.0 or Later
 
 4. CBLAS & LAPACK Libraries / Intel MKL Library
-
-
