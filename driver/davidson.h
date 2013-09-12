@@ -62,6 +62,8 @@ double diagonalize
   int niter = 0;
   int iconv = 0;
   while(iconv < 1 && niter < 4) {
+    std::cout << "\t\t\tmacro iteration [ " << std::setw(2) << niter << " ] " << std::endl;
+    std::cout << "\t\t\t--------------------------------------------------" << std::endl;
     // to keep numerical stability
     btas::QSDnormalize(trial[0]);
     sigma[0].clear();
@@ -87,6 +89,7 @@ double diagonalize
       btas::DArray<1> rval;
       Dsyev(heff, rval, rvec);
       eval = rval(0);
+      std::cout << "\t\t\tmicro iteration [ " << std::setw(2) << m << " ] :: " << std::setprecision(16) << std::setw(24) << std::fixed << eval << std::endl;
       // rotate trial & sigma vectors by Ritz vector
       std::vector<btas::QSDArray<N, Q>> trial_save(m);
       std::vector<btas::QSDArray<N, Q>> sigma_save(m);
@@ -126,6 +129,7 @@ double diagonalize
       }
     }
     ++niter;
+    std::cout << "\t\t\t--------------------------------------------------" << std::endl;
   }
   btas::QSDcopy(trial[0], wfnc);
 

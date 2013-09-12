@@ -48,10 +48,10 @@ double optimize_onesite
   compute_diagonal_elements(mpo0, lopr, ropr, diag);
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
-  cout << "\t\toptimizing wavefunction (Davidson solver)..." << flush;
+  cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<3, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, mpo0, lopr, ropr, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfn0);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
@@ -129,10 +129,10 @@ double optimize_twosite
   compute_diagonal_elements(lmpo, rmpo, lopr, ropr, diag);
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
-  cout << "\t\toptimizing wavefunction (Davidson solver)..." << flush;
+  cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<4, Q> f_sigmavector;
   f_sigmavector = boost::bind(compute_sigmavector<Q>, lmpo, rmpo, lopr, ropr, _1, _2);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   double energy = davidson::diagonalize(f_sigmavector, diag, wfn2);
 
@@ -284,10 +284,10 @@ double optimize_onesite_merged
   compute_diagonal_elements(lopr_mg, ropr_mg, diag);
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
-  cout << "\t\toptimizing wavefunction (Davidson solver)..." << flush;
+  cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<2, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, lopr_mg, ropr_mg, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfnc_mg);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
@@ -393,10 +393,10 @@ double optimize_twosite_merged
   compute_diagonal_elements(lopr_mg, ropr_mg, diag);
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
-  cout << "\t\toptimizing wavefunction (Davidson solver)..." << flush;
+  cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<2, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, lopr_mg, ropr_mg, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfnc_mg);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
+  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   btas::QSDArray<2, Q> lwfn_mg;
   btas::QSDArray<2, Q> rwfn_mg;
@@ -507,7 +507,7 @@ double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, const DmrgInput& inpu
     mpss[i].clear();
     cout << "done" << endl;
   }
-  save(mpss[N-1], get_mpsfile(input.prefix, WAVEFUNCTION, 0));
+  save(mpss[N-1], get_mpsfile(input.prefix, WAVEFUNCTION, N-1));
 
   cout << "\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
   cout << "\t\t\tBACKWARD SWEEP" << endl;
