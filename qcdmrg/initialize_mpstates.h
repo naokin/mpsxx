@@ -200,12 +200,14 @@ void initialize_mpstates
 
   std::vector<btas::Qshapes<Q>> qn(N);
   std::vector<btas::Dshapes   > dn(N);
+
   for(size_t i = 0; i < N; ++i) {
     load(mpos[i], get_mpofile(prefix, i));
     qn[i] = -mpos[i].qshape(2);
     dn[i] = btas::Dshapes(qn[i].size(), 1);
     mpos[i].clear();
   }
+
   cout << "\t\t\tGenerating quantum states for each boundary " << endl;
   std::vector<btas::Qshapes<Q>> qb = generate_quantum_states(qn, qt, _max_quantum_blocks);
   cout << "\t++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++" << endl;
@@ -282,6 +284,7 @@ void initialize_mpstates
   lopr_0.insert(btas::shape(0, 0, 0), btas::DArray<3>(1, 1, 1));
   lopr_0.fill(1.0);
   save(lopr_0, get_oprfile(prefix, LEFTCANONICAL, 0));
+
 }
 
 };

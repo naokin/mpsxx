@@ -1,6 +1,4 @@
 
-#include <time_stamp.h>
-
 #include <symmetry/Fermion/Quantum.h>
 
 #include "dmrg.h"
@@ -18,6 +16,7 @@ double rgen() { return 2.0*(static_cast<double>(rand())/RAND_MAX)-1.0; }
 //
 double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 {
+
   using std::cout;
   using std::endl;
   using std::setw;
@@ -36,7 +35,7 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 
   double esav = 1.0e8;
 
-  time_stamp ts;
+  cout << esav << "\t" << input.N_max_sweep_iter << endl;
 
   //
   // optimization with sweep algorithm
@@ -53,9 +52,6 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     cout << "\t\t\tSweep Energy = " << setw(24) << fixed << eswp << " ( delta E = ";
     cout.precision(2);
     cout << setw(8) << scientific << edif << " ) " << endl;
-    cout << "\t----------------------------------------------------------------------------------------------------" << endl;
-    cout << "\t\tTotal elapsed time: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. "          << endl;
-    cout << "\t====================================================================================================" << endl;
     cout << endl;
     esav = eswp;
     if(std::fabs(edif) < input.tolerance) break;

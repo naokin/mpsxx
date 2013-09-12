@@ -5,8 +5,6 @@
 #include <iomanip>
 
 #include <btas/QSPARSE/QSDArray.h>
-#include <time_stamp.h>
-
 #include <mpsxx.h>
 
 #include <MpOperators.h>
@@ -41,17 +39,13 @@ double optimize_onesite
   using std::fixed;
   using std::scientific;
 
-  time_stamp ts;
-
   cout << "\t\tcomputing diagonal elements..." << flush;
   btas::QSDArray<3, Q> diag(wfn0.q(), wfn0.qshape());
   compute_diagonal_elements(mpo0, lopr, ropr, diag);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<3, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, mpo0, lopr, ropr, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfn0);
-  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
@@ -59,19 +53,16 @@ double optimize_onesite
     btas::QSDArray<2, Q> gaug;
     canonicalize(1, wfn0, lmps, gaug, M);
     wfn0 = lmps;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\tcompute guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, gaug, wfn1, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     btas::QSDArray<3, Q> lopr_tmp;
     renormalize(1, mpo0, lopr, lmps, lmps, lopr_tmp);
     lopr = lopr_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
@@ -79,22 +70,17 @@ double optimize_onesite
     btas::QSDArray<2, Q> gaug;
     canonicalize(0, wfn0, rmps, gaug, M);
     wfn0 = rmps;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\tcompute guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, wfn1, gaug, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     btas::QSDArray<3, Q> ropr_tmp;
     renormalize(0, mpo0, ropr, rmps, rmps, ropr_tmp);
     ropr = ropr_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
-  cout << "\t\t--------------------------------------------------------------------------------" << endl;
-  cout << "\t\tTotal time for optimization: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. " << endl;
 
   return energy;
 }
@@ -117,49 +103,38 @@ double optimize_twosite
   using std::fixed;
   using std::scientific;
 
-  time_stamp ts;
-
   cout << "\t\tcomputing 2-site wavefunction..." << flush;
   btas::QSDArray<4, Q> wfn2;
   btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, lwfn, rwfn, 1.0, wfn2);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\tcomputing diagonal elements..." << flush;
   btas::QSDArray<4, Q> diag(wfn2.q(), wfn2.qshape());
   compute_diagonal_elements(lmpo, rmpo, lopr, ropr, diag);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<4, Q> f_sigmavector;
   f_sigmavector = boost::bind(compute_sigmavector<Q>, lmpo, rmpo, lopr, ropr, _1, _2);
-  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   double energy = davidson::diagonalize(f_sigmavector, diag, wfn2);
 
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(1, wfn2, lwfn, rwfn, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     btas::QSDArray<3, Q> lopr_tmp;
     renormalize(1, lmpo, lopr, lwfn, lwfn, lopr_tmp);
     lopr = lopr_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(0, wfn2, rwfn, lwfn, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     btas::QSDArray<3, Q> ropr_tmp;
     renormalize(0, rmpo, ropr, rwfn, rwfn, ropr_tmp);
     ropr = ropr_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
-  cout << "\t\t--------------------------------------------------------------------------------" << endl;
-  cout << "\t\tTotal time for optimization: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. " << endl;
 
   return energy;
 }
@@ -250,8 +225,6 @@ double optimize_onesite_merged
   btas::QSDArray<2, Q> wfnc_mg;
   btas::QSTmergeInfo<2, Q> q_mg_ket;
 
-  time_stamp ts;
-
   cout << "\t\tconstructing merged super blocks..." << flush;
   if(forward) {
     const btas::Qshapes<Q>& q_l_ket =-lopr.qshape(2);
@@ -277,64 +250,51 @@ double optimize_onesite_merged
     lopr_mg.reference(lopr);
     compute_merged_block(0, mpo0, ropr, ropr_mg);
   }
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\tcomputing diagonal elements..." << flush;
   btas::QSDArray<2, Q> diag(wfnc_mg.q(), wfnc_mg.qshape());
   compute_diagonal_elements(lopr_mg, ropr_mg, diag);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<2, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, lopr_mg, ropr_mg, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfnc_mg);
-  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<2, Q> lmps_mg;
     btas::QSDArray<2, Q> gaug;
     canonicalize(1, wfnc_mg, lmps_mg, gaug, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(q_mg_ket, lmps_mg, wfn0);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\tcomputing guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, gaug, wfn1, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     lopr.clear();
     renormalize(1, lopr_mg, lmps_mg, lmps_mg, lopr);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     btas::QSDArray<2, Q> rmps_mg;
     btas::QSDArray<2, Q> gaug;
     canonicalize(0, wfnc_mg, rmps_mg, gaug, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(rmps_mg, q_mg_ket, wfn0);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\tcomputing guess wavefunction to the next..." << flush;
     btas::QSDArray<3, Q> wfn1_tmp;
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, wfn1, gaug, 1.0, wfn1_tmp);
     wfn1 = wfn1_tmp;
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     ropr.clear();
     renormalize(0, ropr_mg, rmps_mg, rmps_mg, ropr);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
-  cout << "\t\t--------------------------------------------------------------------------------" << endl;
-  cout << "\t\tTotal time for optimization: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. " << endl;
 
   return energy;
 }
@@ -356,8 +316,6 @@ double optimize_twosite_merged
   using std::setprecision;
   using std::fixed;
   using std::scientific;
-
-  time_stamp ts;
 
   cout << "\t\tconstructing merged super blocks..." << flush;
 
@@ -386,17 +344,14 @@ double optimize_twosite_merged
     btas::QSTmerge(q_lmg_ket, wfn2, q_rmg_ket, wfnc_mg);
   }
 
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\tcomputing diagonal elements..." << flush;
   btas::QSDArray<2, Q> diag(wfnc_mg.q(), wfnc_mg.qshape());
   compute_diagonal_elements(lopr_mg, ropr_mg, diag);
-  cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   cout << "\t\toptimizing wavefunction (Davidson solver)..." << endl;
   davidson::Functor<2, Q> f_sigmavector = boost::bind(compute_sigmavector<Q>, lopr_mg, ropr_mg, _1, _2);
   double energy = davidson::diagonalize(f_sigmavector, diag, wfnc_mg);
-  cout << "\t\tdone ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
   btas::QSDArray<2, Q> lwfn_mg;
   btas::QSDArray<2, Q> rwfn_mg;
@@ -404,35 +359,27 @@ double optimize_twosite_merged
   if(forward) {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(1, wfnc_mg, lwfn_mg, rwfn_mg, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(q_lmg_ket, lwfn_mg, lwfn);
     btas::QSTexpand(rwfn_mg, q_rmg_ket, rwfn);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     lopr.clear();
     renormalize(1, lopr_mg, lwfn_mg, lwfn_mg, lopr);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
   else {
     cout << "\t\tdoing singular value decomposition on wavefunction..." << flush;
     canonicalize(0, wfnc_mg, rwfn_mg, lwfn_mg, M);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\texpanding wavefunction..." << flush;
     btas::QSTexpand(q_lmg_ket, lwfn_mg, lwfn);
     btas::QSTexpand(rwfn_mg, q_rmg_ket, rwfn);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
 
     cout << "\t\trenormalizing operators to the next..." << flush;
     ropr.clear();
     renormalize(0, ropr_mg, rwfn_mg, rwfn_mg, ropr);
-    cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;
   }
-  cout << "\t\t--------------------------------------------------------------------------------" << endl;
-  cout << "\t\tTotal time for optimization: " << fixed << setprecision(2) << setw(8) << ts.elapsed() << " sec. " << endl;
 
   return energy;
 }
