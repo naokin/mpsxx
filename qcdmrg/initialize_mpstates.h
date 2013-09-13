@@ -175,7 +175,7 @@ std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
  */
 template<class Q, class Generator>
 void initialize_mpstates
-(MpOperators<Q>& mpos, MpStates<Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
+(MPO<Q>& mpos, MPS<Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
 {
   using std::cout;
   using std::endl;

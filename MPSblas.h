@@ -63,11 +63,18 @@ using std::cout;
 using std::endl;
 using std::ostream;
 
-using namespace btas;
+#include <btas/blas_cxx_interface.h>
 
+#include <btas/TVector.h>
+
+#include <btas/DENSE/DArray.h>
+#include <btas/QSPARSE/QSDArray.h>
+#include <btas/QSPARSE/QSDcontract.h>
 #include "btas/QSPARSE/QSDArray.h"
 
-namespace mps {
+using namespace btas;
+
+namespace mpsxx {
 
    enum MPS_DIRECTION {
 
@@ -75,6 +82,8 @@ namespace mps {
       Right //!right to left
 
    };
+
+   enum MPS_TYPE { WAVEFUNCTION, LEFTCANONICAL, RIGHTCANONICAL };
 
    //!typedefine MPX as a std::vector< QSDArray<N> >  for functions the same for both MPS and MPO
    template<size_t N,class Q>
@@ -1638,14 +1647,14 @@ namespace mps {
          //form the list of contributing terms in the expansion
          term[0] = O;
 
-         compress(term[0],mps::Left,cutoff[0]);
-         compress(term[0],mps::Right,cutoff[0]);
+         compress(term[0],Left,cutoff[0]);
+         compress(term[0],Right,cutoff[0]);
 
          for(int i = 1;i < cutoff.size();++i){
 
             term[i] = O*term[i - 1];
-            compress(term[i],mps::Left,cutoff[i]);
-            compress(term[i],mps::Right,cutoff[i]);
+            compress(term[i],Left,cutoff[i]);
+            compress(term[i],Right,cutoff[i]);
             scal(1.0/(i + 1.0),term[i]);
 
          }
@@ -1654,8 +1663,8 @@ namespace mps {
          for(int i = 1;i < cutoff.size();++i){
 
             axpy(1.0,term[i],term[0]);
-            compress(term[0],mps::Left,cutoff[0]);
-            compress(term[0],mps::Right,cutoff[0]);
+            compress(term[0],Left,cutoff[0]);
+            compress(term[0],Right,cutoff[0]);
 
          }
 
@@ -1675,14 +1684,14 @@ namespace mps {
          //form the list of contributing terms in the expansion
          term[0] = O*A;
 
-         compress(term[0],mps::Left,cutoff[0]);
-         compress(term[0],mps::Right,cutoff[0]);
+         compress(term[0],Left,cutoff[0]);
+         compress(term[0],Right,cutoff[0]);
 
          for(int i = 1;i < cutoff.size();++i){
 
             term[i] = O*term[i - 1];
-            compress(term[i],mps::Left,cutoff[i]);
-            compress(term[i],mps::Right,cutoff[i]);
+            compress(term[i],Left,cutoff[i]);
+            compress(term[i],Right,cutoff[i]);
             scal(1.0/(i + 1.0),term[i]);
 
          }
@@ -1691,8 +1700,8 @@ namespace mps {
          for(int i = 1;i < cutoff.size();++i){
 
             axpy(1.0,term[i],term[0]);
-            compress(term[0],mps::Left,cutoff[0]);
-            compress(term[0],mps::Right,cutoff[0]);
+            compress(term[0],Left,cutoff[0]);
+            compress(term[0],Right,cutoff[0]);
 
          }
 
@@ -1702,11 +1711,10 @@ namespace mps {
 
       }
 
-
-
    /**
     * save the MPX object to a file in binary format.
     */
+    /*
    template<size_t N,class Q>
       void save(const MPX<N,Q> &mpx,const char *filename){
 
@@ -1724,10 +1732,11 @@ namespace mps {
          }
 
       }
-
+*/
    /**
     * load the MPX object from a file in binary format.
     */
+    /*
    template<size_t N,class Q>
       void load(MPX<N,Q> &mpx,const char *filename){
 
@@ -1744,7 +1753,7 @@ namespace mps {
          }
 
       }
-
+*/
 
 }
 

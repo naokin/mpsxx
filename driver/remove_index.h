@@ -1,8 +1,7 @@
 
 /*! \file  remove_index.h
- *  \bried external function to remove zero-sized indices in btas::QSDArray
+ *  \brief external function to remove zero-sized indices in btas::QSDArray
  */
-
 #ifndef _MPSXX_CXX11_REMOVE_INDEX_H
 #define _MPSXX_CXX11_REMOVE_INDEX_H 1
 

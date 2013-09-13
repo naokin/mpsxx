@@ -384,7 +384,7 @@ double optimize_twosite_merged
 }
 
 template<class Q>
-double dmrg_sweep(MpOperators<Q>& mpos, MpStates<Q>& mpss, const DmrgInput& input)
+double dmrg_sweep(MPO<Q>& mpos, MPS<Q>& mpss, const DmrgInput& input)
 {
   using std::cout;
   using std::endl;

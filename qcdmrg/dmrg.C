@@ -27,8 +27,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   const size_t N = input.N_sites;
   const int    M = input.N_max_states;
 
-  MpOperators<fermionic::Quantum> mpos(N);
-  MpStates   <fermionic::Quantum> mpss(N);
+  MPO<fermionic::Quantum> mpos(N);
+  MPS<fermionic::Quantum> mpss(N);
 
   if(!input.restart)
     initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
