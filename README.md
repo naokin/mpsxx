@@ -5,9 +5,11 @@ MPS/MPO Multi-Linear Algebra Package implemented in C++11
 
 ###CONTENTS
 
-1. MPO generator for Hubbard and Molecular Hamiltonians
+1. MPS/MPO blas equivalent for convenient MPS/MPO algebra.
 
-2. Simple DMRG code implemented in terms of MPS/MPO language
+2. MPO generator for Hubbard and Molecular Hamiltonians
+
+3. Simple DMRG code implemented in terms of MPS/MPO language
 
 ###DEPENDENCY
 

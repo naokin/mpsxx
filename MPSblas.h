@@ -4,6 +4,25 @@
  * Here functions are implemented that perform basic multi-linear algebra computations matrix product states and matrix product operators.
  * The naming of the blas library has been taken over for many functions, i.e. matrix-vector gemv is MPO/MPS contraction.
  * Standard operators *, + , - are overloaded, --> MPO * MPO, MPO * MPS.
+ *
+ * @mainpage 
+ * \section CONTENTS
+ *
+ *  MPS/MPO blas equivalent for convenient MPS/MPO algebra.
+ *  
+ *  MPO generator for Hubbard and Molecular Hamiltonians
+ *
+ *   Simple DMRG code implemented in terms of MPS/MPO language
+ *
+ * \section DEPENDENCY
+ *
+ *   Boost Library (http://www.boost.org/)
+ *
+ *   BTAS Library (https://github.com/naokin/btas.git)
+ *
+ *   GNU GCC 4.7.0 or Later / Intel C/C++ Compiler 13.0 or Later
+ *
+ *   CBLAS & LAPACK Libraries / Intel MKL Library
  */
 #ifndef _BTAS_MPSBLAS_H
 #define _BTAS_MPSBLAS_H 1

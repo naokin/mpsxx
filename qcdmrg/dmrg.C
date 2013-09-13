@@ -1,4 +1,3 @@
-
 #include <symmetry/Fermion/Quantum.h>
 
 #include "dmrg.h"
@@ -6,14 +5,15 @@
 
 #include "btas_template_specialize.h"
 
-//
-// random number generator
-//
+/**
+ * simple random number generator
+*/
 double rgen() { return 2.0*(static_cast<double>(rand())/RAND_MAX)-1.0; }
 
-//
-// DMRG main routine
-//
+/**
+ * The main dmrg routine.
+ * @param input DmrgInput object which contains the diferent parameters that define this dmrg run
+ */
 double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 {
 
