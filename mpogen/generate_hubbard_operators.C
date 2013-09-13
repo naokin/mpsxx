@@ -13,7 +13,7 @@
 #include "prime_operators.h"
 
 void mpsxx::fermionic::generate_hubbard_operators
-(mpsxx::MpOperators<mpsxx::fermionic::Quantum>& mpos, const double& t, const double& u, const std::string& prefix)
+(mpsxx::MPO<mpsxx::fermionic::Quantum>& mpos, const double& t, const double& u, const std::string& prefix)
 {
   using std::cout;
   using std::endl;

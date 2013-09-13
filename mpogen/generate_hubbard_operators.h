@@ -5,7 +5,7 @@
 
 #include <btas/DENSE/DArray.h>
 
-#include <MpOperators.h>
+#include <MPSblas.h>
 #include <symmetry/Fermion/Quantum.h>
 
 namespace mpsxx     {
@@ -13,7 +13,7 @@ namespace mpsxx     {
 namespace fermionic {
 
 void generate_hubbard_operators
-(MpOperators<Quantum>& mpos, const double& t = 1.0, const double& u = 1.0, const std::string& prefix = "./");
+(MPO<Quantum>& mpos, const double& t = 1.0, const double& u = 1.0, const std::string& prefix = "./");
 
 }; // namespace fermionic
 

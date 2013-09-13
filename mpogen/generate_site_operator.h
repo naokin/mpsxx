@@ -8,19 +8,19 @@
 
 namespace mpsxx     {
 
-namespace fermionic {
+   namespace fermionic {
 
-/*!
- *  Generate matrix product operator on single site
- */
-void generate_site_operator
-(btas::QSDArray<4, Quantum>& op,
- const BIT_OPERATOR_TYPE& l_op, const size_t& l_index,
- const BIT_OPERATOR_TYPE& s_op,
- const BIT_OPERATOR_TYPE& r_op, const size_t& r_index,
- const btas::DArray<2>& oneint, const btas::DArray<4>& twoint);
+      /*!
+       *  Generate matrix product operator on single site
+       */
+      void generate_site_operator
+         (btas::QSDArray<4, Quantum>& op,
+          const BIT_OPERATOR_TYPE& l_op, const size_t& l_index,
+          const BIT_OPERATOR_TYPE& s_op,
+          const BIT_OPERATOR_TYPE& r_op, const size_t& r_index,
+          const btas::DArray<2>& oneint, const btas::DArray<4>& twoint);
 
-}; // namespace fermionic
+   }; // namespace fermionic
 
 }; // namespace mpsxx
 

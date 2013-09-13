@@ -15,7 +15,7 @@
 #include "prime_operators.h"
 
 void mpsxx::fermionic::generate_qc_operators
-(mpsxx::MpOperators<mpsxx::fermionic::Quantum>& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir, const std::string& prefix)
+(mpsxx::MPO<mpsxx::fermionic::Quantum>& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir, const std::string& prefix)
 {
   size_t N = mpos.size();
 
