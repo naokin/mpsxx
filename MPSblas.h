@@ -1,49 +1,9 @@
 /**
- * \mainpage Basic Tensor Algebra Subroutines in C/C++ (BTAS)
- *
- * This is C++11 version of BTAS
- * Dependency to BLITZ++ library has been removed.
- *
- * T: value type
- * N: rank of array
- * Q: quantum number class
- *
- * \section FEATURES
- *
- * 1. Provided generic type array classes, TArray<T, N>, STArray<T, N>, and QSTArray<T, N, Q = Quantum>
+ * \file  MPSblas.h
  * 
- * 2. Defined DArray<N> as the alias to TArray<double, N> (using template alias in C++11). SDArray<N> and QSDArray<N, Q> as well
- * 
- * 3. Provided LAPACK interfaces written in C
- * 
- * 4. Provided BLAS/LAPACK-like interfaces called with DArray<N>, STArray<N>, and QSTArray<N, Q>
- * 
- * 5. Provided expressive contraction, permutation, and decomposition functions
- *
- * \section COMPILATION
- *
- * 1. Compiler and Library Dependencies
- * 
- * GNU GCC 4.7.0 or later
- * Intel C/C++ Compiler 13.0 or later
- *
- * BOOST library (<http://www.boost.org/>)
- * CBLAS & LAPACK library or Intel MKL library
- *
- * 2. Build libbtas.a
- *
- *    cd $BTAS_ROOT/lib/
- *    make
- *
- * 3. Build your code with BTAS library (GCC with MKL library)
- *
- *    g++ -std=c++0x -O3 -fopenmp -I$BTAS_ROOT/include $BTAS_ROOT/lib/libbtas.a -lboost_serialization -lmkl_core -lmkl_intel_lp64 -lmkl_sequential
- *
- * For coding, `$BTAS_ROOT/lib/tests.C` and `$BTAS_ROOT/dmrg/` involves helpful example to use BTAS
- *
- * If '-D_PRINT_WARNINGS' is specified, warning that SDArray::reserve or SDArray::insert is called with prohibited (quantum number) block is printed.
- * It gives verbose output, but helps to check undesirable behavior upon reservation and insertion.
- *
+ * Here functions are implemented that perform basic multi-linear algebra computations matrix product states and matrix product operators.
+ * The naming of the blas library has been taken over for many functions, i.e. matrix-vector gemv is MPO/MPS contraction.
+ * Standard operators *, + , - are overloaded, --> MPO * MPO, MPO * MPS.
  */
 #ifndef _BTAS_MPSBLAS_H
 #define _BTAS_MPSBLAS_H 1
@@ -495,7 +455,7 @@ namespace mpsxx {
             QSDscal(alpha,mpx[i]);
 
       }
-   
+
    /**
     * MPS/O equivalent of the axpy blas function: Y <- alpha X + Y
     * taking the direct sum of the individual tensors in the chain
@@ -504,7 +464,7 @@ namespace mpsxx {
     * @param Y output MPX: alpha * X will be added to the input Y and put in output Y
     */
    template<size_t N,class Q>
-     void axpy(double alpha,const MPX<N,Q> &X,MPX<N,Q> &Y){
+      void axpy(double alpha,const MPX<N,Q> &X,MPX<N,Q> &Y){
 
          //first check if we can sum these two:
          if(X.size() != Y.size())
@@ -593,7 +553,7 @@ namespace mpsxx {
          Y[L - 1].clear();
          QSTmerge(info,tmp1,Y[L-1]);
 
-     }
+      }
 
    /**
     * construct new MPX AB that is the sum of A + B: this is done by making a larger MPX object with larger bond dimension,
@@ -620,16 +580,14 @@ namespace mpsxx {
     * @return the MPX result
     */
    template<size_t N,class Q>
-      MPX<N,Q> operator-(const MPX<N,Q> &A,const MPX<N,Q> &B){
+     MPX<N,Q> operator-(const MPX<N,Q> &A,const MPX<N,Q> &B){
 
-         MPX<N,Q> AB(A);
-         axpy(-1.0,B,AB);
+        MPX<N,Q> AB(A);
+        axpy(-1.0,B,AB);
 
-         return AB;
+        return AB;
 
-      }
-
-
+     }
 
    /**
     * Compress an MP object by performing an SVD
@@ -1714,9 +1672,8 @@ namespace mpsxx {
    /**
     * save the MPX object to a file in binary format.
     */
-    /*
    template<size_t N,class Q>
-      void save(const MPX<N,Q> &mpx,const char *filename){
+      void save_mpx(const MPX<N,Q> &mpx,const char *filename){
 
          for(int i = 0;i < mpx.size();++i){
 
@@ -1732,13 +1689,12 @@ namespace mpsxx {
          }
 
       }
-*/
+
    /**
     * load the MPX object from a file in binary format.
     */
-    /*
    template<size_t N,class Q>
-      void load(MPX<N,Q> &mpx,const char *filename){
+      void load_mpx(MPX<N,Q> &mpx,const char *filename){
 
          for(int i = 0;i < mpx.size();++i){
 
@@ -1753,7 +1709,6 @@ namespace mpsxx {
          }
 
       }
-*/
 
 }
 
