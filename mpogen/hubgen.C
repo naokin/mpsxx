@@ -11,9 +11,9 @@ int main(int argc, char* argv[])
   bool enable_swap_sweep_dir = false;
   int iprint = 0;
 
-  size_t N = 10;
-  double t = 1.0;
-  double u = 1.0;
+  size_t N = 4;
+  double t = -1.0;
+  double u = 0.0;
   for(int iarg = 0; iarg < argc; ++iarg) {
     if(strcmp(argv[iarg],"-n") == 0) N = atoi(argv[++iarg]);
     if(strcmp(argv[iarg],"-t") == 0) t = atof(argv[++iarg]);

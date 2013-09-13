@@ -28,13 +28,13 @@ OBJ_TESTGEN = $(SRC_TESTGEN:.C=.o)
 all	: mpogen hubgen testgen
 
 mpogen	: $(OBJ_MPOGEN)
-	$(CXX) $(CXXFLAGS)  -o mpogen.x $(OBJ_MPOGEN) $(BTASLIB) $(LIBRARYFLAGS)
+	$(CXX) $(CXXFLAGS) -o mpogen.x $(OBJ_MPOGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
 hubgen	: $(OBJ_HUBGEN)
-	$(CXX) $(CXXFLAGS)  -o hubgen.x $(OBJ_HUBGEN) $(BTASLIB) $(LIBRARYFLAGS)
+	$(CXX) $(CXXFLAGS) -o hubgen.x $(OBJ_HUBGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
 testgen	: $(OBJ_TESTGEN)
-	$(CXX) $(CXXFLAGS)  -o testgen.x $(OBJ_TESTGEN) $(BTASLIB) $(LIBRARYFLAGS)
+	$(CXX) $(CXXFLAGS) -o testgen.x $(OBJ_TESTGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
 clean	:
 	rm *.o; rm *.x; rm *.a;
