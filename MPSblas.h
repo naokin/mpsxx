@@ -8,21 +8,21 @@
  * @mainpage 
  * \section CONTENTS
  *
- *  MPS/MPO blas equivalent for convenient MPS/MPO algebra.
+ *  - MPS/MPO blas equivalent for convenient MPS/MPO algebra.
  *  
- *  MPO generator for Hubbard and Molecular Hamiltonians
+ *  - MPO generator for Hubbard and Molecular Hamiltonians
  *
- *   Simple DMRG code implemented in terms of MPS/MPO language
+ *  - Simple DMRG code implemented in terms of MPS/MPO language
  *
  * \section DEPENDENCY
  *
- *   Boost Library (http://www.boost.org/)
+ *  - Boost Library (http://www.boost.org/)
  *
- *   BTAS Library (https://github.com/naokin/btas.git)
+ *  - BTAS Library (https://github.com/naokin/btas.git)
  *
- *   GNU GCC 4.7.0 or Later / Intel C/C++ Compiler 13.0 or Later
+ *  - GNU GCC 4.7.0 or Later / Intel C/C++ Compiler 13.0 or Later
  *
- *   CBLAS & LAPACK Libraries / Intel MKL Library
+ *  - CBLAS & LAPACK Libraries / Intel MKL Library
  */
 #ifndef _BTAS_MPSBLAS_H
 #define _BTAS_MPSBLAS_H 1
@@ -294,6 +294,7 @@ namespace mpsxx {
     * @param qt total quantumnumber
     * @param qp Qshapes object containing the physical quantumnumbers
     * @param D maximal dimension of the quantum blocks
+    * @param f_random_generator predefined function which calls a random number generator
     * @return the MPS chain randomly filled and with correct quantumnumbers and dimensions
     */
    template<class Q>
@@ -1502,6 +1503,7 @@ namespace mpsxx {
    /**
     * the contraction of two MPS's
     * @return the overlap of two MPS objects
+    * @param dir if dir = mpsxx::Left contract from left to right, if not contract from right to left
     * @param X input MPS
     * @param Y input MPS
     */
@@ -1613,7 +1615,8 @@ namespace mpsxx {
       }
 
    /**
-    * @return the MPO that is the result of the expontential of the input operator MPO O 
+    * @return the MPO that is the result of the expontential of the input operator MPO O: output wil be e^O = 1 + O + 1/2 O^2 + ...
+    * @param O input MPO
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
    template<class Q>
@@ -1650,7 +1653,9 @@ namespace mpsxx {
       }
 
    /**
-    * @return the MPS that is the result of the expontential of the operator MPO O acting on input MPS A. 
+    * @return the MPS that is the result of the expontential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ...
+    * @param O input MPO
+    * @param A input MPS
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
    template<class Q>
@@ -1689,6 +1694,8 @@ namespace mpsxx {
       }
 
    /**
+    * @param mpx will be written to file
+    * @param filename name of the file
     * save the MPX object to a file in binary format.
     */
    template<size_t N,class Q>
@@ -1710,6 +1717,8 @@ namespace mpsxx {
       }
 
    /**
+    * @param mpx will be constructed from file
+    * @param filename name of the file
     * load the MPX object from a file in binary format.
     */
    template<size_t N,class Q>
