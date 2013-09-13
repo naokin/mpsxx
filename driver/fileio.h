@@ -24,8 +24,7 @@ void save(const T& obj, const std::string& f_name)
   return;
 }
 
-#include <MpOperators.h>
-#include <MpStates.h>
+#include <MPSblas.h>
 
 namespace mpsxx {
 

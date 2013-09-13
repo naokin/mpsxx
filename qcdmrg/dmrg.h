@@ -7,8 +7,7 @@
 #include <btas/QSPARSE/QSDArray.h>
 #include <mpsxx.h>
 
-#include <MpOperators.h>
-#include <MpStates.h>
+#include <MPSblas.h>
 
 #include <driver/canonicalize.h>
 #include <driver/renormalize.h>

@@ -1,8 +1,7 @@
 #ifndef _MPSXX_CXX11_INITIALIZE_MPSTATES_H
 #define _MPSXX_CXX11_INITIALIZE_MPSTATES_H 1
 
-#include <MpOperators.h>
-#include <MpStates.h>
+#include <MPSblas.h>
 
 #include <driver/canonicalize.h>
 #include <driver/renormalize.h>
