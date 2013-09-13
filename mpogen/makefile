@@ -5,9 +5,10 @@ BLASDIR=
 BLASINC=
 BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_sequential
 
+BOOSTINC=
 BOOSTLIB=-lboost_serialization
 
-BTASDIR=/home/bright/bestanden/programmas/btas
+BTASDIR= $(HOME)/btas
 BTASINC=-I. -I.. -I$(BTASDIR)/include
 BTASLIB= $(BTASDIR)/lib/libbtas.a
 
