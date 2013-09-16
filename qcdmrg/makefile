@@ -4,11 +4,11 @@ CXXFLAGS=-g -O3 -openmp -D_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
 BLASDIR=
 BLASINC=
 BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_sequential
-#BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_intel_thread -lguide -lpthread
 
-BOOSTLIB= -lboost_serialization
+BOOSTINC=
+BOOSTLIB=-lboost_serialization
 
-BTASDIR=/home/bright/bestanden/programmas/btas
+BTASDIR= $(HOME)/btas
 BTASINC=-I. -I.. -I$(BTASDIR)/include
 BTASLIB= $(BTASDIR)/lib/libbtas.a
 
