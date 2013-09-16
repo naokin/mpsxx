@@ -78,7 +78,6 @@ namespace mpsxx {
 
    /**
     * given the length, total quantumnumber and physical quantumnumbers, and some cutoff block dimension
-    * @return the right-bond quantumnumbers and dimensions
     * @param L length of the chain
     * @param qt total quantumnumber
     * @param qp array of physical quantumnumbers on the sites
@@ -1579,6 +1578,19 @@ namespace mpsxx {
          }
 
          return (*(E.find(shape(0,0))->second))(0,0);
+
+      }
+
+   /**
+    * the contraction of two MPS's: easier notation, always from left to right
+    * @return the overlap of two MPS objects
+    * @param X input MPS
+    * @param Y input MPS
+    */
+   template<class Q>
+      double operator*(const MPS<Q> &X,const MPS<Q> &Y){
+
+         return dot(mpsxx::Left,X,Y);
 
       }
 
