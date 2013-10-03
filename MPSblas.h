@@ -615,11 +615,14 @@ namespace mpsxx {
     * @param D if > 0   this specifies the number of states to be kept
     *          if == 0  all the states are kept
     *          if < 0 all singular values > 10^-D are kept
+    * @return the total discarded weight
     */
    template<size_t N,class Q>
-      void compress(MPX<N,Q> &mpx,const MPS_DIRECTION &dir,int D){
+      double compress(MPX<N,Q> &mpx,const MPS_DIRECTION &dir,int D){
 
          int L = mpx.size();//length of the chain
+
+         double dweight = 0.0;
 
          if(dir == Left) {
 
@@ -637,7 +640,7 @@ namespace mpsxx {
                scal(nrm,mpx);
 
                //then svd
-               QSDgesvd(RightArrow,mpx[i],S,U,V,D);
+               dweight += QSDgesvd(RightArrow,mpx[i],S,U,V,D);
 
                //copy unitary to mpx
                QSDcopy(U,mpx[i]);
@@ -679,7 +682,7 @@ namespace mpsxx {
                scal(nrm,mpx);
 
                //then SVD: 
-               QSDgesvd(RightArrow,mpx[i],S,U,V,D);
+               dweight += QSDgesvd(RightArrow,mpx[i],S,U,V,D);
 
                //copy unitary to mpx
                QSDcopy(V,mpx[i]);
@@ -704,6 +707,8 @@ namespace mpsxx {
             scal(nrm,mpx);
 
          }
+
+         return dweight;
 
       }
 
@@ -1632,20 +1637,20 @@ namespace mpsxx {
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
    template<class Q>
-      MPO<Q> exp(const MPO<Q> &O,std::vector<int> cutoff){
+      MPO<Q> exp(const MPO<Q> &O,const std::vector<int> &cutoff){
 
          std::vector< MPO<Q> > term(cutoff.size());
 
          //form the list of contributing terms in the expansion
          term[0] = O;
 
-         compress(term[0],Left,cutoff[0]);
+         compress(term[0],Left,0);
          compress(term[0],Right,cutoff[0]);
 
          for(int i = 1;i < cutoff.size();++i){
 
             term[i] = O*term[i - 1];
-            compress(term[i],Left,cutoff[i]);
+            compress(term[i],Left,0);
             compress(term[i],Right,cutoff[i]);
             scal(1.0/(i + 1.0),term[i]);
 
@@ -1655,8 +1660,8 @@ namespace mpsxx {
          for(int i = 1;i < cutoff.size();++i){
 
             axpy(1.0,term[i],term[0]);
-            compress(term[0],Left,cutoff[0]);
-            compress(term[0],Right,cutoff[0]);
+            compress(term[0],Left,0);
+            compress(term[0],Right,0);
 
          }
 
@@ -1671,20 +1676,20 @@ namespace mpsxx {
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
    template<class Q>
-      MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,std::vector<int> cutoff){
+      MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,const std::vector<int> &cutoff){
 
          std::vector< MPS<Q> > term(cutoff.size());
 
          //form the list of contributing terms in the expansion
          term[0] = O*A;
 
-         compress(term[0],Left,cutoff[0]);
+         compress(term[0],Left,0);
          compress(term[0],Right,cutoff[0]);
 
          for(int i = 1;i < cutoff.size();++i){
 
             term[i] = O*term[i - 1];
-            compress(term[i],Left,cutoff[i]);
+            compress(term[i],Left,0);
             compress(term[i],Right,cutoff[i]);
             scal(1.0/(i + 1.0),term[i]);
 
@@ -1694,8 +1699,8 @@ namespace mpsxx {
          for(int i = 1;i < cutoff.size();++i){
 
             axpy(1.0,term[i],term[0]);
-            compress(term[0],Left,cutoff[0]);
-            compress(term[0],Right,cutoff[0]);
+            compress(term[0],Left,0);
+            compress(term[0],Right,0);
 
          }
 
