@@ -1711,6 +1711,42 @@ namespace mpsxx {
       }
 
    /**
+    * @return the MPS that is the result of the exponential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ... 
+    * expanded until order 'order' and compressed to dimension D
+    * @param O input MPO
+    * @param A input MPS
+    * @param order order of the expansion
+    * @param D compression dimensions
+    */
+   template<class Q>
+      MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,int order,int D){
+
+         MPS<Q> eOA(A);
+         MPS<Q> tmp;
+
+         gemv(1.0/(double)order,O,A,1.0,eOA);
+
+         compress(eOA,Left,0);
+         compress(eOA,Right,D);
+
+         for(int n = order - 1;n > 0;--n){
+
+            tmp = std::move(eOA);
+            eOA = A;
+
+            gemv(1.0/(double)n,O,tmp,1.0,eOA);
+
+            compress(eOA,Left,0);
+            compress(eOA,Right,D);
+
+         }
+
+         return eOA;
+
+      }
+
+
+   /**
     * @param mpx will be written to file
     * @param filename name of the file
     * save the MPX object to a file in binary format.
