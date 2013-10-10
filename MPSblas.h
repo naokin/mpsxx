@@ -1791,6 +1791,25 @@ namespace mpsxx {
 
       }
 
+   /**
+    * print the total bond dimensions
+    */
+   template<size_t N,class Q>
+      void print_dim(const MPX<N,Q> &mpx){
+
+         for(int i = 0;i < mpx.size();++i){
+
+            int dim = 0;
+
+            for(int j = 0;j < mpx[i].dshape(N-1).size();++j)
+               dim += mpx[i].dshape(N-1)[j];
+
+            cout << i << "\t" << dim << endl;
+
+         }
+
+      }
+
 }
 
 #endif 
