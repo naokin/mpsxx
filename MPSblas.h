@@ -1216,6 +1216,141 @@ namespace mpsxx {
       }
 
    /**
+    * print the total bond dimensions
+    */
+   template<size_t N,class Q>
+      void print_dim(const MPX<N,Q> &mpx){
+
+         for(int i = 0;i < mpx.size();++i){
+
+            int dim = 0;
+
+            for(int j = 0;j < mpx[i].dshape(N-1).size();++j)
+               dim += mpx[i].dshape(N-1)[j];
+
+            cout << i << "\t" << dim << endl;
+
+         }
+
+      }
+
+   /**
+    * Let MPO A act on MPS X and compress at the same time to finite dimension D
+    * @param A input MPO
+    * @param X input MPS
+    * @param Y output MPS, its content will change on exit.
+    * @param D dimension of the compression
+    * @return the discarded weigth of the compression
+    */
+   template<class Q>
+      double gemv_compress(const MPO<Q> &A,const MPS<Q> &X,MPS<Q> &Y,int D){
+
+         //first check if length is the same
+         if(A.size() != X.size())
+            BTAS_THROW(false, "Error: input objects do not have the same length!");
+
+         int L = A.size();
+
+         Y.resize(L);
+
+         enum {j,k,l,m,n,o};
+
+         double dweight = 0.0;
+
+         QSDArray<5> tmp5;
+         QSDArray<4> mrows;
+         QSDArray<4> tmp4;
+
+         SDArray<1> S;//singular values
+         QSDArray<2> V;//V^T
+         QSDArray<3> U;//U --> unitary left normalized matrix
+
+         //first the most left tensor
+         QSDindexed_contract(1.0,A[0],shape(j,k,l,m),X[0],shape(n,l,o),0.0,tmp5,shape(n,j,k,m,o));
+
+         //merge 2 rows together
+         TVector<Qshapes<Q>,2> qmerge;
+         TVector<Dshapes,2> dmerge;
+
+         for(int r = 0;r < 2;++r){
+
+            qmerge[r] = tmp5.qshape(r);
+            dmerge[r] = tmp5.dshape(r);
+
+         }
+
+         QSTmergeInfo<2> info(qmerge,dmerge);
+
+         //clear the mrows object first
+         mrows.clear();
+
+         //then merge
+         QSTmerge(info,tmp5,mrows);
+
+         for(int i = 0;i < L - 1;++i){
+
+            //merge 2 columns together
+            for(int r = 2;r < 4;++r){
+
+               qmerge[r - 2] = mrows.qshape(r);
+               dmerge[r - 2] = mrows.dshape(r);
+
+            }
+
+            info.reset(qmerge,dmerge);
+
+            QSTmerge(mrows,info,Y[i]);
+
+            //svd
+            S.clear();
+            U.clear();
+            V.clear();
+
+            dweight += QSDgesvd(RightArrow,Y[i],S,U,V,0);
+
+            //copy unitary to mpx
+            QSDcopy(U,Y[i]);
+
+            //paste S and V together
+            SDdidm(S,V);
+
+            //now expand V back
+            U.clear();
+
+            QSTexpand(V,info,U);
+
+            //paste the next terms, A[i] and X[i] to U
+            tmp4.clear();
+
+            QSDindexed_contract(1.0,U,shape(j,k,l),X[i + 1],shape(l,m,n),0.0,tmp4,shape(j,k,m,n));
+
+            mrows.clear();
+
+            QSDindexed_contract(1.0,tmp4,shape(j,k,m,n),A[i + 1],shape(k,l,m,o),0.0,mrows,shape(j,l,o,n));
+
+         }
+
+         //merge 2 columns together
+         for(int r = 2;r < 4;++r){
+
+            qmerge[r - 2] = mrows.qshape(r);
+            dmerge[r - 2] = mrows.dshape(r);
+
+         }
+
+         info.reset(qmerge,dmerge);
+
+         QSTmerge(mrows,info,Y[L - 1]);
+
+         print_dim(Y);
+
+         dweight += compress(Y,Right,D);
+
+         return dweight;
+
+      }
+
+   /**
     * MPO equivalent of a matrix matrix multiplication gemm in blas. MPO action on MPO gives new MPO: alpha A-B + C|MPS>
     * or new MPO is C <- alpha * A*B + beta * C
     * @param alpha scaling factor
@@ -1786,25 +1921,6 @@ namespace mpsxx {
             std::ifstream fin(name);
             boost::archive::binary_iarchive iar(fin);
             iar >> mpx[i];
-
-         }
-
-      }
-
-   /**
-    * print the total bond dimensions
-    */
-   template<size_t N,class Q>
-      void print_dim(const MPX<N,Q> &mpx){
-
-         for(int i = 0;i < mpx.size();++i){
-
-            int dim = 0;
-
-            for(int j = 0;j < mpx[i].dshape(N-1).size();++j)
-               dim += mpx[i].dshape(N-1)[j];
-
-            cout << i << "\t" << dim << endl;
 
          }
 
