@@ -1306,10 +1306,22 @@ namespace mpsxx {
             U.clear();
             V.clear();
 
+            cout << endl;
+            cout << "on site " << i << endl;
+            cout << endl;
+            cout << "Dimensions before SVD" << endl;
+            cout << endl;
+            cout << Y[i].dshape() << endl;
+
             dweight += QSDgesvd(RightArrow,Y[i],S,U,V,0);
 
             //copy unitary to mpx
             QSDcopy(U,Y[i]);
+
+            cout << endl;
+            cout << "Dimensions after SVD" << endl;
+            cout << endl;
+            cout << Y[i].dshape() << endl;
 
             //paste S and V together
             SDdidm(S,V);
@@ -1342,9 +1354,19 @@ namespace mpsxx {
 
          QSTmerge(mrows,info,Y[L - 1]);
 
+         cout << endl;
+         cout << "dimensions before right compression" << endl;
+         cout << endl;
          print_dim(Y);
+         cout << endl;
 
          dweight += compress(Y,Right,D);
+
+         cout << endl;
+         cout << "dimensions after right compression" << endl;
+         cout << endl;
+         print_dim(Y);
+         cout << endl;
 
          return dweight;
 
@@ -1653,9 +1675,6 @@ namespace mpsxx {
 
          if(L != Y.size())
             cout << "Error: input MPS objects do not have the same length!" << endl;
-
-         if(X[L-1].qshape(2) != Y[L-1].qshape(2))
-            cout << "Error: input MPS objects do not have the same total quantumnumbers!" << endl;
 
          QSDArray<2> E;
 

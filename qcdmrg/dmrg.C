@@ -55,8 +55,28 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     cout << endl;
     esav = eswp;
     if(std::fabs(edif) < input.tolerance) break;
+
   }
 
+  std::ifstream fin("wave-mps_site-0.tmp");
+  boost::archive::binary_iarchive iar(fin);
+  iar >> mpss[0];
+
+  for(int i = 1;i < N;++i){
+
+     char name[50];
+
+     sprintf(name,"right-mps_site-%d.tmp",i);
+
+     std::ifstream fin2(name);
+     boost::archive::binary_iarchive iar2(fin2);
+     iar2 >> mpss[i];
+
+  }
+
+  mpsxx::save_mpx(mpss,"state");
+
   return esav;
+
 }
 
