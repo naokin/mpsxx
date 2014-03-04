@@ -1,7 +1,7 @@
 #!/bin/bash
 
 #generate an ordering
-../genetic/gaopt -config ../genetic/ga.conf -integral FCIDUMP
+#../genetic/gaopt -config ../genetic/ga.conf -integral FCIDUMP
 
 # generate QC-MPO and store on disk
 ../../mpogen/mpogen.x -f FCIDUMP -r reorder.dat

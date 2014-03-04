@@ -42,9 +42,9 @@ using std::cout;
 using std::endl;
 using std::ostream;
 
-#include <btas/blas_cxx_interface.h>
+#include <btas/COMMON/blas_cxx_interface.h>
 
-#include <btas/TVector.h>
+#include <btas/COMMON/TVector.h>
 
 #include <btas/DENSE/DArray.h>
 #include <btas/QSPARSE/QSDArray.h>
@@ -1672,6 +1672,8 @@ namespace mpsxx {
       double dot(const MPS_DIRECTION &dir,const MPS<Q> &X,const MPS<Q> &Y){
 
          int L = X.size();
+
+         cout.precision(15);
 
          if(L != Y.size())
             cout << "Error: input MPS objects do not have the same length!" << endl;
