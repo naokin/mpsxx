@@ -48,8 +48,7 @@ using std::ostream;
 
 #include <btas/DENSE/DArray.h>
 #include <btas/QSPARSE/QSDArray.h>
-#include <btas/QSPARSE/QSDcontract.h>
-#include "btas/QSPARSE/QSDArray.h"
+#include <btas/QSPARSE/QSTCONTRACT.h>
 
 using namespace btas;
 
@@ -351,6 +350,7 @@ namespace mpsxx {
     * @param value the number the mps is initialized onto, standard 0
     * @return the MPS chain randomly filled and with correct quantumnumbers and dimensions
     */
+    /*
    template<class Q>
       MPS<Q> create(int L,const Q &qt,const Qshapes<Q> &qp,int D,double value = 0.0){ 
 
@@ -396,13 +396,14 @@ namespace mpsxx {
          return A;
 
       }
-
+*/
    /**
     * @param L length of the chain
     * @param qp physical quantumnumbers
     * @param occ std::vector of length L ints containing the local physical quantumnumber on every site in the product state
     * @return create an product state chain of length L with physical indices qp and
     */
+    /*
    template<class Q>
       MPS<Q> product_state(int L,const Qshapes<Q> &qp,const std::vector<int> &occ){ 
 
@@ -448,12 +449,13 @@ namespace mpsxx {
          return A;
 
       }
-
+*/
    /**
     * scale the MPX with a constant factor
     * @param alpha scalingfactor
     * @param mpx the MPX to be scaled
     */
+    /*
    template<size_t N,class Q>
       void scal(double alpha,MPX<N,Q> &mpx){
 
@@ -474,7 +476,7 @@ namespace mpsxx {
             QSDscal(alpha,mpx[i]);
 
       }
-
+*/
    /**
     * MPS/O equivalent of the axpy blas function: Y <- alpha X + Y
     * taking the direct sum of the individual tensors in the chain
@@ -482,6 +484,7 @@ namespace mpsxx {
     * @param X input MPX
     * @param Y output MPX: alpha * X will be added to the input Y and put in output Y
     */
+    /*
    template<size_t N,class Q>
       void axpy(double alpha,const MPX<N,Q> &X,MPX<N,Q> &Y){
 
@@ -573,7 +576,7 @@ namespace mpsxx {
          QSTmerge(info,tmp1,Y[L-1]);
 
       }
-
+*/
    /**
     * construct new MPX AB that is the sum of A + B: this is done by making a larger MPX object with larger bond dimension,
     * taking the direct sum of the individual tensors in the chain
@@ -581,6 +584,7 @@ namespace mpsxx {
     * @param B input MPX
     * @return the MPX result
     */
+    /*
    template<size_t N,class Q>
       MPX<N,Q> operator+(const MPX<N,Q> &A,const MPX<N,Q> &B){
 
@@ -590,7 +594,7 @@ namespace mpsxx {
          return AB;
 
       }
-
+*/
    /**
     * construct new MPX AB that is the difference of A and B: A - B this is done by making an MPX object with larger bond dimension,
     * taking the direct sum of the individual tensors in the chain
@@ -598,6 +602,7 @@ namespace mpsxx {
     * @param B input MPX
     * @return the MPX result
     */
+    /*
    template<size_t N,class Q>
      MPX<N,Q> operator-(const MPX<N,Q> &A,const MPX<N,Q> &B){
 
@@ -607,7 +612,7 @@ namespace mpsxx {
         return AB;
 
      }
-
+*/
    /**
     * Compress an MP object by performing an SVD
     * @param mpx is the input MPX, will be lost/overwritten by the compressed MPX
@@ -617,6 +622,7 @@ namespace mpsxx {
     *          if < 0 all singular values > 10^-D are kept
     * @return the total discarded weight
     */
+    /*
    template<size_t N,class Q>
       double compress(MPX<N,Q> &mpx,const MPS_DIRECTION &dir,int D){
 
@@ -711,11 +717,12 @@ namespace mpsxx {
          return dweight;
 
       }
-
+*/
    /**
     * clean up the MPX, i.e. make sure the right quantumblocks are connected, remove unnecessary quantumnumbers and blocks
     * @param mpx input MPX, will be changed 'cleaned' on exit
     */
+    /*
    template<size_t N,class Q>
       void clean(MPX<N,Q> &mpx){
 
@@ -802,7 +809,7 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * @param dir go from left to right (Left) or right to left (Right) for contraction
     * @param A input MPS
@@ -810,6 +817,7 @@ namespace mpsxx {
     * @param B input MPS
     * @return the number containing < A | O | B >
     */
+    /*
    template<class Q>
       double inprod(const MPS_DIRECTION &dir,const MPS<Q> &A,const MPO<Q> &O,const MPS<Q> &B){
 
@@ -932,7 +940,7 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * MPO/S equivalent of the blas gemv function: Y <- alpha * A X + beta Y
     * @param alpha scaling factor of the input MPO
@@ -941,6 +949,7 @@ namespace mpsxx {
     * @param beta scaling factor of the output MPS
     * @param Y output MPS, its content will change on exit.
     */
+    /*
    template<class Q>
       void gemv(double alpha,const MPO<Q> &A,const MPS<Q> &X,double beta,MPS<Q> &Y){
 
@@ -1197,13 +1206,14 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * MPO/S equivalent of a matrix vector multiplication. Let an MPO act on an MPS and return the new MPS
     * @param O input MPO
     * @param A input MPS
     * @return the new MPS object created by the multiplication
     */
+    /*
    template<class Q>
       MPS<Q> operator*(const MPO<Q> &O,const MPS<Q> &A){
 
@@ -1214,10 +1224,11 @@ namespace mpsxx {
          return OA;
 
       }
-
+*/
    /**
     * print the total bond dimensions
     */
+    /*
    template<size_t N,class Q>
       void print_dim(const MPX<N,Q> &mpx){
 
@@ -1233,7 +1244,7 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * Let MPO A act on MPS X and compress at the same time to finite dimension D
     * @param A input MPO
@@ -1242,6 +1253,7 @@ namespace mpsxx {
     * @param D dimension of the compression
     * @return the discarded weigth of the compression
     */
+    /*
    template<class Q>
       double gemv_compress(const MPO<Q> &A,const MPS<Q> &X,MPS<Q> &Y,int D){
 
@@ -1371,7 +1383,7 @@ namespace mpsxx {
          return dweight;
 
       }
-
+*/
    /**
     * MPO equivalent of a matrix matrix multiplication gemm in blas. MPO action on MPO gives new MPO: alpha A-B + C|MPS>
     * or new MPO is C <- alpha * A*B + beta * C
@@ -1381,6 +1393,7 @@ namespace mpsxx {
     * @param beta scaling factor
     * @param C output MPO, input of this matrix will be added to A*B
     */
+    /*
    template<class Q>
       void gemm(double alpha,const MPO<Q> &A,const MPO<Q> &B,double beta,MPO<Q> &C){
 
@@ -1642,13 +1655,14 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * MPO equivalent of a matrix matrix multiplication. MPO action on MPO gives new MPO: O1-O2|MPS>
     * @param O1 input MPO
     * @param O2 input MPO
     * @return the new MPO object created by the multiplication
     */
+    /*
    template<class Q>
       MPO<Q> operator*(const MPO<Q> &O1,const MPO<Q> &O2){
 
@@ -1659,7 +1673,7 @@ namespace mpsxx {
          return O12;
 
       }
-
+*/
 
    /**
     * the contraction of two MPS's
@@ -1668,6 +1682,7 @@ namespace mpsxx {
     * @param X input MPS
     * @param Y input MPS
     */
+    /*
    template<class Q>
       double dot(const MPS_DIRECTION &dir,const MPS<Q> &X,const MPS<Q> &Y){
 
@@ -1741,43 +1756,47 @@ namespace mpsxx {
          return (*(E.find(shape(0,0))->second))(0,0);
 
       }
-
+*/
    /**
     * the contraction of two MPS's: easier notation, always from left to right
     * @return the overlap of two MPS objects
     * @param X input MPS
     * @param Y input MPS
     */
+    /*
    template<class Q>
       double operator*(const MPS<Q> &X,const MPS<Q> &Y){
 
          return dot(mpsxx::Left,X,Y);
 
       }
-
+*/
    /**
     * @return the norm of the state
     */
+    /*
    template<class Q>
       double nrm2(const MPS<Q> &mps){
 
          return sqrt(dot(Left,mps,mps));
 
       }
-
+*/
    /**
     * @return the distance between 2 mps's ||X - Y||_2
     */
+   /*
    template<class Q>
       double dist(const MPS<Q> &X,const MPS<Q> &Y){
 
          return dot(Left,X,X) + dot(Left,Y,Y) - 2.0 * dot(Left,X,Y);
 
       }
-
+*/
    /**
     * normalize the MPS
     */
+    /*
    template<class Q>
       void normalize(MPS<Q> &mps){
 
@@ -1786,12 +1805,13 @@ namespace mpsxx {
          scal(1.0/nrm,mps);
 
       }
-
+*/
    /**
     * @return the MPO that is the result of the expontential of the input operator MPO O: output wil be e^O = 1 + O + 1/2 O^2 + ...
     * @param O input MPO
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
+    /*
    template<class Q>
       MPO<Q> exp(const MPO<Q> &O,const std::vector<int> &cutoff){
 
@@ -1824,13 +1844,14 @@ namespace mpsxx {
          return term[0];
 
       }
-
+*/
    /**
     * @return the MPS that is the result of the expontential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ...
     * @param O input MPO
     * @param A input MPS
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
+    /*
    template<class Q>
       MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,const std::vector<int> &cutoff){
 
@@ -1865,7 +1886,7 @@ namespace mpsxx {
          return term[0];
 
       }
-
+*/
    /**
     * @return the MPS that is the result of the exponential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ... 
     * expanded until order 'order' and compressed to dimension D
@@ -1874,6 +1895,7 @@ namespace mpsxx {
     * @param order order of the expansion
     * @param D compression dimensions
     */
+    /*
    template<class Q>
       MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,int order,int D){
 
@@ -1900,13 +1922,14 @@ namespace mpsxx {
          return eOA;
 
       }
-
+*/
 
    /**
     * @param mpx will be written to file
     * @param filename name of the file
     * save the MPX object to a file in binary format.
     */
+   /*
    template<size_t N,class Q>
       void save_mpx(const MPX<N,Q> &mpx,const char *filename){
 
@@ -1924,12 +1947,13 @@ namespace mpsxx {
          }
 
       }
-
+*/
    /**
     * @param mpx will be constructed from file
     * @param filename name of the file
     * load the MPX object from a file in binary format.
     */
+    /*
    template<size_t N,class Q>
       void load_mpx(MPX<N,Q> &mpx,const char *filename){
 
@@ -1946,7 +1970,7 @@ namespace mpsxx {
          }
 
       }
-
+*/
 }
 
 #endif 
