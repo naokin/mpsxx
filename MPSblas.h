@@ -29,6 +29,7 @@
 
 #include <iostream>
 #include <iomanip>
+#include <complex>
 
 #include <boost/archive/text_oarchive.hpp>
 #include <boost/archive/text_iarchive.hpp>
@@ -41,6 +42,7 @@
 using std::cout;
 using std::endl;
 using std::ostream;
+using std::complex;
 
 #include <btas/COMMON/blas_cxx_interface.h>
 
@@ -665,8 +667,14 @@ namespace mpsxx {
 
             for(int i = 0;i < L - 1;++i){
 
+               //redistribute the norm over the chain: for stability reasons
+               T nrm = sqrt(Dotc(mpx[i],mpx[i]));
+               Scal(1.0/nrm,mpx[i]);
+
+               scal(nrm,mpx);
+
                //then svd
-               dweight += Gesvd<T, N,N,Quantum, btas::RightArrow>(mpx[i], S, U, V, D);
+               dweight += Gesvd<T, N,N,Q, btas::RightArrow>(mpx[i], S, U, V, D);
 
                //copy unitary to mpx
                Copy(U,mpx[i]);
@@ -684,6 +692,11 @@ namespace mpsxx {
 
             }
 
+            //redistribute the norm over the chain
+            T nrm = sqrt(Dotc(mpx[L-1],mpx[L-1]));
+            Scal(1.0/nrm,mpx[L-1]);
+            scal(nrm,mpx);
+
          }
          else{//right
 
@@ -693,8 +706,13 @@ namespace mpsxx {
 
             for(int i = L - 1;i > 0;--i){
 
+               //redistribute the norm over the chain: for stability reasons
+               T nrm = sqrt(Dotc(mpx[i],mpx[i]));
+               Scal(1.0/nrm,mpx[i]);
+               scal(nrm,mpx);
+
                //then SVD: 
-               dweight += Gesvd<T, N,2,Quantum, btas::RightArrow>(mpx[i], S, U, V, D);
+               dweight += Gesvd<T, N,2,Q, btas::RightArrow>(mpx[i], S, U, V, D);
 
                //copy unitary to mpx
                Copy(V,mpx[i]);
@@ -712,6 +730,10 @@ namespace mpsxx {
 
             }
 
+            T nrm = sqrt(Dotc(mpx[0],mpx[0]));
+            Scal(1.0/nrm,mpx[0]);
+            scal(nrm,mpx);
+
          }
 
          return dweight;
@@ -722,9 +744,8 @@ namespace mpsxx {
     * clean up the MPX, i.e. make sure the right quantumblocks are connected, remove unnecessary quantumnumbers and blocks
     * @param mpx input MPX, will be changed 'cleaned' on exit
     */
-    /*
-   template<size_t N,class Q>
-      void clean(MPX<N,Q> &mpx){
+   template<typename T,size_t N,class Q>
+      void clean(MPX<T,N,Q> &mpx){
 
          Dshapes dr;
 
@@ -809,7 +830,7 @@ namespace mpsxx {
          }
 
       }
-*/
+
    /**
     * @param dir go from left to right (Left) or right to left (Right) for contraction
     * @param A input MPS
@@ -817,9 +838,8 @@ namespace mpsxx {
     * @param B input MPS
     * @return the number containing < A | O | B >
     */
-    /*
-   template<class Q>
-      double inprod(const MPS_DIRECTION &dir,const MPS<Q> &A,const MPO<Q> &O,const MPS<Q> &B){
+   template<typename T,class Q>
+      T inprod(const MPS_DIRECTION &dir,const MPS<T,Q> &A,const MPO<T,Q> &O,const MPS<T,Q> &B){
 
          //first check if we can sum these two:
          if(A.size() != B.size() || A.size() != O.size())
@@ -832,9 +852,9 @@ namespace mpsxx {
             enum {j,k,l,m,n,o};
 
             //from left to right
-            QSDArray<5,Q> loc;
+            QSTArray<T,5,Q> loc;
 
-            QSDcontract(1.0,O[0],shape(m,n,k,o),A[0],shape(j,k,l),0.0,loc,shape(j,m,n,l,o));
+            Contract((T)1.0,O[0],shape(m,n,k,o),A[0],shape(j,k,l),(T)0.0,loc,shape(j,m,n,l,o));
 
             //merge 2 rows together
             TVector<Qshapes<Q>,2> qmerge;
@@ -849,30 +869,30 @@ namespace mpsxx {
 
             QSTmergeInfo<2> info(qmerge,dmerge);
 
-            QSDArray<4,Q> tmp;
+            QSTArray<T,4,Q> tmp;
             QSTmerge(info,loc,tmp);
 
             //this will contain the right going part
-            QSDArray<3,Q> EO;
+            QSTArray<T,3,Q> EO;
 
-            QSDcontract(1.0,B[0].conjugate(),shape(j,k,l),tmp,shape(j,k,m,n),0.0,EO,shape(m,n,l));
+            Contract((T)1.0,B[0].conjugate(),shape(j,k,l),tmp,shape(j,k,m,n),(T)0.0,EO,shape(m,n,l));
 
-            QSDArray<4,Q> I1;
-            QSDArray<4,Q> I2;
+            QSTArray<T,4,Q> I1;
+            QSTArray<T,4,Q> I2;
 
             for(int i = 1;i < L;++i){
 
                I1.clear();
 
-               QSDcontract(1.0,EO,shape(j,k,l),A[i],shape(j,m,n),0.0,I1,shape(k,l,n,m));
+               Contract((T)1.0,EO,shape(j,k,l),A[i],shape(j,m,n),(T)0.0,I1,shape(k,l,n,m));
 
                I2.clear();
 
-               QSDcontract(1.0,I1,shape(k,l,n,m),O[i],shape(k,j,m,o),0.0,I2,shape(l,j,n,o));
+               Contract((T)1.0,I1,shape(k,l,n,m),O[i],shape(k,j,m,o),(T)0.0,I2,shape(l,j,n,o));
 
                EO.clear();
 
-               QSDcontract(1.0,I2,shape(l,j,n,o),B[i].conjugate(),shape(l,j,k),0.0,EO,shape(n,o,k));
+               Contract((T)1.0,I2,shape(l,j,n,o),B[i].conjugate(),shape(l,j,k),(T)0.0,EO,shape(n,o,k));
 
                //bad style: if no blocks remain, return zero
                if(EO.begin() == EO.end())
@@ -888,9 +908,9 @@ namespace mpsxx {
             enum {j,k,l,m,n,o};
 
             //from right to left
-            QSDArray<5,Q> loc;
+            QSTArray<T,5,Q> loc;
 
-            QSDcontract(1.0,O[L - 1],shape(j,k,l,m),A[L - 1],shape(o,l,n),0.0,loc,shape(o,j,k,n,m));
+            Contract((T)1.0,O[L - 1],shape(j,k,l,m),A[L - 1],shape(o,l,n),(T)0.0,loc,shape(o,j,k,n,m));
 
             //merge 2 columns together
             TVector<Qshapes<Q>,2> qmerge;
@@ -905,29 +925,29 @@ namespace mpsxx {
 
             QSTmergeInfo<2> info(qmerge,dmerge);
 
-            QSDArray<4,Q> tmp;
+            QSTArray<T,4,Q> tmp;
             QSTmerge(loc,info,tmp);
 
             //this will contain the left going part
-            QSDArray<3,Q> EO;
-            QSDcontract(1.0,tmp,shape(j,k,l,m),B[L-1].conjugate(),shape(n,l,m),0.0,EO,shape(j,k,n));
+            QSTArray<T,3,Q> EO;
+            Contract((T)1.0,tmp,shape(j,k,l,m),B[L-1].conjugate(),shape(n,l,m),(T)0.0,EO,shape(j,k,n));
 
-            QSDArray<4,Q> I1;
-            QSDArray<4,Q> I2;
+            QSTArray<T,4,Q> I1;
+            QSTArray<T,4,Q> I2;
 
             for(int i = L - 2;i >= 0;--i){
 
                I1.clear();
 
-               QSDcontract(1.0,A[i],shape(j,k,l),EO,shape(l,m,n),0.0,I1,shape(j,k,m,n));
+               Contract((T)1.0,A[i],shape(j,k,l),EO,shape(l,m,n),(T)0.0,I1,shape(j,k,m,n));
 
                I2.clear();
 
-               QSDcontract(1.0,O[i],shape(l,o,k,m),I1,shape(j,k,m,n),0.0,I2,shape(j,l,o,n));
+               Contract((T)1.0,O[i],shape(l,o,k,m),I1,shape(j,k,m,n),(T)0.0,I2,shape(j,l,o,n));
 
                EO.clear();
 
-               QSDcontract(1.0,B[i].conjugate(),shape(k,o,n),I2,shape(j,l,o,n),0.0,EO,shape(j,l,k));
+               Contract((T)1.0,B[i].conjugate(),shape(k,o,n),I2,shape(j,l,o,n),(T)0.0,EO,shape(j,l,k));
 
                //bad style: if no blocks remain, return zero
                if(EO.begin() == EO.end())
@@ -940,7 +960,7 @@ namespace mpsxx {
          }
 
       }
-*/
+
    /**
     * MPO/S equivalent of the blas gemv function: Y <- alpha * A X + beta Y
     * @param alpha scaling factor of the input MPO
@@ -949,15 +969,14 @@ namespace mpsxx {
     * @param beta scaling factor of the output MPS
     * @param Y output MPS, its content will change on exit.
     */
-    /*
-   template<class Q>
-      void gemv(double alpha,const MPO<Q> &A,const MPS<Q> &X,double beta,MPS<Q> &Y){
+   template<typename T,class Q>
+      void gemv(T alpha,const MPO<T,Q> &A,const MPS<T,Q> &X,T beta,MPS<T,Q> &Y){
 
          //first check if length is the same
          if(A.size() != X.size())
             BTAS_THROW(false, "Error: input objects do not have the same length!");
 
-         if(fabs(beta) < 1.0e-15){
+         if(abs(beta) < 1.0e-15){
 
             int L = A.size();
 
@@ -965,15 +984,15 @@ namespace mpsxx {
 
             enum {j,k,l,m,n,o};
 
-            QSDArray<5,Q> tmp;
-            QSDArray<4,Q> mrows;
+            QSTArray<T,5,Q> tmp;
+            QSTArray<T,4,Q> mrows;
 
             for(int i = 0;i < L;++i){
 
                //clear the tmp object first
                tmp.clear();
 
-               QSDcontract(1.0,A[i],shape(j,k,l,m),X[i],shape(n,l,o),0.0,tmp,shape(n,j,k,o,m));
+               Contract((T)1.0,A[i],shape(j,k,l,m),X[i],shape(n,l,o),(T)0.0,tmp,shape(n,j,k,o,m));
 
                //merge 2 rows together
                TVector<Qshapes<Q>,2> qmerge;
@@ -1008,7 +1027,7 @@ namespace mpsxx {
 
             }
 
-            if( fabs(alpha - 1.0) > 1.0e-15)
+            if( abs(alpha - 1.0) > 1.0e-15)
                scal(alpha,Y);
 
          }
@@ -1024,10 +1043,10 @@ namespace mpsxx {
 
             enum {j,k,l,m,n,o};
 
-            QSDArray<5,Q> tmp;
-            QSDArray<4,Q> mrows;
+            QSTArray<T,5,Q> tmp;
+            QSTArray<T,4,Q> mrows;
 
-            QSDcontract(1.0,A[0],shape(j,k,l,m),X[0],shape(n,l,o),0.0,tmp,shape(n,j,k,o,m));
+            Contract((T)1.0,A[0],shape(j,k,l,m),X[0],shape(n,l,o),(T)0.0,tmp,shape(n,j,k,o,m));
 
             //merge 2 rows together
             TVector<Qshapes<Q>,2> qmerge1;
@@ -1058,7 +1077,7 @@ namespace mpsxx {
 
             info1.reset(qmerge1,dmerge1);
 
-            QSDArray<3,Q> Ax;
+            QSTArray<T,3,Q> Ax;
             QSTmerge(mrows,info1,Ax);
 
             IVector<2> left;
@@ -1066,9 +1085,9 @@ namespace mpsxx {
             for(int i = 0;i < 2;++i)
                left[i] = i;
 
-            QSDArray<3,Q> tmp1;
-            QSDArray<3,Q> tmp2;
-            QSDdsum(Ax,Y[0],left,tmp1);
+            QSTArray<T,3,Q> tmp1;
+            QSTArray<T,3,Q> tmp2;
+            QSTdsum(Ax,Y[0],left,tmp1);
 
             //merge the column quantumnumbers together
             TVector<Qshapes<Q>,1> qmerge2;
@@ -1091,7 +1110,7 @@ namespace mpsxx {
                //clear the tmp object first
                tmp.clear();
 
-               QSDcontract(1.0,A[i],shape(j,k,l,m),X[i],shape(n,l,o),0.0,tmp,shape(n,j,k,o,m));
+               Contract((T)1.0,A[i],shape(j,k,l,m),X[i],shape(n,l,o),(T)0.0,tmp,shape(n,j,k,o,m));
 
                //merge 2 rows together
                for(int r = 0;r < 2;++r){
@@ -1123,7 +1142,7 @@ namespace mpsxx {
                QSTmerge(mrows,info1,Ax);
 
                tmp1.clear();
-               QSDdsum(Ax,Y[i],middle,tmp1);
+               QSTdsum(Ax,Y[i],middle,tmp1);
 
                //merge the row quantumnumbers together
                qmerge2[0] = tmp1.qshape(0);
@@ -1151,7 +1170,7 @@ namespace mpsxx {
             //clear the tmp object first
             tmp.clear();
 
-            QSDcontract(1.0,A[L - 1],shape(j,k,l,m),X[L - 1],shape(n,l,o),0.0,tmp,shape(n,j,k,o,m));
+            Contract((T)1.0,A[L - 1],shape(j,k,l,m),X[L - 1],shape(n,l,o),(T)0.0,tmp,shape(n,j,k,o,m));
 
             //merge 2 rows together
             for(int r = 0;r < 2;++r){
@@ -1189,7 +1208,7 @@ namespace mpsxx {
 
             //finally the right
             tmp1.clear();
-            QSDdsum(Ax,Y[L - 1],right,tmp1);
+            QSTdsum(Ax,Y[L - 1],right,tmp1);
 
             //merge the row quantumnumbers together
             qmerge2[0] = tmp1.qshape(0);
@@ -1200,37 +1219,35 @@ namespace mpsxx {
             //then merge
             QSTmerge(info2,tmp1,Y[L-1]);
 
-            if( fabs(alpha - 1.0) > 1.0e-15)
+            if( abs(alpha - 1.0) > 1.0e-15)
                scal(alpha,Y);
 
          }
 
       }
-*/
+
    /**
     * MPO/S equivalent of a matrix vector multiplication. Let an MPO act on an MPS and return the new MPS
     * @param O input MPO
     * @param A input MPS
     * @return the new MPS object created by the multiplication
     */
-    /*
-   template<class Q>
-      MPS<Q> operator*(const MPO<Q> &O,const MPS<Q> &A){
+   template<typename T,class Q>
+      MPS<T,Q> operator*(const MPO<T,Q> &O,const MPS<T,Q> &A){
 
-         MPS<Q> OA(O.size());
+         MPS<T,Q> OA(O.size());
 
-         gemv(1.0,O,A,0.0,OA);
+         gemv((T)1.0,O,A,(T)0.0,OA);
 
          return OA;
 
       }
-*/
+
    /**
     * print the total bond dimensions
     */
-    /*
-   template<size_t N,class Q>
-      void print_dim(const MPX<N,Q> &mpx){
+   template<typename T,size_t N,class Q>
+      void print_dim(const MPX<T,N,Q> &mpx){
 
          for(int i = 0;i < mpx.size();++i){
 
@@ -1244,7 +1261,7 @@ namespace mpsxx {
          }
 
       }
-*/
+
    /**
     * Let MPO A act on MPS X and compress at the same time to finite dimension D
     * @param A input MPO
@@ -1253,9 +1270,10 @@ namespace mpsxx {
     * @param D dimension of the compression
     * @return the discarded weigth of the compression
     */
-    /*
-   template<class Q>
-      double gemv_compress(const MPO<Q> &A,const MPS<Q> &X,MPS<Q> &Y,int D){
+   template<typename T,class Q>
+      typename remove_complex<T>::type gemv_compress(const MPO<T,Q> &A,const MPS<T,Q> &X,MPS<T,Q> &Y,int D){
+
+         typedef typename remove_complex<T>::type T_real;
 
          //first check if length is the same
          if(A.size() != X.size())
@@ -1267,18 +1285,18 @@ namespace mpsxx {
 
          enum {j,k,l,m,n,o};
 
-         double dweight = 0.0;
+         T_real dweight = 0.0;
 
-         QSDArray<5,Q> tmp5;
-         QSDArray<4,Q> mrows;
-         QSDArray<4,Q> tmp4;
+         QSTArray<T,5,Q> tmp5;
+         QSTArray<T,4,Q> mrows;
+         QSTArray<T,4,Q> tmp4;
 
-         SDArray<1> S;//singular values
-         QSDArray<2,Q> V;//V^T
-         QSDArray<3,Q> U;//U --> unitary left normalized matrix
+         STArray<T_real,1> S;//singular values
+         QSTArray<T,2,Q> V;//V^T
+         QSTArray<T,3,Q> U;//U --> unitary left normalized matrix
 
          //first the most left tensor
-         QSDcontract(1.0,A[0],shape(j,k,l,m),X[0],shape(n,l,o),0.0,tmp5,shape(n,j,k,m,o));
+         Contract((T)1.0,A[0],shape(j,k,l,m),X[0],shape(n,l,o),(T)0.0,tmp5,shape(n,j,k,m,o));
 
          //merge 2 rows together
          TVector<Qshapes<Q>,2> qmerge;
@@ -1325,10 +1343,11 @@ namespace mpsxx {
             cout << endl;
             cout << Y[i].dshape() << endl;
 
-            dweight += QSDgesvd(RightArrow,Y[i],S,U,V,0);
+            //then svd
+            dweight += Gesvd<T, 3,3,Q, btas::RightArrow>(Y[i], S, U, V, 0);
 
             //copy unitary to mpx
-            QSDcopy(U,Y[i]);
+            Copy(U,Y[i]);
 
             cout << endl;
             cout << "Dimensions after SVD" << endl;
@@ -1336,7 +1355,7 @@ namespace mpsxx {
             cout << Y[i].dshape() << endl;
 
             //paste S and V together
-            SDdidm(S,V);
+            Dimm(S,V);
 
             //now expand V back
             U.clear();
@@ -1346,11 +1365,11 @@ namespace mpsxx {
             //paste the next terms, A[i] and X[i] to U
             tmp4.clear();
 
-            QSDcontract(1.0,U,shape(j,k,l),X[i + 1],shape(l,m,n),0.0,tmp4,shape(j,k,m,n));
+            Contract((T)1.0,U,shape(j,k,l),X[i + 1],shape(l,m,n),(T)0.0,tmp4,shape(j,k,m,n));
 
             mrows.clear();
 
-            QSDcontract(1.0,tmp4,shape(j,k,m,n),A[i + 1],shape(k,l,m,o),0.0,mrows,shape(j,l,o,n));
+            Contract((T)1.0,tmp4,shape(j,k,m,n),A[i + 1],shape(k,l,m,o),(T)0.0,mrows,shape(j,l,o,n));
 
          }
 
@@ -1383,7 +1402,7 @@ namespace mpsxx {
          return dweight;
 
       }
-*/
+
    /**
     * MPO equivalent of a matrix matrix multiplication gemm in blas. MPO action on MPO gives new MPO: alpha A-B + C|MPS>
     * or new MPO is C <- alpha * A*B + beta * C
@@ -1393,9 +1412,8 @@ namespace mpsxx {
     * @param beta scaling factor
     * @param C output MPO, input of this matrix will be added to A*B
     */
-    /*
-   template<class Q>
-      void gemm(double alpha,const MPO<Q> &A,const MPO<Q> &B,double beta,MPO<Q> &C){
+   template<typename T,class Q>
+      void gemm(T alpha,const MPO<T,Q> &A,const MPO<T,Q> &B,T beta,MPO<T,Q> &C){
 
          //first check if we can sum these two:
          if(A.size() != B.size())
@@ -1403,19 +1421,19 @@ namespace mpsxx {
 
          int L = A.size();
 
-         if( fabs(beta) < 1.0e-15 ){//only A * B
+         if( abs(beta) < 1.0e-15 ){//only A * B
 
             enum {j,k,l,m,n,o,p};
 
-            QSDArray<6,Q> tmp;
-            QSDArray<5,Q> mrows;
+            QSTArray<T,6,Q> tmp;
+            QSTArray<T,5,Q> mrows;
 
             for(int i = 0;i < L;++i){
 
                //clear the tmp object first
                tmp.clear();
 
-               QSDcontract(1.0,A[i],shape(n,o,k,p),B[i],shape(j,k,l,m),0.0,tmp,shape(n,j,o,l,p,m));
+               Contract((T)1.0,A[i],shape(n,o,k,p),B[i],shape(j,k,l,m),(T)0.0,tmp,shape(n,j,o,l,p,m));
 
                //merge 2 rows together
                TVector<Qshapes<Q>,2> qmerge;
@@ -1451,7 +1469,7 @@ namespace mpsxx {
 
             }
 
-            if(fabs(alpha - 1.0) > 1.0e-15)
+            if(abs(alpha - 1.0) > 1.0e-15)
                scal(alpha,C);
 
 
@@ -1468,13 +1486,13 @@ namespace mpsxx {
 
             enum {j,k,l,m,n,o,p};
 
-            QSDArray<6,Q> tmp;
-            QSDArray<5,Q> mrows;
+            QSTArray<T,6,Q> tmp;
+            QSTArray<T,5,Q> mrows;
 
             //clear the tmp object first
             tmp.clear();
 
-            QSDcontract(1.0,A[0],shape(n,o,k,p),B[0],shape(j,k,l,m),0.0,tmp,shape(n,j,o,l,p,m));
+            Contract((T)1.0,A[0],shape(n,o,k,p),B[0],shape(j,k,l,m),(T)0.0,tmp,shape(n,j,o,l,p,m));
 
             //merge 2 rows together
             TVector<Qshapes<Q>,2> qmerge1;
@@ -1506,7 +1524,7 @@ namespace mpsxx {
             info1.reset(qmerge1,dmerge1);
 
             //make AB
-            QSDArray<4,Q> AB;
+            QSTArray<T,4,Q> AB;
             QSTmerge(mrows,info1,AB);
 
             IVector<3> left;
@@ -1514,9 +1532,9 @@ namespace mpsxx {
             for(int i = 0;i < 3;++i)
                left[i] = i;
 
-            QSDArray<4,Q> tmp1;
-            QSDArray<4,Q> tmp2;
-            QSDdsum(AB,C[0],left,tmp1);
+            QSTArray<T,4,Q> tmp1;
+            QSTArray<T,4,Q> tmp2;
+            QSTdsum(AB,C[0],left,tmp1);
 
             //merge the column quantumnumbers together
             TVector<Qshapes<Q>,1> qmerge2;
@@ -1541,7 +1559,7 @@ namespace mpsxx {
                //clear the tmp object first
                tmp.clear();
 
-               QSDcontract(1.0,A[i],shape(n,o,k,p),B[i],shape(j,k,l,m),0.0,tmp,shape(n,j,o,l,p,m));
+               Contract((T)1.0,A[i],shape(n,o,k,p),B[i],shape(j,k,l,m),(T)0.0,tmp,shape(n,j,o,l,p,m));
 
                //merge 2 rows together
                for(int r = 0;r < 2;++r){
@@ -1573,7 +1591,7 @@ namespace mpsxx {
                QSTmerge(mrows,info1,AB);
 
                tmp1.clear();
-               QSDdsum(AB,C[i],middle,tmp1);
+               QSTdsum(AB,C[i],middle,tmp1);
 
                //merge the row quantumnumbers together
                qmerge2[0] = tmp1.qshape(0);
@@ -1600,7 +1618,7 @@ namespace mpsxx {
             //clear the tmp object first
             tmp.clear();
 
-            QSDcontract(1.0,A[L - 1],shape(n,o,k,p),B[L - 1],shape(j,k,l,m),0.0,tmp,shape(n,j,o,l,p,m));
+            Contract((T)1.0,A[L - 1],shape(n,o,k,p),B[L - 1],shape(j,k,l,m),(T)0.0,tmp,shape(n,j,o,l,p,m));
 
             //merge 2 rows together
             for(int r = 0;r < 2;++r){
@@ -1638,7 +1656,7 @@ namespace mpsxx {
 
             //finally the right
             tmp1.clear();
-            QSDdsum(AB,C[L - 1],right,tmp1);
+            QSTdsum(AB,C[L - 1],right,tmp1);
 
             //merge the row quantumnumbers together
             qmerge2[0] = tmp1.qshape(0);
@@ -1649,31 +1667,30 @@ namespace mpsxx {
             //then merge
             QSTmerge(info2,tmp1,C[L-1]);
 
-            if( fabs(alpha - 1.0) > 1.0e-15)
+            if( abs(alpha - 1.0) > 1.0e-15)
                scal(alpha,C);
 
          }
 
       }
-*/
+
    /**
     * MPO equivalent of a matrix matrix multiplication. MPO action on MPO gives new MPO: O1-O2|MPS>
     * @param O1 input MPO
     * @param O2 input MPO
     * @return the new MPO object created by the multiplication
     */
-    /*
-   template<class Q>
-      MPO<Q> operator*(const MPO<Q> &O1,const MPO<Q> &O2){
+   template<typename T,class Q>
+      MPO<T,Q> operator*(const MPO<T,Q> &O1,const MPO<T,Q> &O2){
 
-         MPO<Q> O12(O1.size());
+         MPO<T,Q> O12(O1.size());
 
-         gemm(1.0,O1,O2,0.0,O12);
+         gemm((T)1.0,O1,O2,(T)0.0,O12);
 
          return O12;
 
       }
-*/
+
    /**
     * the contraction of two MPS's
     * @return the overlap of two MPS objects
@@ -1761,14 +1778,13 @@ namespace mpsxx {
     * @param X input MPS
     * @param Y input MPS
     */
-    /*
-   template<class Q>
-      double operator*(const MPS<Q> &X,const MPS<Q> &Y){
+   template<typename T,class Q>
+      double operator*(const MPS<T,Q> &X,const MPS<T,Q> &Y){
 
          return dot(mpsxx::Left,X,Y);
 
       }
-*/
+
    /**
     * @return the norm of the state
     */
@@ -1783,17 +1799,6 @@ namespace mpsxx {
 
       }
 
-   /**
-    * @return the distance between 2 mps's ||X - Y||_2
-    */
-    /*
-   template<class Q>
-      double dist(const MPS<Q> &X,const MPS<Q> &Y){
-
-         return dot(Left,X,X) + dot(Left,Y,Y) - 2.0 * dot(Left,X,Y);
-
-      }
-*/
    /**
     * normalize the MPS
     */
@@ -1811,11 +1816,10 @@ namespace mpsxx {
     * @param O input MPO
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
-    /*
-   template<class Q>
-      MPO<Q> exp(const MPO<Q> &O,const std::vector<int> &cutoff){
+   template<typename T,class Q>
+      MPO<T,Q> exp(const MPO<T,Q> &O,const std::vector<int> &cutoff){
 
-         std::vector< MPO<Q> > term(cutoff.size());
+         std::vector< MPO<T,Q> > term(cutoff.size());
 
          //form the list of contributing terms in the expansion
          term[0] = O;
@@ -1844,18 +1848,17 @@ namespace mpsxx {
          return term[0];
 
       }
-*/
+
    /**
     * @return the MPS that is the result of the expontential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ...
     * @param O input MPO
     * @param A input MPS
     * @param cutoff vector of size the number of terms in the expansion that will be kept, and containing the dimension for svd for every order
     */
-    /*
-   template<class Q>
-      MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,const std::vector<int> &cutoff){
+   template<typename T,class Q>
+      MPS<T,Q> exp(const MPO<T,Q> &O,const MPS<T,Q> &A,const std::vector<int> &cutoff){
 
-         std::vector< MPS<Q> > term(cutoff.size());
+         std::vector< MPS<T,Q> > term(cutoff.size());
 
          //form the list of contributing terms in the expansion
          term[0] = O*A;
@@ -1886,7 +1889,7 @@ namespace mpsxx {
          return term[0];
 
       }
-*/
+
    /**
     * @return the MPS that is the result of the exponential of the operator MPO O acting on input MPS A: output will be A + OA + 1/2 (O^2)A + ... 
     * expanded until order 'order' and compressed to dimension D
@@ -1895,14 +1898,13 @@ namespace mpsxx {
     * @param order order of the expansion
     * @param D compression dimensions
     */
-    /*
-   template<class Q>
-      MPS<Q> exp(const MPO<Q> &O,const MPS<Q> &A,int order,int D){
+   template<typename T,class Q>
+      MPS<T,Q> exp(const MPO<T,Q> &O,const MPS<T,Q> &A,int order,int D){
 
-         MPS<Q> eOA(A);
-         MPS<Q> tmp;
+         MPS<T,Q> eOA(A);
+         MPS<T,Q> tmp;
 
-         gemv(1.0/(double)order,O,A,1.0,eOA);
+         gemv(1.0/(T)order,O,A,1.0,eOA);
 
          compress(eOA,Left,0);
          compress(eOA,Right,D);
@@ -1912,7 +1914,7 @@ namespace mpsxx {
             tmp = std::move(eOA);
             eOA = A;
 
-            gemv(1.0/(double)n,O,tmp,1.0,eOA);
+            gemv(1.0/(T)n,O,tmp,1.0,eOA);
 
             compress(eOA,Left,0);
             compress(eOA,Right,D);
@@ -1922,7 +1924,7 @@ namespace mpsxx {
          return eOA;
 
       }
-*/
+
    /**
     * @param mpx will be written to file
     * @param filename name of the file
