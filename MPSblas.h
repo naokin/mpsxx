@@ -44,9 +44,9 @@ using std::endl;
 using std::ostream;
 using std::complex;
 
-#include <btas/COMMON/blas_cxx_interface.h>
+#include <btas/common/blas_cxx_interface.h>
 
-#include <btas/COMMON/TVector.h>
+#include <btas/common/TVector.h>
 
 #include <btas/DENSE/TArray.h>
 #include <btas/SPARSE/STConj.h>
