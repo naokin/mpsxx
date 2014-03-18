@@ -241,7 +241,7 @@ void initialize_mpstates
   d_shape = btas::make_array( dl, dn[N-1], dr);
 
   mpss[N-1].resize(qt, q_shape, d_shape, gen); // set qt as a total quantum number of array
-  btas::QSDnormalize(mpss[N-1]);
+  btas::Normalize(mpss[N-1]);
   save(mpss[N-1], get_mpsfile(prefix, WAVEFUNCTION, N-1));
 
   // initial canonicalization
@@ -269,7 +269,7 @@ void initialize_mpstates
     btas::QSDArray<3, Q> lmps(mpss[i-1]);
     mpss[i-1].clear();
     btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, lmps, gaug, 1.0, mpss[i-1]);
-    btas::QSDnormalize(mpss[i-1]);
+    btas::Normalize(mpss[i-1]);
     save(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
 
     mpss[i].clear();

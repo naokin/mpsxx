@@ -1,7 +1,7 @@
 #ifndef _MPSXX_CXX11_DIAGONAL_ELEMENTS_H
 #define _MPSXX_CXX11_DIAGONAL_ELEMENTS_H 1
 
-#include <btas/SPARSE/SDdiagonal.h>
+//#include <btas/SPARSE/SDdiagonal.h>
 #include <btas/QSPARSE/QSDArray.h>
 
 namespace mpsxx {
@@ -18,9 +18,9 @@ void compute_diagonal_elements
   btas::SDArray<2> lopr_diag;
   btas::SDArray<2> ropr_diag;
 
-  btas::SDdiagonal(mpo0, btas::shape(1, 2), mpo0_diag);
-  btas::SDdiagonal(lopr, btas::shape(0, 2), lopr_diag);
-  btas::SDdiagonal(ropr, btas::shape(0, 2), ropr_diag);
+  btas::Tie(mpo0, btas::shape(1, 2), mpo0_diag);
+  btas::Tie(lopr, btas::shape(0, 2), lopr_diag);
+  btas::Tie(ropr, btas::shape(0, 2), ropr_diag);
 
   btas::SDArray<3> scr1;
   btas::SDcontract(1.0, lopr_diag, btas::shape(1), mpo0_diag, btas::shape(0), 1.0, scr1);
@@ -43,10 +43,10 @@ void compute_diagonal_elements
   btas::SDArray<2> lopr_diag;
   btas::SDArray<2> ropr_diag;
 
-  btas::SDdiagonal(lmpo, btas::shape(1, 2), lmpo_diag);
-  btas::SDdiagonal(rmpo, btas::shape(1, 2), rmpo_diag);
-  btas::SDdiagonal(lopr, btas::shape(0, 2), lopr_diag);
-  btas::SDdiagonal(ropr, btas::shape(0, 2), ropr_diag);
+  btas::Tie(lmpo, btas::shape(1, 2), lmpo_diag);
+  btas::Tie(rmpo, btas::shape(1, 2), rmpo_diag);
+  btas::Tie(lopr, btas::shape(0, 2), lopr_diag);
+  btas::Tie(ropr, btas::shape(0, 2), ropr_diag);
 
   btas::SDArray<3> scr1;
   btas::SDcontract(1.0, lopr_diag, btas::shape(1), lmpo_diag, btas::shape(0), 1.0, scr1);
@@ -67,8 +67,8 @@ void compute_diagonal_elements
   btas::SDArray<2> lopr_diag;
   btas::SDArray<2> ropr_diag;
 
-  btas::SDdiagonal(lopr, btas::shape(0, 2), lopr_diag);
-  btas::SDdiagonal(ropr, btas::shape(0, 2), ropr_diag);
+  btas::Tie(lopr, btas::shape(0, 2), lopr_diag);
+  btas::Tie(ropr, btas::shape(0, 2), ropr_diag);
 
   btas::SDArray<2> scr1;
   btas::SDgemm(btas::NoTrans, btas::Trans, 1.0, lopr_diag, ropr_diag, 1.0, scr1);

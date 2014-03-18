@@ -1,12 +1,13 @@
-CXX=g++ -std=c++11
-CXXFLAGS=-g -O3 -openmp -D_DEFAULT_QUANTUM -D_ENABLE_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
+CXX=/homec/naokin/gnu/gcc/4.8.2/bin/g++ -std=c++11
+CXXFLAGS=-g -O3 -fopenmp -D_HAS_CBLAS -D_HAS_INTEL_MKL -D_DEFAULT_QUANTUM -D_ENABLE_DEFAULT_QUANTUM
 
-BLASDIR=
-BLASINC=
-BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_sequential
+BLASDIR=/home100/opt/intel/mkl
+BLASINC=-I$(BLASDIR)/include
+BLASLIB=-L$(BLASDIR)/lib/intel64 -lmkl_intel_lp64 -lmkl_sequential -lmkl_core
 
-BOOSTINC=
-BOOSTLIB=-lboost_serialization
+BOOSTDIR=/homec/naokin/boost/1.54.0
+BOOSTINC=-I$(BOOSTDIR)/include
+BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
 BTASDIR= $(HOME)/btas
 BTASINC=-I. -I.. -I$(BTASDIR)/include
