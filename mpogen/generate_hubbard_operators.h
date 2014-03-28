@@ -13,7 +13,7 @@ namespace mpsxx     {
 namespace fermionic {
 
 void generate_hubbard_operators
-(MPO<Quantum>& mpos, const double& t = 1.0, const double& u = 1.0, const std::string& prefix = "./");
+(MPO<double, Quantum>& mpos, const double& t = 1.0, const double& u = 1.0, const std::string& prefix = "./");
 
 }; // namespace fermionic
 

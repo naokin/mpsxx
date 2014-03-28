@@ -27,8 +27,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   const size_t N = input.N_sites;
   const int    M = input.N_max_states;
 
-  MPO<fermionic::Quantum> mpos(N);
-  MPS<fermionic::Quantum> mpss(N);
+  MPO<double, fermionic::Quantum> mpos(N);
+  MPS<double, fermionic::Quantum> mpss(N);
 
   if(!input.restart)
     initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
@@ -55,8 +55,46 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
     cout << endl;
     esav = eswp;
     if(std::fabs(edif) < input.tolerance) break;
+
   }
 
+  std::ifstream fin("wave-mps_site-0.tmp");
+  boost::archive::binary_iarchive iar(fin);
+  iar >> mpss[0];
+
+  for(int i = 1;i < N;++i){
+
+     char name[50];
+
+     sprintf(name,"right-mps_site-%d.tmp",i);
+
+     std::ifstream fin2(name);
+     boost::archive::binary_iarchive iar2(fin2);
+     iar2 >> mpss[i];
+
+  }
+
+  mpsxx::save_mpx(mpss,"state");
+
+  std::ifstream fin4("mpo_site-0.tmp");
+  boost::archive::binary_iarchive iar4(fin4);
+  iar4 >> mpos[0];
+
+  for(int i = 1;i < N;++i){
+
+     char name[50];
+
+     sprintf(name,"mpo_site-%d.tmp",i);
+
+     std::ifstream fin3(name);
+     boost::archive::binary_iarchive iar3(fin3);
+     iar3 >> mpos[i];
+
+  }
+
+  mpsxx::save_mpx(mpos,"hamiltonian");
+
   return esav;
+
 }
 

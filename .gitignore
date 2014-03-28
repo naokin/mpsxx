@@ -12,4 +12,5 @@
 .*.swp
 test/
 work/
+qcdmrg/mpo
 docs
