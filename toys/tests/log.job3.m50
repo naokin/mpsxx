@@ -1,0 +1,1633 @@
+	****************************************************************************************************
+				MPSXX::PROTOTYPE::DMRG::OPTIMIZATION 
+	****************************************************************************************************
+	====================================================================================================
+		INITIALIZE MATRIX PRODUCT OPERATORS (MPOs) 
+			+ coupling coefficient J  :   1.0000
+			+ coupling coefficient Jz :   1.0000
+			+ coupling coefficient Hz :   0.0000
+			+ coupling coefficient Sz :   1.0000
+	====================================================================================================
+	====================================================================================================
+		INITIALIZE WAVEFUNCTION ( L, d, M ) = ( 20,  3, 50 ) 
+	====================================================================================================
+	====================================================================================================
+		SS-DMRG OPTIMIZATION FOR 0-TH ORDER WAVEFUNCTION 
+	====================================================================================================
+	====================================================================================================
+		INITIALIZE STORAGES FOR BLOCK OPERATORS 
+	====================================================================================================
+	====================================================================================================
+		SWEEP ITERATION [    0 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =      -2.0353299525156974
+			Energy =      -3.4645529075940589
+			Energy =      -4.7684564852199269
+			Energy =      -6.2462792974432713
+			Energy =      -7.5474824226847490
+			Energy =      -9.1135251360846361
+			Energy =     -10.3402723529245186
+			Energy =     -11.6950628542063697
+			Energy =     -13.0931623109049777
+			Energy =     -14.4441926502197973
+			Energy =     -16.0240438467879827
+			Energy =     -17.4237440724777031
+			Energy =     -19.0038342316757323
+			Energy =     -20.7467687600121167
+			Energy =     -22.7823458633452418
+			Energy =     -25.4671816128033548
+			Energy =     -26.8152246994781294
+			Energy =     -26.8152246994782324
+			Energy =     -26.8152246994782253
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8152246994782253
+			Energy =     -26.8152246994782573
+			Energy =     -26.8152246994782359
+			Energy =     -26.8152246994781720
+			Energy =     -26.8245782725503368
+			Energy =     -26.8313940994064808
+			Energy =     -26.8333621005629723
+			Energy =     -26.8356316194942153
+			Energy =     -26.8361383975086341
+			Energy =     -26.8378876897003202
+			Energy =     -26.8384300344999431
+			Energy =     -26.8389523328140065
+			Energy =     -26.8394752298319226
+			Energy =     -26.8397041170975470
+			Energy =     -26.8399328614697481
+			Energy =     -26.8399579314373433
+			Energy =     -26.8399607801336515
+			Energy =     -26.8399607801336337
+			Energy =     -26.8399607801336089
+	====================================================================================================
+		SWEEP ITERATION [    0 ] FINISHED
+			Sweep Energy =     -26.8399607801336515 ( delta E = -1.00e+08 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    1 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399607801336018
+			Energy =     -26.8399607801336124
+			Energy =     -26.8399607801336302
+			Energy =     -26.8399607801336764
+			Energy =     -26.8399607840348722
+			Energy =     -26.8399608285393896
+			Energy =     -26.8399611969778391
+			Energy =     -26.8399614414150882
+			Energy =     -26.8399631078901031
+			Energy =     -26.8399641640268847
+			Energy =     -26.8399649228561579
+			Energy =     -26.8399665754991048
+			Energy =     -26.8399688475265563
+			Energy =     -26.8399695611994495
+			Energy =     -26.8399701291801449
+			Energy =     -26.8399725810694605
+			Energy =     -26.8399738269809305
+			Energy =     -26.8399738269809376
+			Energy =     -26.8399738269809589
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399738269809589
+			Energy =     -26.8399738269809376
+			Energy =     -26.8399738269809660
+			Energy =     -26.8399738269810229
+			Energy =     -26.8399738334701858
+			Energy =     -26.8399739608195347
+			Energy =     -26.8399739985804260
+			Energy =     -26.8399740329194607
+			Energy =     -26.8399742803473522
+			Energy =     -26.8399745019467986
+			Energy =     -26.8399745318142209
+			Energy =     -26.8399746176302543
+			Energy =     -26.8399746634748375
+			Energy =     -26.8399746727745878
+			Energy =     -26.8399746879056735
+			Energy =     -26.8399746931239420
+			Energy =     -26.8399746952089657
+			Energy =     -26.8399746952089338
+			Energy =     -26.8399746952089195
+	====================================================================================================
+		SWEEP ITERATION [    1 ] FINISHED
+			Sweep Energy =     -26.8399746952089657 ( delta E = -1.39e-05 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    2 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399746952089231
+			Energy =     -26.8399746952089373
+			Energy =     -26.8399746952089160
+			Energy =     -26.8399746952089799
+			Energy =     -26.8399746964117725
+			Energy =     -26.8399746980086888
+			Energy =     -26.8399747013844419
+			Energy =     -26.8399747033293821
+			Energy =     -26.8399747099880130
+			Energy =     -26.8399747277020957
+			Energy =     -26.8399747327696723
+			Energy =     -26.8399747692707962
+			Energy =     -26.8399747980729906
+			Energy =     -26.8399748060783914
+			Energy =     -26.8399748107197915
+			Energy =     -26.8399748180570370
+			Energy =     -26.8399748185864198
+			Energy =     -26.8399748185864269
+			Energy =     -26.8399748185864304
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399748185863913
+			Energy =     -26.8399748185864340
+			Energy =     -26.8399748185864269
+			Energy =     -26.8399748185863842
+			Energy =     -26.8399748187167297
+			Energy =     -26.8399748201009807
+			Energy =     -26.8399748213082994
+			Energy =     -26.8399748243660454
+			Energy =     -26.8399748294498863
+			Energy =     -26.8399748373377278
+			Energy =     -26.8399748391022257
+			Energy =     -26.8399748438366785
+			Energy =     -26.8399748459959362
+			Energy =     -26.8399748466612671
+			Energy =     -26.8399748481828624
+			Energy =     -26.8399748486896499
+			Energy =     -26.8399748490782528
+			Energy =     -26.8399748490782315
+			Energy =     -26.8399748490782386
+	====================================================================================================
+		SWEEP ITERATION [    2 ] FINISHED
+			Sweep Energy =     -26.8399748490782528 ( delta E = -1.54e-07 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    3 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399748490782173
+			Energy =     -26.8399748490782386
+			Energy =     -26.8399748490782564
+			Energy =     -26.8399748490783949
+			Energy =     -26.8399748492017913
+			Energy =     -26.8399748494467545
+			Energy =     -26.8399748502782778
+			Energy =     -26.8399748506726894
+			Energy =     -26.8399748515675611
+			Energy =     -26.8399748530392124
+			Energy =     -26.8399748538289060
+			Energy =     -26.8399748565197669
+			Energy =     -26.8399748584417353
+			Energy =     -26.8399748597266026
+			Energy =     -26.8399748602660537
+			Energy =     -26.8399748606149053
+			Energy =     -26.8399748606149373
+			Energy =     -26.8399748606147348
+			Energy =     -26.8399748606147099
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399748606147277
+			Energy =     -26.8399748606147028
+			Energy =     -26.8399748606147170
+			Energy =     -26.8399748606147348
+			Energy =     -26.8399748606148592
+			Energy =     -26.8399748607664499
+			Energy =     -26.8399748611190034
+			Energy =     -26.8399748616988703
+			Energy =     -26.8399748627330119
+			Energy =     -26.8399748639807427
+			Energy =     -26.8399748645421781
+			Energy =     -26.8399748650372416
+			Energy =     -26.8399748655813788
+			Energy =     -26.8399748657645141
+			Energy =     -26.8399748663663189
+			Energy =     -26.8399748663664823
+			Energy =     -26.8399748663663189
+			Energy =     -26.8399748663662550
+			Energy =     -26.8399748663662017
+	====================================================================================================
+		SWEEP ITERATION [    3 ] FINISHED
+			Sweep Energy =     -26.8399748663664823 ( delta E = -1.73e-08 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    4 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399748663661981
+			Energy =     -26.8399748663661732
+			Energy =     -26.8399748663662230
+			Energy =     -26.8399748663662159
+			Energy =     -26.8399748663661981
+			Energy =     -26.8399748663663189
+			Energy =     -26.8399748668534670
+			Energy =     -26.8399748668535842
+			Energy =     -26.8399748672274114
+			Energy =     -26.8399748674827840
+			Energy =     -26.8399748678649566
+			Energy =     -26.8399748685258430
+			Energy =     -26.8399748692737035
+			Energy =     -26.8399748695473050
+			Energy =     -26.8399748697536786
+			Energy =     -26.8399748697535472
+			Energy =     -26.8399748697537390
+			Energy =     -26.8399748697535827
+			Energy =     -26.8399748697535969
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -26.8399748697535934
+			Energy =     -26.8399748697535792
+			Energy =     -26.8399748697536182
+			Energy =     -26.8399748697537603
+			Energy =     -26.8399748697533838
+			Energy =     -26.8399748697536253
+			Energy =     -26.8399748699179668
+			Energy =     -26.8399748700834060
+			Energy =     -26.8399748706388692
+			Energy =     -26.8399748710672448
+			Energy =     -26.8399748712970236
+			Energy =     -26.8399748712970307
+			Energy =     -26.8399748716168318
+			Energy =     -26.8399748716168673
+			Energy =     -26.8399748720164126
+			Energy =     -26.8399748720164091
+			Energy =     -26.8399748720164126
+			Energy =     -26.8399748720163309
+			Energy =     -26.8399748720163380
+	====================================================================================================
+		SWEEP ITERATION [    4 ] FINISHED
+			Sweep Energy =     -26.8399748720164126 ( delta E = -5.65e-09 ) 
+	====================================================================================================
+
+	====================================================================================================
+		DMRG-LR CALCULATION FOR EXCITED STATE 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   0 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8238 sec. 
+	====================================================================================================
+			Energy[ 1] =     -19.9448703791030937 ( R-norm[ 1] =      51.4327593816737334 ) 
+			Energy[ 2] =     -19.6517785933856644 ( R-norm[ 2] =      48.1036781242534417 ) 
+			Energy[ 3] =     -19.3515400699013256 ( R-norm[ 3] =      26.1177048240541296 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9388 sec. 
+	====================================================================================================
+			Energy[ 1] =     -21.1721999343377689 ( R-norm[ 1] =     142.3532840427703832 ) 
+			Energy[ 2] =     -20.4352507175894651 ( R-norm[ 2] =     103.5552682306581715 ) 
+			Energy[ 3] =     -19.8328769286651010 ( R-norm[ 3] =      32.2077346284953236 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5922 sec. 
+	====================================================================================================
+			Energy[ 1] =     -22.6816801493772573 ( R-norm[ 1] =     111.7182674965135902 ) 
+			Energy[ 2] =     -21.5952822373592710 ( R-norm[ 2] =     117.3086423915745797 ) 
+			Energy[ 3] =     -20.4267622367463382 ( R-norm[ 3] =      41.8461376115740151 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1234 sec. 
+	====================================================================================================
+			Energy[ 1] =     -23.7294606744782968 ( R-norm[ 1] =      73.5153700537072439 ) 
+			Energy[ 2] =     -22.4964738145785610 ( R-norm[ 2] =      94.8087172110216017 ) 
+			Energy[ 3] =     -21.9977533929097326 ( R-norm[ 3] =      41.7152589299579049 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.6892 sec. 
+	====================================================================================================
+			Energy[ 1] =     -24.9061202914841147 ( R-norm[ 1] =      42.8006092332006816 ) 
+			Energy[ 2] =     -23.2546723146254521 ( R-norm[ 2] =      72.1298248752953981 ) 
+			Energy[ 3] =     -22.9636853466532749 ( R-norm[ 3] =      28.9496102027095787 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.6877 sec. 
+	====================================================================================================
+			Energy[ 1] =     -25.3138313198979006 ( R-norm[ 1] =      19.8263537588811367 ) 
+			Energy[ 2] =     -24.9671313742690977 ( R-norm[ 2] =      40.9178672038500437 ) 
+			Energy[ 3] =     -24.0976153164421234 ( R-norm[ 3] =      37.7517355422981851 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   0 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   1 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8050 sec. 
+	====================================================================================================
+			Energy[ 1] =     -25.3138313199014000 ( R-norm[ 1] =      19.8263537587974987 ) 
+			Energy[ 2] =     -24.9671313742665291 ( R-norm[ 2] =      40.9178672042416167 ) 
+			Energy[ 3] =     -24.0976153164542630 ( R-norm[ 3] =      37.7517355417978919 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9624 sec. 
+	====================================================================================================
+			Energy[ 1] =     -25.4969327960228753 ( R-norm[ 1] =      17.0514742505780710 ) 
+			Energy[ 2] =     -25.2691688628193560 ( R-norm[ 2] =      26.7203620113538882 ) 
+			Energy[ 3] =     -24.8232866399012160 ( R-norm[ 3] =      35.0089123851161332 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5449 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.2541088871701085 ( R-norm[ 1] =       9.1070302605546978 ) 
+			Energy[ 2] =     -25.5361605712588364 ( R-norm[ 2] =      24.4005597820410500 ) 
+			Energy[ 3] =     -25.2314959704462112 ( R-norm[ 3] =      11.3955918186336547 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1090 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.6623852602101117 ( R-norm[ 1] =       1.8244022770890940 ) 
+			Energy[ 2] =     -26.1689528557021269 ( R-norm[ 2] =       8.5254410069277480 ) 
+			Energy[ 3] =     -25.4855746650187633 ( R-norm[ 3] =      24.5112036776218041 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.5097 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.7525190920837197 ( R-norm[ 1] =       0.6811638985080243 ) 
+			Energy[ 2] =     -26.6305946736374608 ( R-norm[ 2] =       2.2556499879515863 ) 
+			Energy[ 3] =     -25.6191279573292015 ( R-norm[ 3] =      16.9056347853061659 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.6053 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.7889653534934133 ( R-norm[ 1] =       0.2668214873385483 ) 
+			Energy[ 2] =     -26.7492352285291766 ( R-norm[ 2] =       0.7315733075173090 ) 
+			Energy[ 3] =     -25.9356285697257434 ( R-norm[ 3] =      10.0368944899911057 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   1 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   2 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8061 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.7889653534934666 ( R-norm[ 1] =       0.2668214873390823 ) 
+			Energy[ 2] =     -26.7492352285290060 ( R-norm[ 2] =       0.7315733075178339 ) 
+			Energy[ 3] =     -25.9356285697216151 ( R-norm[ 3] =      10.0368944900684038 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9634 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8010177809315167 ( R-norm[ 1] =       0.1314343510116285 ) 
+			Energy[ 2] =     -26.7807794436590463 ( R-norm[ 2] =       0.3406996428097815 ) 
+			Energy[ 3] =     -26.0156602403154444 ( R-norm[ 3] =       6.9643313046355368 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5370 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8081587098546485 ( R-norm[ 1] =       0.0665633666565337 ) 
+			Energy[ 2] =     -26.8003717535415582 ( R-norm[ 2] =       0.1481088927337003 ) 
+			Energy[ 3] =     -26.0577151492188541 ( R-norm[ 3] =       5.8912327872850039 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1119 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8118166674165863 ( R-norm[ 1] =       0.0294229040656823 ) 
+			Energy[ 2] =     -26.8078389822485299 ( R-norm[ 2] =       0.0743161243895431 ) 
+			Energy[ 3] =     -26.5434404162831896 ( R-norm[ 3] =       2.4975660497982379 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.4859 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8136938412538619 ( R-norm[ 1] =       0.0061809692513447 ) 
+			Energy[ 2] =     -26.8121498816400248 ( R-norm[ 2] =       0.0241138628943152 ) 
+			Energy[ 3] =     -26.6921415189799944 ( R-norm[ 3] =       1.1901949713438595 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.7555 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8140439955322094 ( R-norm[ 1] =       0.0018772993616805 ) 
+			Energy[ 2] =     -26.8133633877177822 ( R-norm[ 2] =       0.0101003794784251 ) 
+			Energy[ 3] =     -26.7585138947134062 ( R-norm[ 3] =       0.5544620716619303 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   2 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   3 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8102 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8140439955323799 ( R-norm[ 1] =       0.0018772993616731 ) 
+			Energy[ 2] =     -26.8133633877177004 ( R-norm[ 2] =       0.0101003794785350 ) 
+			Energy[ 3] =     -26.7585138947133139 ( R-norm[ 3] =       0.5544620716629139 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9707 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8141255338591158 ( R-norm[ 1] =       0.0008755825262035 ) 
+			Energy[ 2] =     -26.8137704358456084 ( R-norm[ 2] =       0.0047676284355816 ) 
+			Energy[ 3] =     -26.7827663490940182 ( R-norm[ 3] =       0.2708601581787795 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5411 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8141631088253369 ( R-norm[ 1] =       0.0004685897363314 ) 
+			Energy[ 2] =     -26.8140456825499776 ( R-norm[ 2] =       0.0017156293318633 ) 
+			Energy[ 3] =     -26.7979539253084482 ( R-norm[ 3] =       0.1491314662851266 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1137 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8141837873638842 ( R-norm[ 1] =       0.0002672636179863 ) 
+			Energy[ 2] =     -26.8141245905473582 ( R-norm[ 2] =       0.0009114135772921 ) 
+			Energy[ 3] =     -26.8062865779529211 ( R-norm[ 3] =       0.0849983536013756 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.5412 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8141986816983007 ( R-norm[ 1] =       0.0001034312001399 ) 
+			Energy[ 2] =     -26.8141777232037626 ( R-norm[ 2] =       0.0003226055865037 ) 
+			Energy[ 3] =     -26.8122074714193275 ( R-norm[ 3] =       0.0227522974269348 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.6054 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142040262829902 ( R-norm[ 1] =       0.0000515346766927 ) 
+			Energy[ 2] =     -26.8141931736816588 ( R-norm[ 2] =       0.0001742585241933 ) 
+			Energy[ 3] =     -26.8136104430070681 ( R-norm[ 3] =       0.0072348348375458 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   3 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   4 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8071 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142040262830506 ( R-norm[ 1] =       0.0000515346766340 ) 
+			Energy[ 2] =     -26.8141931736816375 ( R-norm[ 2] =       0.0001742585242499 ) 
+			Energy[ 3] =     -26.8136104430070716 ( R-norm[ 3] =       0.0072348348375829 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9673 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142060235528099 ( R-norm[ 1] =       0.0000279230543223 ) 
+			Energy[ 2] =     -26.8142002504325028 ( R-norm[ 2] =       0.0000827750051052 ) 
+			Energy[ 3] =     -26.8139120142940186 ( R-norm[ 3] =       0.0032229797027158 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5433 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142074142019311 ( R-norm[ 1] =       0.0000153898571704 ) 
+			Energy[ 2] =     -26.8142041082012845 ( R-norm[ 2] =       0.0000446396022702 ) 
+			Energy[ 3] =     -26.8140535099090727 ( R-norm[ 3] =       0.0017223021330222 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1226 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142081400178078 ( R-norm[ 1] =       0.0000090311126431 ) 
+			Energy[ 2] =     -26.8142061804526897 ( R-norm[ 2] =       0.0000283886358664 ) 
+			Energy[ 3] =     -26.8141351829310075 ( R-norm[ 3] =       0.0008230087813931 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.5376 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142086361827907 ( R-norm[ 1] =       0.0000036883290889 ) 
+			Energy[ 2] =     -26.8142077920773190 ( R-norm[ 2] =       0.0000118414557821 ) 
+			Energy[ 3] =     -26.8141803304453212 ( R-norm[ 3] =       0.0003043148165224 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.6188 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142088210740077 ( R-norm[ 1] =       0.0000020213004832 ) 
+			Energy[ 2] =     -26.8142083302650498 ( R-norm[ 2] =       0.0000064087460001 ) 
+			Energy[ 3] =     -26.8141962134800522 ( R-norm[ 3] =       0.0001360530430343 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   4 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   5 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8104 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142088210740646 ( R-norm[ 1] =       0.0000020213002748 ) 
+			Energy[ 2] =     -26.8142083302649574 ( R-norm[ 2] =       0.0000064087462096 ) 
+			Energy[ 3] =     -26.8141962134800842 ( R-norm[ 3] =       0.0001360530430307 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9682 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142089071922527 ( R-norm[ 1] =       0.0000010258683570 ) 
+			Energy[ 2] =     -26.8142085819326716 ( R-norm[ 2] =       0.0000031644412012 ) 
+			Energy[ 3] =     -26.8142022489105010 ( R-norm[ 3] =       0.0000642200772572 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5482 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142089570666009 ( R-norm[ 1] =       0.0000006375798621 ) 
+			Energy[ 2] =     -26.8142087595209517 ( R-norm[ 2] =       0.0000011971512736 ) 
+			Energy[ 3] =     -26.8142055762913039 ( R-norm[ 3] =       0.0000326657189062 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1215 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142089872574338 ( R-norm[ 1] =       0.0000003954010210 ) 
+			Energy[ 2] =     -26.8142088131087064 ( R-norm[ 2] =       0.0000006547653006 ) 
+			Energy[ 3] =     -26.8142071559805473 ( R-norm[ 3] =       0.0000195925766236 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.4948 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090104622675 ( R-norm[ 1] =       0.0000002185534835 ) 
+			Energy[ 2] =     -26.8142088546554156 ( R-norm[ 2] =       0.0000004444453456 ) 
+			Energy[ 3] =     -26.8142083058388785 ( R-norm[ 3] =       0.0000073421044277 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  18
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      31.4719 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090237729036 ( R-norm[ 1] =       0.0000001956549159 ) 
+			Energy[ 2] =     -26.8142088868862061 ( R-norm[ 2] =       0.0000006529842472 ) 
+			Energy[ 3] =     -26.8142086367333761 ( R-norm[ 3] =       0.0000033771821895 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   5 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   6 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   3
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =       2.8050 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090237729143 ( R-norm[ 1] =       0.0000001956546913 ) 
+			Energy[ 2] =     -26.8142088868863944 ( R-norm[ 2] =       0.0000006529841987 ) 
+			Energy[ 3] =     -26.8142086367334791 ( R-norm[ 3] =       0.0000033771824630 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   6
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =       5.9885 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090357691849 ( R-norm[ 1] =       0.0000001856881562 ) 
+			Energy[ 2] =     -26.8142089284283465 ( R-norm[ 2] =       0.0000006749938365 ) 
+			Energy[ 3] =     -26.8142087567709382 ( R-norm[ 3] =       0.0000010646394747 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =   9
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      10.5449 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090488819811 ( R-norm[ 1] =       0.0000001996061555 ) 
+			Energy[ 2] =     -26.8142089639700067 ( R-norm[ 2] =       0.0000004081598392 ) 
+			Energy[ 3] =     -26.8142087966373914 ( R-norm[ 3] =       0.0000003654921036 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  12
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =      16.1137 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090612126651 ( R-norm[ 1] =       0.0000001681063136 ) 
+			Energy[ 2] =     -26.8142089834528505 ( R-norm[ 2] =       0.0000001846901940 ) 
+			Energy[ 3] =     -26.8142088125722147 ( R-norm[ 3] =       0.0000001478986586 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  15
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	total time per sweep       =      23.5261 sec. 
+	====================================================================================================
+			Energy[ 1] =     -26.8142090705008513 ( R-norm[ 1] =       0.0000000877233713 ) 
+			Energy[ 2] =     -26.8142089920782780 ( R-norm[ 2] =       0.0000000684646591 ) 
+			Energy[ 3] =     -26.8142088196803741 ( R-norm[ 3] =       0.0000000530463761 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   6 FINISHED: CONVERGED ROOTS =  3
+	====================================================================================================
+		PROGRAM TERMINATED AFTER   7 CYCLES: CONVERGED ROOTS = 3
+	====================================================================================================
+		SUMMARY OF DMRG-LR CALCULATION 
+	====================================================================================================
+			Energy [ 0]:     -26.8399748720164126
+			Energy [ 1]:     -26.8142090705008513
+			Energy [ 2]:     -26.8142089920782780
+			Energy [ 3]:     -26.8142088196803741
+	====================================================================================================
+

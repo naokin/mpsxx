@@ -1,0 +1,773 @@
+	****************************************************************************************************
+				MPSXX::PROTOTYPE::DMRG::OPTIMIZATION 
+	****************************************************************************************************
+	====================================================================================================
+		INITIALIZE MATRIX PRODUCT OPERATORS (MPOs) 
+			+ coupling coefficient J  :   1.0000
+			+ coupling coefficient Jz :   1.0000
+			+ coupling coefficient Hz :   0.0000
+			+ coupling coefficient Sz :   0.5000
+	====================================================================================================
+	====================================================================================================
+		INITIALIZE WAVEFUNCTION ( L, d, M ) = ( 50,  2, 50 ) 
+	====================================================================================================
+	====================================================================================================
+		SS-DMRG OPTIMIZATION FOR 0-TH ORDER WAVEFUNCTION 
+	====================================================================================================
+	====================================================================================================
+		INITIALIZE STORAGES FOR BLOCK OPERATORS 
+	====================================================================================================
+	====================================================================================================
+		SWEEP ITERATION [    0 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =      -1.2117888461023116
+			Energy =      -1.6624562123046958
+			Energy =      -2.0520123669183801
+			Energy =      -2.5112860352351190
+			Energy =      -2.9482432632017450
+			Energy =      -3.4787159303398689
+			Energy =      -3.9051790889682332
+			Energy =      -4.3272924035442673
+			Energy =      -4.8301348314001906
+			Energy =      -5.1869347850445049
+			Energy =      -5.6428656221502420
+			Energy =      -6.1437808301140651
+			Energy =      -6.6176984843106252
+			Energy =      -7.0483595706359585
+			Energy =      -7.4900930541594146
+			Energy =      -7.9427424258402972
+			Energy =      -8.3943142279727674
+			Energy =      -8.7509762951655627
+			Energy =      -9.2173340083799307
+			Energy =      -9.6663616941408446
+			Energy =     -10.1118540384251467
+			Energy =     -10.5769820017139331
+			Energy =     -10.9919322496819571
+			Energy =     -11.4235082509411470
+			Energy =     -11.8484104219096125
+			Energy =     -12.2990672462910524
+			Energy =     -12.6716089144050592
+			Energy =     -13.0815119531915993
+			Energy =     -13.6031480232335653
+			Energy =     -14.0831369948668819
+			Energy =     -14.4424008552603453
+			Energy =     -14.9121249437584549
+			Energy =     -15.4761480502696269
+			Energy =     -15.9639452152077528
+			Energy =     -16.3204272228898262
+			Energy =     -16.6707536307679014
+			Energy =     -17.1816577236988017
+			Energy =     -17.6847932483797798
+			Energy =     -18.1371191015501871
+			Energy =     -18.7449721648290257
+			Energy =     -19.3285691054050481
+			Energy =     -20.0716925370728418
+			Energy =     -20.7399246467687668
+			Energy =     -21.5915538714571404
+			Energy =     -21.9707646075642913
+			Energy =     -21.9707646075643126
+			Energy =     -21.9707646075643339
+			Energy =     -21.9707646075642771
+			Energy =     -21.9707646075642948
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -21.9707646075643055
+			Energy =     -21.9707646075642913
+			Energy =     -21.9707646075642806
+			Energy =     -21.9707646075643339
+			Energy =     -21.9707646075643623
+			Energy =     -21.9707646075643126
+			Energy =     -21.9708989429174153
+			Energy =     -21.9709236160979877
+			Energy =     -21.9709578353317241
+			Energy =     -21.9710182841975481
+			Energy =     -21.9713306014396075
+			Energy =     -21.9713346379858834
+			Energy =     -21.9715454288870440
+			Energy =     -21.9715609336906077
+			Energy =     -21.9715817121062180
+			Energy =     -21.9715856668340308
+			Energy =     -21.9717663675992512
+			Energy =     -21.9717745279763079
+			Energy =     -21.9717925609100106
+			Energy =     -21.9717941276002726
+			Energy =     -21.9718225417898019
+			Energy =     -21.9718765311381397
+			Energy =     -21.9718902620797039
+			Energy =     -21.9718943688815251
+			Energy =     -21.9719308889736737
+			Energy =     -21.9719382097419675
+			Energy =     -21.9719414992172695
+			Energy =     -21.9719441732980698
+			Energy =     -21.9719733366091958
+			Energy =     -21.9720002564075934
+			Energy =     -21.9720056540519124
+			Energy =     -21.9720114413019267
+			Energy =     -21.9720128288741705
+			Energy =     -21.9720810331118557
+			Energy =     -21.9720969702343822
+			Energy =     -21.9720995046591341
+			Energy =     -21.9721072569669218
+			Energy =     -21.9721075953299234
+			Energy =     -21.9721090468177103
+			Energy =     -21.9721095354682916
+			Energy =     -21.9721096827779441
+			Energy =     -21.9721100366428601
+			Energy =     -21.9721100485396761
+			Energy =     -21.9721100722282294
+			Energy =     -21.9721100742167685
+			Energy =     -21.9721100742165376
+			Energy =     -21.9721100742165589
+			Energy =     -21.9721100742165589
+			Energy =     -21.9721100742165376
+	====================================================================================================
+		SWEEP ITERATION [    0 ] FINISHED
+			Sweep Energy =     -21.9721100742167685 ( delta E = -1.00e+08 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    1 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -21.9721100742165589
+			Energy =     -21.9721100742165341
+			Energy =     -21.9721100742165198
+			Energy =     -21.9721100742165945
+			Energy =     -21.9721100742165127
+			Energy =     -21.9721100742165625
+			Energy =     -21.9721100742168929
+			Energy =     -21.9721100742168183
+			Energy =     -21.9721100742166726
+			Energy =     -21.9721100742165447
+			Energy =     -21.9721100742165376
+			Energy =     -21.9721100742163884
+			Energy =     -21.9721100748586551
+			Energy =     -21.9721100752152054
+			Energy =     -21.9721100770830908
+			Energy =     -21.9721100783050254
+			Energy =     -21.9721100811882160
+			Energy =     -21.9721100877838822
+			Energy =     -21.9721100906070674
+			Energy =     -21.9721100943107537
+			Energy =     -21.9721100991968079
+			Energy =     -21.9721101059916570
+			Energy =     -21.9721101158926153
+			Energy =     -21.9721101204741558
+			Energy =     -21.9721101228764333
+			Energy =     -21.9721101262529892
+			Energy =     -21.9721101328906379
+			Energy =     -21.9721101381211561
+			Energy =     -21.9721101434182842
+			Energy =     -21.9721101500855340
+			Energy =     -21.9721101577164220
+			Energy =     -21.9721101602656077
+			Energy =     -21.9721101626220481
+			Energy =     -21.9721101650535751
+			Energy =     -21.9721101712199314
+			Energy =     -21.9721101730580628
+			Energy =     -21.9721101747354695
+			Energy =     -21.9721101755711885
+			Energy =     -21.9721101781255328
+			Energy =     -21.9721101786990154
+			Energy =     -21.9721101794115938
+			Energy =     -21.9721101794114126
+			Energy =     -21.9721101794112954
+			Energy =     -21.9721101794114979
+			Energy =     -21.9721101794113025
+			Energy =     -21.9721101794113167
+			Energy =     -21.9721101794113096
+			Energy =     -21.9721101794113025
+			Energy =     -21.9721101794113061
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -21.9721101794113167
+			Energy =     -21.9721101794113167
+			Energy =     -21.9721101794112990
+			Energy =     -21.9721101794113309
+			Energy =     -21.9721101794113522
+			Energy =     -21.9721101794114020
+			Energy =     -21.9721101794114162
+			Energy =     -21.9721101794113949
+			Energy =     -21.9721101794114304
+			Energy =     -21.9721101794113451
+			Energy =     -21.9721101794115974
+			Energy =     -21.9721101794112883
+			Energy =     -21.9721101798630691
+			Energy =     -21.9721101798631295
+			Energy =     -21.9721101802718053
+			Energy =     -21.9721101802719048
+			Energy =     -21.9721101808409003
+			Energy =     -21.9721101813297537
+			Energy =     -21.9721101817766176
+			Energy =     -21.9721101822233997
+			Energy =     -21.9721101835368735
+			Energy =     -21.9721101840924540
+			Energy =     -21.9721101848285159
+			Energy =     -21.9721101852796892
+			Energy =     -21.9721101859351506
+			Energy =     -21.9721101865252031
+			Energy =     -21.9721101868869368
+			Energy =     -21.9721101875238070
+			Energy =     -21.9721101888165222
+			Energy =     -21.9721101896688893
+			Energy =     -21.9721101903888787
+			Energy =     -21.9721101911176042
+			Energy =     -21.9721101915622938
+			Energy =     -21.9721101924842230
+			Energy =     -21.9721101929987341
+			Energy =     -21.9721101929988265
+			Energy =     -21.9721101933140126
+			Energy =     -21.9721101933141156
+			Energy =     -21.9721101933142720
+			Energy =     -21.9721101933141938
+			Energy =     -21.9721101933141725
+			Energy =     -21.9721101933141725
+			Energy =     -21.9721101933143323
+			Energy =     -21.9721101933144709
+			Energy =     -21.9721101933141441
+			Energy =     -21.9721101933140446
+			Energy =     -21.9721101933140126
+			Energy =     -21.9721101933139948
+			Energy =     -21.9721101933140268
+	====================================================================================================
+		SWEEP ITERATION [    1 ] FINISHED
+			Sweep Energy =     -21.9721101933144709 ( delta E = -1.19e-07 ) 
+	====================================================================================================
+
+	====================================================================================================
+		SWEEP ITERATION [    2 ] 
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -21.9721101933140375
+			Energy =     -21.9721101933140375
+			Energy =     -21.9721101933140410
+			Energy =     -21.9721101933140481
+			Energy =     -21.9721101933140588
+			Energy =     -21.9721101933141654
+			Energy =     -21.9721101933145491
+			Energy =     -21.9721101933143821
+			Energy =     -21.9721101933143750
+			Energy =     -21.9721101933142791
+			Energy =     -21.9721101933141867
+			Energy =     -21.9721101933141369
+			Energy =     -21.9721101933141725
+			Energy =     -21.9721101933140694
+			Energy =     -21.9721101933143643
+			Energy =     -21.9721101933142222
+			Energy =     -21.9721101933140801
+			Energy =     -21.9721101933141831
+			Energy =     -21.9721101933141121
+			Energy =     -21.9721101936845606
+			Energy =     -21.9721101940086605
+			Energy =     -21.9721101943573913
+			Energy =     -21.9721101948145332
+			Energy =     -21.9721101948146043
+			Energy =     -21.9721101948145403
+			Energy =     -21.9721101948144764
+			Energy =     -21.9721101948146718
+			Energy =     -21.9721101948143627
+			Energy =     -21.9721101948145296
+			Energy =     -21.9721101948142845
+			Energy =     -21.9721101951381854
+			Energy =     -21.9721101951379936
+			Energy =     -21.9721101951380078
+			Energy =     -21.9721101951381286
+			Energy =     -21.9721101951382423
+			Energy =     -21.9721101951379900
+			Energy =     -21.9721101951383311
+			Energy =     -21.9721101951383666
+			Energy =     -21.9721101951383488
+			Energy =     -21.9721101951381783
+			Energy =     -21.9721101951383346
+			Energy =     -21.9721101951382352
+			Energy =     -21.9721101951383275
+			Energy =     -21.9721101951383133
+			Energy =     -21.9721101951382174
+			Energy =     -21.9721101951381357
+			Energy =     -21.9721101951380575
+			Energy =     -21.9721101951380682
+			Energy =     -21.9721101951380611
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			Energy =     -21.9721101951380611
+			Energy =     -21.9721101951380646
+			Energy =     -21.9721101951380540
+			Energy =     -21.9721101951380824
+			Energy =     -21.9721101951381215
+			Energy =     -21.9721101951382778
+			Energy =     -21.9721101951383275
+			Energy =     -21.9721101951382138
+			Energy =     -21.9721101951382174
+			Energy =     -21.9721101951382636
+			Energy =     -21.9721101951382316
+			Energy =     -21.9721101951382707
+			Energy =     -21.9721101951383062
+			Energy =     -21.9721101951381321
+			Energy =     -21.9721101951380575
+			Energy =     -21.9721101951378479
+			Energy =     -21.9721101951380042
+			Energy =     -21.9721101951381357
+			Energy =     -21.9721101951382387
+			Energy =     -21.9721101951382849
+			Energy =     -21.9721101951382174
+			Energy =     -21.9721101951382529
+			Energy =     -21.9721101951381392
+			Energy =     -21.9721101951381996
+			Energy =     -21.9721101951380433
+			Energy =     -21.9721101951381108
+			Energy =     -21.9721101951381819
+			Energy =     -21.9721101951383062
+			Energy =     -21.9721101951381854
+			Energy =     -21.9721101951383702
+			Energy =     -21.9721101951384519
+			Energy =     -21.9721101955372475
+			Energy =     -21.9721101955373328
+			Energy =     -21.9721101955375921
+			Energy =     -21.9721101955374571
+			Energy =     -21.9721101955375495
+			Energy =     -21.9721101955373825
+			Energy =     -21.9721101955373683
+			Energy =     -21.9721101955373115
+			Energy =     -21.9721101955373328
+			Energy =     -21.9721101955374714
+			Energy =     -21.9721101955374500
+			Energy =     -21.9721101955375744
+			Energy =     -21.9721101955375389
+			Energy =     -21.9721101955374039
+			Energy =     -21.9721101955372831
+			Energy =     -21.9721101955373079
+			Energy =     -21.9721101955372937
+			Energy =     -21.9721101955372937
+	====================================================================================================
+		SWEEP ITERATION [    2 ] FINISHED
+			Sweep Energy =     -21.9721101955375921 ( delta E = -2.22e-09 ) 
+	====================================================================================================
+
+	====================================================================================================
+		DMRG-LR CALCULATION FOR EXCITED STATE 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   0 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  19
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 49]: 
+	perform Davidson step at site[ 48]: 
+	perform Davidson step at site[ 47]: 
+	perform Davidson step at site[ 46]: 
+	perform Davidson step at site[ 45]: 
+	perform Davidson step at site[ 44]: 
+	perform Davidson step at site[ 43]: 
+	perform Davidson step at site[ 42]: 
+	perform Davidson step at site[ 41]: 
+	perform Davidson step at site[ 40]: 
+	perform Davidson step at site[ 39]: 
+	perform Davidson step at site[ 38]: 
+	perform Davidson step at site[ 37]: 
+	perform Davidson step at site[ 36]: 
+	perform Davidson step at site[ 35]: 
+	perform Davidson step at site[ 34]: 
+	perform Davidson step at site[ 33]: 
+	perform Davidson step at site[ 32]: 
+	perform Davidson step at site[ 31]: 
+	perform Davidson step at site[ 30]: 
+	perform Davidson step at site[ 29]: 
+	perform Davidson step at site[ 28]: 
+	perform Davidson step at site[ 27]: 
+	perform Davidson step at site[ 26]: 
+	perform Davidson step at site[ 25]: 
+	perform Davidson step at site[ 24]: 
+	perform Davidson step at site[ 23]: 
+	perform Davidson step at site[ 22]: 
+	perform Davidson step at site[ 21]: 
+	perform Davidson step at site[ 20]: 
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =     347.3057 sec. 
+	====================================================================================================
+			Energy[ 1] =     -19.0480174439723555 ( R-norm[ 1] =      20.2768858589865637 ) 
+			Energy[ 2] =     -18.9338385276064542 ( R-norm[ 2] =      16.9842414539888793 ) 
+			Energy[ 3] =     -18.8143607334553593 ( R-norm[ 3] =      14.7779961738094521 ) 
+			Energy[ 4] =     -18.4700589933192809 ( R-norm[ 4] =       8.7486194134062618 ) 
+			Energy[ 5] =     -18.4379521380624993 ( R-norm[ 5] =      12.2051290475077110 ) 
+			Energy[ 6] =     -18.4101090641994034 ( R-norm[ 6] =       6.8665929658683922 ) 
+			Energy[ 7] =     -18.3786478108481930 ( R-norm[ 7] =       8.5404776026967948 ) 
+			Energy[ 8] =     -18.3494706373782215 ( R-norm[ 8] =       5.3678293021637922 ) 
+			Energy[ 9] =     -18.3280039729956705 ( R-norm[ 9] =       5.7209103553606440 ) 
+			Energy[10] =     -18.3120359456198933 ( R-norm[10] =       5.2929151437929844 ) 
+			Energy[11] =     -18.2995683685645254 ( R-norm[11] =       4.7673299609170563 ) 
+			Energy[12] =     -18.2815607613166335 ( R-norm[12] =       4.6779451878324165 ) 
+			Energy[13] =     -18.2710460635563550 ( R-norm[13] =       4.3831710258471981 ) 
+			Energy[14] =     -18.2619793281897422 ( R-norm[14] =       4.8956553669653999 ) 
+			Energy[15] =     -18.2511119526759060 ( R-norm[15] =       4.8155147601190382 ) 
+			Energy[16] =     -18.2435727987942045 ( R-norm[16] =       3.8123941279925444 ) 
+			Energy[17] =     -18.2393084406077897 ( R-norm[17] =       3.9986920823793510 ) 
+			Energy[18] =     -18.2304677599042542 ( R-norm[18] =       3.6608148716463371 ) 
+			Energy[19] =     -18.2230703860948537 ( R-norm[19] =       3.7161007791057741 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  38
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 20]: 
+	perform Davidson step at site[ 21]: 
+	perform Davidson step at site[ 22]: 
+	perform Davidson step at site[ 23]: 
+	perform Davidson step at site[ 24]: 
+	perform Davidson step at site[ 25]: 
+	perform Davidson step at site[ 26]: 
+	perform Davidson step at site[ 27]: 
+	perform Davidson step at site[ 28]: 
+	perform Davidson step at site[ 29]: 
+	perform Davidson step at site[ 30]: 
+	perform Davidson step at site[ 31]: 
+	perform Davidson step at site[ 32]: 
+	perform Davidson step at site[ 33]: 
+	perform Davidson step at site[ 34]: 
+	perform Davidson step at site[ 35]: 
+	perform Davidson step at site[ 36]: 
+	perform Davidson step at site[ 37]: 
+	perform Davidson step at site[ 38]: 
+	perform Davidson step at site[ 39]: 
+	perform Davidson step at site[ 40]: 
+	perform Davidson step at site[ 41]: 
+	perform Davidson step at site[ 42]: 
+	perform Davidson step at site[ 43]: 
+	perform Davidson step at site[ 44]: 
+	perform Davidson step at site[ 45]: 
+	perform Davidson step at site[ 46]: 
+	perform Davidson step at site[ 47]: 
+	perform Davidson step at site[ 48]: 
+	perform Davidson step at site[ 49]: 
+	total time per sweep       =     864.4833 sec. 
+	====================================================================================================
+			Energy[ 1] =     -19.5369115430838534 ( R-norm[ 1] =      36.3126017376224155 ) 
+			Energy[ 2] =     -19.1308305203313047 ( R-norm[ 2] =      31.0929200712053486 ) 
+			Energy[ 3] =     -19.0641047410566422 ( R-norm[ 3] =      19.9640109081100903 ) 
+			Energy[ 4] =     -18.9947237005267837 ( R-norm[ 4] =      21.7888747214232552 ) 
+			Energy[ 5] =     -18.9504390219306345 ( R-norm[ 5] =      16.6058551249983637 ) 
+			Energy[ 6] =     -18.8317861041476853 ( R-norm[ 6] =      14.8140359523264920 ) 
+			Energy[ 7] =     -18.7906352705144748 ( R-norm[ 7] =      10.2282969466174514 ) 
+			Energy[ 8] =     -18.6400798937169796 ( R-norm[ 8] =      15.6042437879873503 ) 
+			Energy[ 9] =     -18.5315118873030364 ( R-norm[ 9] =       7.0398501534785334 ) 
+			Energy[10] =     -18.4899659132558796 ( R-norm[10] =       8.7383721651527466 ) 
+			Energy[11] =     -18.4634841865376700 ( R-norm[11] =       8.3242992452571372 ) 
+			Energy[12] =     -18.4550599122318744 ( R-norm[12] =      10.9035447536008370 ) 
+			Energy[13] =     -18.4369831533404600 ( R-norm[13] =       6.8994021408927502 ) 
+			Energy[14] =     -18.3985885876135029 ( R-norm[14] =       6.2775495249968651 ) 
+			Energy[15] =     -18.3905323753498600 ( R-norm[15] =       7.3774666949417558 ) 
+			Energy[16] =     -18.3695150073029865 ( R-norm[16] =       5.0806622023116654 ) 
+			Energy[17] =     -18.3531701640351343 ( R-norm[17] =       5.0485523612862897 ) 
+			Energy[18] =     -18.3506703110532783 ( R-norm[18] =       5.6111492295199543 ) 
+			Energy[19] =     -18.3416350793831242 ( R-norm[19] =       5.4077472217812010 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  57
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 49]: 
+	perform Davidson step at site[ 48]: 
+	perform Davidson step at site[ 47]: 
+	perform Davidson step at site[ 46]: 
+	perform Davidson step at site[ 45]: 
+	perform Davidson step at site[ 44]: 
+	perform Davidson step at site[ 43]: 
+	perform Davidson step at site[ 42]: 
+	perform Davidson step at site[ 41]: 
+	perform Davidson step at site[ 40]: 
+	perform Davidson step at site[ 39]: 
+	perform Davidson step at site[ 38]: 
+	perform Davidson step at site[ 37]: 
+	perform Davidson step at site[ 36]: 
+	perform Davidson step at site[ 35]: 
+	perform Davidson step at site[ 34]: 
+	perform Davidson step at site[ 33]: 
+	perform Davidson step at site[ 32]: 
+	perform Davidson step at site[ 31]: 
+	perform Davidson step at site[ 30]: 
+	perform Davidson step at site[ 29]: 
+	perform Davidson step at site[ 28]: 
+	perform Davidson step at site[ 27]: 
+	perform Davidson step at site[ 26]: 
+	perform Davidson step at site[ 25]: 
+	perform Davidson step at site[ 24]: 
+	perform Davidson step at site[ 23]: 
+	perform Davidson step at site[ 22]: 
+	perform Davidson step at site[ 21]: 
+	perform Davidson step at site[ 20]: 
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =    1162.4218 sec. 
+	====================================================================================================
+			Energy[ 1] =     -19.8122881690262425 ( R-norm[ 1] =      24.7692214192842819 ) 
+			Energy[ 2] =     -19.6283726396432066 ( R-norm[ 2] =      26.7427175625037776 ) 
+			Energy[ 3] =     -19.5282076144233407 ( R-norm[ 3] =      30.9125642378068832 ) 
+			Energy[ 4] =     -19.5070740342723887 ( R-norm[ 4] =      24.4531884467955258 ) 
+			Energy[ 5] =     -19.1412799886609371 ( R-norm[ 5] =      17.3960898346292652 ) 
+			Energy[ 6] =     -19.1246565878758972 ( R-norm[ 6] =      22.1419317775426521 ) 
+			Energy[ 7] =     -18.9976223140492309 ( R-norm[ 7] =      20.6437373364452803 ) 
+			Energy[ 8] =     -18.9215759805121166 ( R-norm[ 8] =       7.9689107074781189 ) 
+			Energy[ 9] =     -18.9106310224814145 ( R-norm[ 9] =       7.9567090954707531 ) 
+			Energy[10] =     -18.8576945403963059 ( R-norm[10] =       6.9519035154086728 ) 
+			Energy[11] =     -18.7938984403504676 ( R-norm[11] =      10.6789511258259342 ) 
+			Energy[12] =     -18.7727530802089895 ( R-norm[12] =       9.0203349249007498 ) 
+			Energy[13] =     -18.7067963753466628 ( R-norm[13] =       7.3736804663621864 ) 
+			Energy[14] =     -18.6866992389233140 ( R-norm[14] =       5.8448164476737414 ) 
+			Energy[15] =     -18.6624130741877181 ( R-norm[15] =       6.1941907242185232 ) 
+			Energy[16] =     -18.6425404131273069 ( R-norm[16] =      14.8277530605693233 ) 
+			Energy[17] =     -18.5961970607434672 ( R-norm[17] =       6.9753363202547343 ) 
+			Energy[18] =     -18.5828567507632485 ( R-norm[18] =       7.5165432344209542 ) 
+			Energy[19] =     -18.5627729091429821 ( R-norm[19] =       5.5687810237640019 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   0 FINISHED: CONVERGED ROOTS =  0
+	====================================================================================================
+		DAVIDSON MACRO ITERATION   1 STARTED : 
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  19
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 20]: 
+	perform Davidson step at site[ 21]: 
+	perform Davidson step at site[ 22]: 
+	perform Davidson step at site[ 23]: 
+	perform Davidson step at site[ 24]: 
+	perform Davidson step at site[ 25]: 
+	perform Davidson step at site[ 26]: 
+	perform Davidson step at site[ 27]: 
+	perform Davidson step at site[ 28]: 
+	perform Davidson step at site[ 29]: 
+	perform Davidson step at site[ 30]: 
+	perform Davidson step at site[ 31]: 
+	perform Davidson step at site[ 32]: 
+	perform Davidson step at site[ 33]: 
+	perform Davidson step at site[ 34]: 
+	perform Davidson step at site[ 35]: 
+	perform Davidson step at site[ 36]: 
+	perform Davidson step at site[ 37]: 
+	perform Davidson step at site[ 38]: 
+	perform Davidson step at site[ 39]: 
+	perform Davidson step at site[ 40]: 
+	perform Davidson step at site[ 41]: 
+	perform Davidson step at site[ 42]: 
+	perform Davidson step at site[ 43]: 
+	perform Davidson step at site[ 44]: 
+	perform Davidson step at site[ 45]: 
+	perform Davidson step at site[ 46]: 
+	perform Davidson step at site[ 47]: 
+	perform Davidson step at site[ 48]: 
+	perform Davidson step at site[ 49]: 
+	total time per sweep       =     791.8507 sec. 
+	====================================================================================================
+			Energy[ 1] =     -19.8122982826545773 ( R-norm[ 1] =      24.7690817874416176 ) 
+			Energy[ 2] =     -19.6283811025609687 ( R-norm[ 2] =      26.7423212514492583 ) 
+			Energy[ 3] =     -19.5282106494525856 ( R-norm[ 3] =      30.9108141881613179 ) 
+			Energy[ 4] =     -19.5070830746502146 ( R-norm[ 4] =      24.4549082658772718 ) 
+			Energy[ 5] =     -19.1412930491198239 ( R-norm[ 5] =      17.3855729971392066 ) 
+			Energy[ 6] =     -19.1246602300053681 ( R-norm[ 6] =      22.1522038328697022 ) 
+			Energy[ 7] =     -18.9976222425491024 ( R-norm[ 7] =      20.6438449886488620 ) 
+			Energy[ 8] =     -18.9215823266342582 ( R-norm[ 8] =       7.9704330593303689 ) 
+			Energy[ 9] =     -18.9106355117299003 ( R-norm[ 9] =       7.9553298808635411 ) 
+			Energy[10] =     -18.8577038920462670 ( R-norm[10] =       6.9527154523884436 ) 
+			Energy[11] =     -18.7939001301369295 ( R-norm[11] =      10.6787736498484325 ) 
+			Energy[12] =     -18.7727628270019586 ( R-norm[12] =       9.0202350356415408 ) 
+			Energy[13] =     -18.7067934325880785 ( R-norm[13] =       7.3727079313030988 ) 
+			Energy[14] =     -18.6867007592610044 ( R-norm[14] =       5.8461684963713498 ) 
+			Energy[15] =     -18.6624234815121461 ( R-norm[15] =       6.1929719575285773 ) 
+			Energy[16] =     -18.6425415862570816 ( R-norm[16] =      14.8276289440233793 ) 
+			Energy[17] =     -18.5962086677734746 ( R-norm[17] =       6.9758770055713226 ) 
+			Energy[18] =     -18.5828680962242814 ( R-norm[18] =       7.5164245859024801 ) 
+			Energy[19] =     -18.5627762200212629 ( R-norm[19] =       5.5682561206415917 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  38
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[ 49]: 
+	perform Davidson step at site[ 48]: 
+	perform Davidson step at site[ 47]: 
+	perform Davidson step at site[ 46]: 
+	perform Davidson step at site[ 45]: 
+	perform Davidson step at site[ 44]: 
+	perform Davidson step at site[ 43]: 
+	perform Davidson step at site[ 42]: 
+	perform Davidson step at site[ 41]: 
+	perform Davidson step at site[ 40]: 
+	perform Davidson step at site[ 39]: 
+	perform Davidson step at site[ 38]: 
+	perform Davidson step at site[ 37]: 
+	perform Davidson step at site[ 36]: 
+	perform Davidson step at site[ 35]: 
+	perform Davidson step at site[ 34]: 
+	perform Davidson step at site[ 33]: 
+	perform Davidson step at site[ 32]: 
+	perform Davidson step at site[ 31]: 
+	perform Davidson step at site[ 30]: 
+	perform Davidson step at site[ 29]: 
+	perform Davidson step at site[ 28]: 
+	perform Davidson step at site[ 27]: 
+	perform Davidson step at site[ 26]: 
+	perform Davidson step at site[ 25]: 
+	perform Davidson step at site[ 24]: 
+	perform Davidson step at site[ 23]: 
+	perform Davidson step at site[ 22]: 
+	perform Davidson step at site[ 21]: 
+	perform Davidson step at site[ 20]: 
+	perform Davidson step at site[ 19]: 
+	perform Davidson step at site[ 18]: 
+	perform Davidson step at site[ 17]: 
+	perform Davidson step at site[ 16]: 
+	perform Davidson step at site[ 15]: 
+	perform Davidson step at site[ 14]: 
+	perform Davidson step at site[ 13]: 
+	perform Davidson step at site[ 12]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  0]: 
+	total time per sweep       =    1071.9128 sec. 
+	====================================================================================================
+			Energy[ 1] =     -20.3193398344877600 ( R-norm[ 1] =      18.7459168338633901 ) 
+			Energy[ 2] =     -20.1699718586350016 ( R-norm[ 2] =      22.1061525304748265 ) 
+			Energy[ 3] =     -20.0274487798889922 ( R-norm[ 3] =      17.9508418310090079 ) 
+			Energy[ 4] =     -19.5621493706960443 ( R-norm[ 4] =      29.3988934507512205 ) 
+			Energy[ 5] =     -19.4895009201834171 ( R-norm[ 5] =       6.4043011461249009 ) 
+			Energy[ 6] =     -19.4684864349824771 ( R-norm[ 6] =      16.0850310516888300 ) 
+			Energy[ 7] =     -19.3780463577848963 ( R-norm[ 7] =       6.2346963310791246 ) 
+			Energy[ 8] =     -19.3395708670597060 ( R-norm[ 8] =      10.2417440518849485 ) 
+			Energy[ 9] =     -19.2771140266480856 ( R-norm[ 9] =       6.6822319469869811 ) 
+			Energy[10] =     -19.1959427150784698 ( R-norm[10] =      10.2599699403871316 ) 
+			Energy[11] =     -19.1413607380995963 ( R-norm[11] =      25.4228997349424297 ) 
+			Energy[12] =     -19.1304311244967167 ( R-norm[12] =      13.2717033724334197 ) 
+			Energy[13] =     -19.0242590870849035 ( R-norm[13] =      11.7291125484428900 ) 
+			Energy[14] =     -18.9871448770951190 ( R-norm[14] =      18.3206478350142774 ) 
+			Energy[15] =     -18.9529663698346624 ( R-norm[15] =       4.9060722391598315 ) 
+			Energy[16] =     -18.9507328003205515 ( R-norm[16] =       7.6418458943770400 ) 
+			Energy[17] =     -18.9117138486160137 ( R-norm[17] =       4.7927647869583083 ) 
+			Energy[18] =     -18.8820739822139210 ( R-norm[18] =       4.8466519356567019 ) 
+			Energy[19] =     -18.8208468553060264 ( R-norm[19] =       5.0566849345930827 ) 
+	====================================================================================================
+	====================================================================================================
+		DAVIDSON MICRO ITERATION: DIMENSION =  57
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	----------------------------------------------------------------------------------------------------
+	perform Davidson step at site[  0]: 
+	perform Davidson step at site[  1]: 
+	perform Davidson step at site[  2]: 
+	perform Davidson step at site[  3]: 
+	perform Davidson step at site[  4]: 
+	perform Davidson step at site[  5]: 
+	perform Davidson step at site[  6]: 
+	perform Davidson step at site[  7]: 
+	perform Davidson step at site[  8]: 
+	perform Davidson step at site[  9]: 
+	perform Davidson step at site[ 10]: 
+	perform Davidson step at site[ 11]: 
+	perform Davidson step at site[ 12]: 

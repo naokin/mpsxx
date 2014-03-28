@@ -1,0 +1,10 @@
+simple DMRG code for spin-1/2 chain implemented through dense-tensor contraction engine by Naoki
+
+dmrg.C
++ one-site DMRG variational optimization
+
+tdmrg.C
++ time-dependent DMRG algorithm for real- and imaginary-time evolutions
+
+
+
