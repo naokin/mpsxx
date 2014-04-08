@@ -88,10 +88,7 @@ namespace mpsxx {
     * @param D cutoff block dimension (max dimension of each quantumsector)
     */
    template<class Q>
-      void calc_qdim(int L,const Q &qt,const Qshapes<Q> &qp,std::vector< Qshapes<Q> > &qr,std::vector<Dshapes> &dr,int D){
-
-         //shape of the physical index
-         Dshapes dp(qp.size(),1);
+      void calc_qdim(int L,const Q &qt,const Qshapes<Q> &qp,const Dshapes &dp,std::vector< Qshapes<Q> > &qr,std::vector<Dshapes> &dr,int D){
 
          qr[0] = qp;
          dr[0] = dp;
@@ -307,7 +304,7 @@ namespace mpsxx {
          std::vector< Qshapes<Q> > qr(L);
          std::vector<Dshapes> dr(L);
 
-         calc_qdim(L,qt,qp,qr,dr,D);
+         calc_qdim(L,qt,qp,dp,qr,dr,D);
 
          //now allocate the tensors!
          TVector<Qshapes<Q>,3> qshape;
@@ -343,6 +340,60 @@ namespace mpsxx {
          return A;
 
       }
+
+   /**
+    * create an MPS chain of length L initialized randomly on total Q number qt, with physical quantumnumber qp
+    * @param L length of the chain
+    * @param qt total quantumnumber
+    * @param dp Dshapes object containing the dimensions associated with the physical quantumnumbers
+    * @param qp Qshapes object containing the physical quantumnumbers
+    * @param D maximal dimension of the quantum blocks
+    * @param f_random_generator predefined function which calls a random number generator
+    * @return the MPS chain randomly filled and with correct quantumnumbers and dimensions
+    */
+   template<typename T,class Q>
+      MPS<T,Q> create(int L,const Q &qt,const Qshapes<Q> &qp,const Dshapes &dp,int D,const function<T(void)>& f_random_generator){ 
+
+         std::vector< Qshapes<Q> > qr(L);
+         std::vector<Dshapes> dr(L);
+
+         calc_qdim(L,qt,qp,dp,qr,dr,D);
+
+         //now allocate the tensors!
+         TVector<Qshapes<Q>,3> qshape;
+         TVector<Dshapes,3> dshape;
+
+         //first 0
+         Qshapes<Q> ql(1,Q::zero());
+         Dshapes dl(ql.size(),1);
+
+         qshape = make_array(ql,qp,-qr[0]);
+         dshape = make_array(dl,dp,dr[0]);
+
+         //construct an MPS
+         MPS<T,Q> A(L);
+
+         A[0].resize(Q::zero(),qshape,dshape);
+         A[0].generate(f_random_generator);
+
+         //then the  middle ones
+         for(int i = 1;i < L;++i){
+
+            ql = qr[i - 1];
+            dl = dr[i - 1];
+
+            qshape = make_array(ql,qp,-qr[i]);
+            dshape = make_array(dl,dp,dr[i]);
+
+            A[i].resize(Q::zero(),qshape,dshape);
+            A[i].generate(f_random_generator);
+
+         }
+
+         return A;
+
+      }
+
 
    /**
     * create an MPS chain of length L initialized on a contant number on total Q number qt, with physical quantumnumber qp
