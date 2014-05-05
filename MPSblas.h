@@ -595,7 +595,7 @@ namespace mpsxx {
          qmerge[0] = tmp1.qshape(N-1);
          dmerge[0] = tmp1.dshape(N-1);
 
-         QSTmergeInfo<1> info(qmerge,dmerge);
+         QSTmergeInfo<1,Q> info(qmerge,dmerge);
 
          //then merge
          Y[0].clear();
@@ -918,7 +918,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info(qmerge,dmerge);
+            QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
             QSTArray<T,4,Q> tmp;
             QSTmerge(info,loc,tmp);
@@ -974,7 +974,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info(qmerge,dmerge);
+            QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
             QSTArray<T,4,Q> tmp;
             QSTmerge(loc,info,tmp);
@@ -1056,7 +1056,7 @@ namespace mpsxx {
 
                }
 
-               QSTmergeInfo<2> info(qmerge,dmerge);
+               QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
                //clear the mrows object first
                mrows.clear();
@@ -1110,7 +1110,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info1(qmerge1,dmerge1);
+            QSTmergeInfo<2,Q> info1(qmerge1,dmerge1);
 
             //clear the mrows object first
             mrows.clear();
@@ -1147,7 +1147,7 @@ namespace mpsxx {
             qmerge2[0] = tmp1.qshape(2);
             dmerge2[0] = tmp1.dshape(2);
 
-            QSTmergeInfo<1> info2(qmerge2,dmerge2);
+            QSTmergeInfo<1,Q> info2(qmerge2,dmerge2);
 
             //then merge
             Y[0].clear();
@@ -1360,7 +1360,7 @@ namespace mpsxx {
 
          }
 
-         QSTmergeInfo<2> info(qmerge,dmerge);
+         QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
          //clear the mrows object first
          mrows.clear();
@@ -1497,7 +1497,7 @@ namespace mpsxx {
 
                }
 
-               QSTmergeInfo<2> info(qmerge,dmerge);
+               QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
                //clear the mrows object first
                mrows.clear();
@@ -1556,7 +1556,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info1(qmerge1,dmerge1);
+            QSTmergeInfo<2,Q> info1(qmerge1,dmerge1);
 
             //clear the mrows object first
             mrows.clear();
@@ -1594,7 +1594,7 @@ namespace mpsxx {
             qmerge2[0] = tmp1.qshape(3);
             dmerge2[0] = tmp1.dshape(3);
 
-            QSTmergeInfo<1> info2(qmerge2,dmerge2);
+            QSTmergeInfo<1,Q> info2(qmerge2,dmerge2);
 
             //then merge
             C[0].clear();
@@ -1986,7 +1986,7 @@ namespace mpsxx {
 
          for(int i = 0;i < mpx.size();++i){
 
-            char name[50];
+            char name[100];
 
             sprintf(name,"%s/%d.mpx",filename,i);
 
