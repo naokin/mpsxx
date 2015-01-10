@@ -8,14 +8,14 @@ BLASLIB=-L/home100/opt/intel/mkl/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_s
 BOOSTINC=-I/homec/naokin/boost/1.54.0/include
 BOOSTLIB=-L/homec/naokin/boost/1.54.0/lib -lboost_serialization
 
-BTASDIR= $(HOME)/btas
+BTASDIR= $(HOME)/devel/btas
 BTASINC=-I. -I.. -I$(BTASDIR)/include
 BTASLIB= $(BTASDIR)/lib/libbtas.a
 
 INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)
 
-SRC_DMRG = dmrg.C main.C btas_template_specialize.C ../driver/fileio.C
+SRC_DMRG = dmrg.C main.C ../driver/fileio.C
 
 OBJ_DMRG = $(SRC_DMRG:.C=.o)
 
@@ -28,4 +28,4 @@ dmrg	: $(OBJ_DMRG)
 	$(CXX) $(CXXFLAGS) -o dmrg.x $(OBJ_DMRG) $(BTASLIB) $(LIBRARYFLAGS)
 
 clean	:
-	rm *.o; rm *.x; rm *.a;
+	rm *.o; rm *.x; rm *.a; rm ../driver/*.o;

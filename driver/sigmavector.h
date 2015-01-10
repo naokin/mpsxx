@@ -24,11 +24,11 @@ void compute_sigmavector
 //! Compute sigmavector: < phi | = < psi | H^*
 template<class Q>
 void compute_sigmavector_conj
-(const btas::QSDArray<4>& mpo0,
- const btas::QSDArray<3>& lopr,
- const btas::QSDArray<3>& ropr,
- const btas::QSDArray<3>& wfn0,
-       btas::QSDArray<3>& sgv0)
+(const btas::QSDArray<4, Q>& mpo0,
+ const btas::QSDArray<3, Q>& lopr,
+ const btas::QSDArray<3, Q>& ropr,
+ const btas::QSDArray<3, Q>& wfn0,
+       btas::QSDArray<3, Q>& sgv0)
 {
   btas::QSDArray<4, Q> scr1;
   btas::QSDgemm(btas::Trans, btas::ConjTrans, 1.0, lopr, wfn0, 1.0, scr1);

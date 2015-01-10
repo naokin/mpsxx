@@ -15,11 +15,11 @@ void canonicalize
   btas::SDArray<1> s;
   if(forward) {
     btas::QSDgesvd(btas::LeftArrow,  wfn0, s, mps0, wfn1, M);
-    btas::SDdidm(s, wfn1);
+    btas::Dimm(s, wfn1);
   }
   else {
     btas::QSDgesvd(btas::RightArrow, wfn0, s, wfn1, mps0, M);
-    btas::SDdimd(wfn1, s);
+    btas::Dimm(wfn1, s);
   }
 }
 
@@ -33,11 +33,11 @@ void canonicalize
   btas::SDArray<1> s;
   if(forward) {
     btas::QSDgesvd(btas::LeftArrow,  wfnx, s, mps0, wfn1, M);
-    btas::SDdidm(s, wfn1);
+    btas::Dimm(s, wfn1);
   }
   else {
     btas::QSDgesvd(btas::RightArrow, wfnx, s, wfn1, mps0, M);
-    btas::SDdimd(wfn1, s);
+    btas::Dimm(wfn1, s);
   }
 }
 
@@ -51,11 +51,11 @@ void canonicalize
   btas::SDArray<1> s;
   if(forward) {
     btas::QSDgesvd(btas::LeftArrow,  wfnx, s, mps0, wfn1, M);
-    btas::SDdidm(s, wfn1);
+    btas::Dimm(s, wfn1);
   }
   else {
     btas::QSDgesvd(btas::RightArrow, wfnx, s, wfn1, mps0, M);
-    btas::SDdimd(wfn1, s);
+    btas::Dimm(wfn1, s);
   }
 }
 

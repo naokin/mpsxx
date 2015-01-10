@@ -3,8 +3,6 @@
 #include "dmrg.h"
 #include "initialize_mpstates.h"
 
-#include "btas_template_specialize.h"
-
 /**
  * simple random number generator
 */
@@ -27,8 +25,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   const size_t N = input.N_sites;
   const int    M = input.N_max_states;
 
-  MPO<fermionic::Quantum> mpos(N);
-  MPS<fermionic::Quantum> mpss(N);
+  MPO<double, fermionic::Quantum> mpos(N);
+  MPS<double, fermionic::Quantum> mpss(N);
 
   if(!input.restart)
     initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);

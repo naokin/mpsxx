@@ -175,7 +175,7 @@ std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
  */
 template<class Q, class Generator>
 void initialize_mpstates
-(MPO<Q>& mpos, MPS<Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
+(MPO<double, Q>& mpos, MPS<double, Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
 {
   using std::cout;
   using std::endl;
@@ -241,7 +241,7 @@ void initialize_mpstates
   d_shape = btas::make_array( dl, dn[N-1], dr);
 
   mpss[N-1].resize(qt, q_shape, d_shape, gen); // set qt as a total quantum number of array
-  btas::QSDnormalize(mpss[N-1]);
+  btas::Normalize(mpss[N-1]);
   save(mpss[N-1], get_mpsfile(prefix, WAVEFUNCTION, N-1));
 
   // initial canonicalization
@@ -268,8 +268,8 @@ void initialize_mpstates
     load(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
     btas::QSDArray<3, Q> lmps(mpss[i-1]);
     mpss[i-1].clear();
-    btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, lmps, gaug, 1.0, mpss[i-1]);
-    btas::QSDnormalize(mpss[i-1]);
+    btas::Gemm(btas::NoTrans, btas::NoTrans, 1.0, lmps, gaug, 1.0, mpss[i-1]);
+    btas::Normalize(mpss[i-1]);
     save(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
 
     mpss[i].clear();
