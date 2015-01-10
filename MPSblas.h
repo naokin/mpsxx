@@ -44,7 +44,7 @@ using std::endl;
 using std::ostream;
 using std::complex;
 
-#include <btas/common/blas_cxx_interface.h>
+//#include <btas/common/blas_cxx_interface.h>
 
 #include <btas/common/TVector.h>
 
@@ -52,6 +52,8 @@ using std::complex;
 #include <btas/SPARSE/STConj.h>
 #include <btas/QSPARSE/QSTArray.h>
 #include <btas/QSPARSE/QSTCONTRACT.h>
+
+#include <mpsxx.h>
 
 using namespace btas;
 
@@ -571,7 +573,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(X.size() != Y.size())
-            BTAS_THROW(false, "Error: input MP objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input MP objects do not have the same length!");
 
          int L = X.size();
 
@@ -894,7 +896,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(A.size() != B.size() || A.size() != O.size())
-            BTAS_THROW(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -1025,7 +1027,7 @@ namespace mpsxx {
 
          //first check if length is the same
          if(A.size() != X.size())
-            BTAS_THROW(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          if(abs(beta) < 1.0e-15){
 
@@ -1088,7 +1090,7 @@ namespace mpsxx {
 
             //first check if we can sum these two:
             if(L != Y.size())
-               BTAS_THROW(false, "Error: input objects do not have the same length!");
+               MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
             scal(beta/alpha,Y);
 
@@ -1328,7 +1330,7 @@ namespace mpsxx {
 
          //first check if length is the same
          if(A.size() != X.size())
-            BTAS_THROW(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -1468,7 +1470,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(A.size() != B.size())
-            BTAS_THROW(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -1529,7 +1531,7 @@ namespace mpsxx {
 
             //first check if we can sum these two:
             if(L != C.size())
-               BTAS_THROW(false, "Error: input objects do not have the same length!");
+               MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
             scal(beta/alpha,C);
 

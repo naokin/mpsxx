@@ -9,7 +9,7 @@
 #ifndef _MPSXX_CXX11_PRIME_OPERATOR_H
 #define _MPSXX_CXX11_PRIME_OPERATOR_H 1
 
-#include <btas/TVector.h>
+#include <btas/common/TVector.h>
 #include <btas/QSPARSE/QSDArray.h>
 
 #include <MpSite.h>

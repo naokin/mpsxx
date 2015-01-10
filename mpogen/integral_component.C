@@ -32,8 +32,8 @@ double mpsxx::fermionic::int1e_component
   }
   assert(n == 2);
 
-  int& ix = indxs[0];
-  int& jx = indxs[1];
+  int ix = indxs[0];
+  int jx = indxs[1];
 
   double value = 0.0;
   // get commutation type
@@ -249,10 +249,10 @@ double mpsxx::fermionic::int2e_component
    *      10:   int2e(i,j,k,l) - int2e(i,k,j,l)
    *      11:   int2e(i,k,j,l) - int2e(i,j,l,k)
    */
-  int& ix = indxs[0];
-  int& jx = indxs[1];
-  int& kx = indxs[2];
-  int& lx = indxs[3];
+  int ix = indxs[0];
+  int jx = indxs[1];
+  int kx = indxs[2];
+  int lx = indxs[3];
 //std::cout << "[" << ix << "," << jx << "," << kx << "," << lx << "] :: " << std::flush;
 
   double value = 0.0;

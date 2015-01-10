@@ -59,7 +59,7 @@ int main(int argc, char* argv[])
   cout << "\t====================================================================================================" << endl;
   cout << endl;
 
-  MPO<fermionic::Quantum> mpos(Norbs);
+  MPO<double,fermionic::Quantum> mpos(Norbs);
   fermionic::generate_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir, prefix);
 
   cout << endl;

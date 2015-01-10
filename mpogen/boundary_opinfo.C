@@ -108,28 +108,28 @@ void mpsxx::fermionic::boundary_opinfo::reset(size_t L, size_t N, bool _enable_s
     m_bn_ops.insert(std::make_pair((DES_A_DES_B | (ix << INDEX_SHIFT) | ix), nop++));
 
     for(size_t j = 0; j < i; ++j) {
-      size_t iz = ix;
+//    size_t iz = ix;
       size_t jx = loop_indices[j];
-      if(iz > jx) std::swap(iz, jx);
-      m_bn_ops.insert(std::make_pair((CRE_A_CRE_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_A_CRE_B | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_B_CRE_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_B_CRE_B | (iz << INDEX_SHIFT) | jx), nop++));
+//    if(iz > jx) std::swap(iz, jx);
+      m_bn_ops.insert(std::make_pair((CRE_A_CRE_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_A_CRE_B | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_B_CRE_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_B_CRE_B | (ix << INDEX_SHIFT) | jx), nop++));
 
-      m_bn_ops.insert(std::make_pair((CRE_A_DES_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_A_DES_B | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_B_DES_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((CRE_B_DES_B | (iz << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_A_DES_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_A_DES_B | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_B_DES_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((CRE_B_DES_B | (ix << INDEX_SHIFT) | jx), nop++));
 
-      m_bn_ops.insert(std::make_pair((DES_A_CRE_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_A_CRE_B | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_B_CRE_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_B_CRE_B | (iz << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_A_CRE_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_A_CRE_B | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_B_CRE_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_B_CRE_B | (ix << INDEX_SHIFT) | jx), nop++));
 
-      m_bn_ops.insert(std::make_pair((DES_A_DES_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_A_DES_B | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_B_DES_A | (iz << INDEX_SHIFT) | jx), nop++));
-      m_bn_ops.insert(std::make_pair((DES_B_DES_B | (iz << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_A_DES_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_A_DES_B | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_B_DES_A | (ix << INDEX_SHIFT) | jx), nop++));
+      m_bn_ops.insert(std::make_pair((DES_B_DES_B | (ix << INDEX_SHIFT) | jx), nop++));
     }
   }
 

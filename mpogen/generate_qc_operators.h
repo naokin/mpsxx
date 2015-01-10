@@ -13,7 +13,7 @@ namespace mpsxx     {
    namespace fermionic {
 
       void generate_qc_operators
-         (MPO<Quantum>& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir = false, const std::string& prefix = "./");
+         (MPO<double,Quantum>& mpos, const btas::DArray<2>& oneint, const btas::DArray<4>& twoint, bool enable_swap_sweep_dir = false, const std::string& prefix = "./");
 
    }; // namespace fermionic
 
