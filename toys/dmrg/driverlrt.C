@@ -2,9 +2,9 @@
 
 #include <cmath>
 #include <algorithm>
-#include <btas/Dblas.h>
-#include <btas/Dlapack.h>
-#include <btas/Dpermute.h>
+#include <legacy/Dblas.h>
+#include <legacy/Dlapack.h>
+#include <legacy/Dpermute.h>
 #include "davidson.h"
 #include "driver.h"
 #include "driverlrt.h"

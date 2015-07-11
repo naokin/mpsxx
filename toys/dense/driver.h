@@ -1,8 +1,8 @@
 #ifndef _PROTOTYPE_DRIVER_H
 #define _PROTOTYPE_DRIVER_H 1
 
-#include <btas/DArray.h>
-#include <btas/Dlapack.h>
+#include <legacy/DArray.h>
+#include <legacy/Dlapack.h>
 
 namespace prototype
 {

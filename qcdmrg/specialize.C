@@ -17,7 +17,7 @@ int main()
 
   fout << "#ifndef _BTAS_DBLAS_TEMPLATE_SPECIALIZE"   << endl;
   fout << "#define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
-  fout << "#include <btas/DENSE/Dblas.h>"             << endl << endl;
+  fout << "#include <legacy/DENSE/Dblas.h>"             << endl << endl;
   fout << "namespace btas {"                          << endl << endl;
   fout << "// specialize for Dblas"                   << endl << endl;
 
@@ -62,7 +62,7 @@ int main()
 
   fout << "#ifndef _BTAS_SDBLAS_TEMPLATE_SPECIALIZE"   << endl;
   fout << "#define _BTAS_SDBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
-  fout << "#include <btas/SPARSE/SDblas.h>"            << endl << endl;
+  fout << "#include <legacy/SPARSE/SDblas.h>"            << endl << endl;
   fout << "namespace btas {"                           << endl << endl;
   fout << "// specialize for SDblas"                   << endl << endl;
 
@@ -108,7 +108,7 @@ int main()
   fout << "#ifndef _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE"   << endl;
   fout << "#define _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE 1" << endl << endl;
   fout << "#include <symmetry/Fermion/Quantum.h>"       << endl;
-  fout << "#include <btas/QSPARSE/QSDblas.h>"           << endl << endl;
+  fout << "#include <legacy/QSPARSE/QSDblas.h>"           << endl << endl;
   fout << "namespace btas {"                            << endl << endl;
   fout << "// specialize for QSDblas"                   << endl << endl;
 

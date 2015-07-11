@@ -2,7 +2,7 @@
 #define PROTOTYPE_DMRG_DRIVERLRT_H
 
 #include <vector>
-#include <btas/DArray.h>
+#include <legacy/DArray.h>
 
 namespace lrt
 {

@@ -2,10 +2,10 @@
 #include <iomanip>
 using namespace std;
 
-#include <btas/Dblas.h>
-#include <btas/Dlapack.h>
-#include <btas/Dcontract.h>
-#include <btas/Ddiagonal.h>
+#include <legacy/Dblas.h>
+#include <legacy/Dlapack.h>
+#include <legacy/Dcontract.h>
+#include <legacy/Ddiagonal.h>
 #include "btas_template_specialize.h"
 
 #include "driver.h"

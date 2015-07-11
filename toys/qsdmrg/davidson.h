@@ -10,8 +10,8 @@
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
-#include <btas/QSDblas.h>
-#include <btas/Dlapack.h>
+#include <legacy/QSDblas.h>
+#include <legacy/Dlapack.h>
 
 #include "btas_template_specialize.h"
 #include "utils.h"

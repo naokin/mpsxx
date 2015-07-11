@@ -12,7 +12,7 @@
 #include <boost/archive/binary_iarchive.hpp>
 
 #include <vector>
-#include <btas/QSDArray.h>
+#include <legacy/QSDArray.h>
 
 namespace prototype
 {

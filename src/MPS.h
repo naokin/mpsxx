@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <btas/QSTArray.h>
+#include <legacy/QSTArray.h>
 
 namespace mpsxx {
 

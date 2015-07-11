@@ -2,8 +2,8 @@
 #define PROTOTYPE_MPSITE_H
 
 #include <vector>
-#include <btas/DArray.h>
-#include <btas/Dblas.h>
+#include <legacy/DArray.h>
+#include <legacy/Dblas.h>
 
 //
 // workspaces of dmrg optimization

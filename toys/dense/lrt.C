@@ -3,9 +3,9 @@
 #include <vector>
 using namespace std;
 
-#include <btas/DArray.h>
-#include <btas/Dblas.h>
-#include <btas/Dcontract.h>
+#include <legacy/DArray.h>
+#include <legacy/Dblas.h>
+#include <legacy/Dcontract.h>
 #include "btas_template_specialize.h"
 
 #include "lrt.h"

@@ -1,8 +1,8 @@
 #ifndef _MPSXX_CXX11_DIAGONAL_ELEMENTS_H
 #define _MPSXX_CXX11_DIAGONAL_ELEMENTS_H 1
 
-//#include <btas/SPARSE/SDdiagonal.h>
-#include <btas/QSPARSE/QSDArray.h>
+//#include <legacy/SPARSE/SDdiagonal.h>
+#include <legacy/QSPARSE/QSDArray.h>
 
 namespace mpsxx {
 

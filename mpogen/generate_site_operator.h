@@ -1,8 +1,8 @@
 #ifndef _MPSXX_CXX11_GENERATE_SITE_OPERATOR_H
 #define _MPSXX_CXX11_GENERATE_SITE_OPERATOR_H 1
 
-#include <btas/DENSE/DArray.h>
-#include <btas/QSPARSE/QSDArray.h>
+#include <legacy/DENSE/DArray.h>
+#include <legacy/QSPARSE/QSDArray.h>
 
 #include "bit_operator_type.h"
 

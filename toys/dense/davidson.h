@@ -10,7 +10,7 @@
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
 
-#include <btas/Dlapack.h>
+#include <legacy/Dlapack.h>
 
 #include "btas_template_specialize.h"
 #include "utils.h"

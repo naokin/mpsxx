@@ -6,8 +6,8 @@ using namespace std;
 #include "FermiQuantum.h"
 namespace btas { typedef FermiQuantum Quantum; };
 
-#include <btas/QSDArray.h>
-#include <btas/QSDblas.h>
+#include <legacy/QSDArray.h>
+#include <legacy/QSDblas.h>
 #include "btas_template_specialize.h"
 
 #include "dmrg.h"

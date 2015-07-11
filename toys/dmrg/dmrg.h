@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <vector>
-#include <btas/DArray.h>
+#include <legacy/DArray.h>
 #include "input.h"
 
 //

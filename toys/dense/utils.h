@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-#include <btas/Dblas.h>
+#include <legacy/Dblas.h>
 
 namespace util
 {

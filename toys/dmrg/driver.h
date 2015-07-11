@@ -2,7 +2,7 @@
 #define PROTOTYPE_DMRG_DRIVER_H
 
 #include <cstdlib>
-#include <btas/DArray.h>
+#include <legacy/DArray.h>
 
 #define DEBUG(msg) { cout << "DEBUG:" << msg << endl; }
 

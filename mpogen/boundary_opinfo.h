@@ -5,7 +5,7 @@
 #include <map>
 #include <cstdlib>
 
-#include <btas/QSPARSE/Qshapes.h>
+#include <legacy/QSPARSE/Qshapes.h>
 
 #include <symmetry/Fermion/Quantum.h>
 #include "bit_operator_type.h"

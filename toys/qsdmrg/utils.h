@@ -3,7 +3,7 @@
 
 #include <cmath>
 
-#include <btas/QSDblas.h>
+#include <legacy/QSDblas.h>
 
 namespace util
 {

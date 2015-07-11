@@ -1,9 +1,9 @@
 #ifndef _PROTOTYPE_DRIVER_H
 #define _PROTOTYPE_DRIVER_H 1
 
-#include <btas/QSDArray.h>
-#include <btas/QSDblas.h>
-#include <btas/QSDlapack.h>
+#include <legacy/QSDArray.h>
+#include <legacy/QSDblas.h>
+#include <legacy/QSDlapack.h>
 
 namespace prototype
 {

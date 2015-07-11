@@ -3,8 +3,8 @@
 
 #include <vector>
 
-#include <btas/DArray.h>
-#include <btas/QSDArray.h>
+#include <legacy/DArray.h>
+#include <legacy/QSDArray.h>
 #include "mpsite.h"
 #include "input.h"
 

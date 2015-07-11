@@ -9,8 +9,8 @@
 #ifndef _MPSXX_CXX11_PRIME_OPERATOR_H
 #define _MPSXX_CXX11_PRIME_OPERATOR_H 1
 
-//#include <btas/TVector.h>
-#include <btas/QSPARSE/QSDArray.h>
+//#include <legacy/TVector.h>
+#include <legacy/QSPARSE/QSDArray.h>
 
 #include <MpSite.h>
 #include <symmetry/Fermion/Quantum.h>

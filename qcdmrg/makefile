@@ -1,14 +1,14 @@
-CXX=g++ -std=c++11
+CXX=/homec/naokin/gnu/gcc/4.8.4/bin/g++ -std=c++11
 CXXFLAGS=-g -O3 -openmp -D_DEFAULT_QUANTUM -D_ENABLE_DEFAULT_QUANTUM -D_HAS_CBLAS -D_HAS_INTEL_MKL
 
-BLASDIR=
-BLASINC=
-BLASLIB=-lmkl_intel_lp64 -lmkl_core -lmkl_sequential
+BLASDIR=/home100/opt/intel/mkl
+BLASINC=-I$(BLASDIR)/include
+BLASLIB=-L$(BLASDIR)/lib/intel64 -lmkl_intel_lp64 -lmkl_core -lmkl_sequential
 
-BOOSTINC=
-BOOSTLIB=-lboost_serialization
+BOOSTINC=-I/homec/naokin/boost/1.54.0/include
+BOOSTLIB=-L/homec/naokin/boost/1.54.0/lib -lboost_serialization
 
-BTASDIR= $(HOME)/btas
+BTASDIR= $(HOME)/devel/btas
 BTASINC=-I. -I.. -I$(BTASDIR)/include
 BTASLIB= $(BTASDIR)/lib/libbtas.a
 

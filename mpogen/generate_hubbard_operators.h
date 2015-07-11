@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <btas/DENSE/DArray.h>
+#include <legacy/DENSE/DArray.h>
 
 #include <MPSblas.h>
 #include <symmetry/Fermion/Quantum.h>

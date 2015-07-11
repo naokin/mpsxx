@@ -1,7 +1,7 @@
 #ifndef _MPSXX_CXX11_INTEGRAL_COMPONENT_H
 #define _MPSXX_CXX11_INTEGRAL_COMPONENT_H 1
 
-#include <btas/DENSE/DArray.h>
+#include <legacy/DENSE/DArray.h>
 
 #include "bit_operator_type.h"
 

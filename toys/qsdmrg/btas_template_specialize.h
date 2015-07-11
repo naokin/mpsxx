@@ -1,6 +1,6 @@
 #ifndef _BTAS_DBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1
-#include <btas/Dblas.h>
+#include <legacy/Dblas.h>
 namespace btas
 {
 
@@ -317,7 +317,7 @@ template<> void Dgemm<5,5,5>(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE&
 #endif // _BTAS_DBLAS_TEMPLATE_SPECIALIZE
 #ifndef _BTAS_SDBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_SDBLAS_TEMPLATE_SPECIALIZE 1
-#include <btas/SDblas.h>
+#include <legacy/SDblas.h>
 namespace btas
 {
 
@@ -634,7 +634,7 @@ template<> void SDgemm<5,5,5>(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE
 #endif // _BTAS_SDBLAS_TEMPLATE_SPECIALIZE
 #ifndef _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE 1
-#include <btas/QSDblas.h>
+#include <legacy/QSDblas.h>
 namespace btas
 {
 

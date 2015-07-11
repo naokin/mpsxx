@@ -8,8 +8,8 @@
 #include <cmath>
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
-#include <btas/Dblas.h>
-#include <btas/Dlapack.h>
+#include <legacy/Dblas.h>
+#include <legacy/Dlapack.h>
 
 extern double random_gen(void);
 

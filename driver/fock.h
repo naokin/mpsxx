@@ -1,7 +1,7 @@
 #ifndef _MPSXX_CXX11_FOCK_H
 #define _MPSXX_CXX11_FOCK_H 1
 
-#include <btas/DENSE/DArray.h>
+#include <legacy/DENSE/DArray.h>
 
 namespace mpsxx {
 

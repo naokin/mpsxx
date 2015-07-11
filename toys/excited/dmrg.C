@@ -2,8 +2,8 @@
 #include <iomanip>
 #include <algorithm>
 #include <driver/davidson.h>
-#include <btas/Dpermute.h>
-#include <btas/Dcontract.h>
+#include <legacy/Dpermute.h>
+#include <legacy/Dcontract.h>
 #include "driver.h"
 #include "dmrg.h"
 using namespace std;

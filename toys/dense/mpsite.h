@@ -13,7 +13,7 @@
 #include <boost/serialization/vector.hpp>
 
 #include <vector>
-#include <btas/DArray.h>
+#include <legacy/DArray.h>
 
 namespace prototype
 {

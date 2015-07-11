@@ -9,7 +9,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
-#include <btas/DENSE/DArray.h>
+#include <legacy/DENSE/DArray.h>
 
 std::vector<std::string> gettoken(std::ifstream& fin);
 

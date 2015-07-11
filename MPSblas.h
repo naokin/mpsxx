@@ -44,14 +44,14 @@ using std::endl;
 using std::ostream;
 using std::complex;
 
-//#include <btas/common/blas_cxx_interface.h>
+//#include <legacy/common/blas_cxx_interface.h>
 
-#include <btas/common/TVector.h>
+#include <legacy/common/TVector.h>
 
-#include <btas/DENSE/TArray.h>
-#include <btas/SPARSE/STConj.h>
-#include <btas/QSPARSE/QSDArray.h>
-//#include <btas/QSPARSE/QSTCONTRACT.h>
+#include <legacy/DENSE/TArray.h>
+#include <legacy/SPARSE/STConj.h>
+#include <legacy/QSPARSE/QSDArray.h>
+//#include <legacy/QSPARSE/QSTCONTRACT.h>
 
 using namespace btas;
 

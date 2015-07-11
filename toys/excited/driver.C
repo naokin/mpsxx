@@ -1,8 +1,8 @@
 #include <vector>
 #include <cmath>
-#include <btas/Dblas.h>
-#include <btas/Dlapack.h>
-#include <btas/Dcontract.h>
+#include <legacy/Dblas.h>
+#include <legacy/Dlapack.h>
+#include <legacy/Dcontract.h>
 #include "driver.h"
 using namespace std;
 using namespace btas;

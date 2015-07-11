@@ -3,8 +3,8 @@
 #include <vector>
 using namespace std;
 
-#include <btas/DArray.h>
-#include <btas/Dblas.h>
+#include <legacy/DArray.h>
+#include <legacy/Dblas.h>
 #include "btas_template_specialize.h"
 
 #include "dmrg.h"

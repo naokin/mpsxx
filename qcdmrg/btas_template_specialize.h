@@ -1,7 +1,7 @@
 #ifndef _BTAS_DBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1
 
-#include <btas/DENSE/Dblas.h>
+#include <legacy/DENSE/Dblas.h>
 
 namespace btas {
 
@@ -321,7 +321,7 @@ template<> void Dgemm<5,5,5>(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE&
 #ifndef _BTAS_SDBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_SDBLAS_TEMPLATE_SPECIALIZE 1
 
-#include <btas/SPARSE/SDblas.h>
+#include <legacy/SPARSE/SDblas.h>
 
 namespace btas {
 
@@ -642,7 +642,7 @@ template<> void SDgemm<5,5,5>(const BTAS_TRANSPOSE& transa, const BTAS_TRANSPOSE
 #define _BTAS_QSDBLAS_TEMPLATE_SPECIALIZE 1
 
 #include <symmetry/Fermion/Quantum.h>
-#include <btas/QSPARSE/QSDblas.h>
+#include <legacy/QSPARSE/QSDblas.h>
 
 namespace btas {
 

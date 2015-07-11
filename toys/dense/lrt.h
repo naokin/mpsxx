@@ -3,7 +3,7 @@
 
 #include <vector>
 
-#include <btas/DArray.h>
+#include <legacy/DArray.h>
 #include "mpsite.h"
 #include "input.h"
 

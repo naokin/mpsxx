@@ -1,7 +1,7 @@
 #include "FermiQuantum.h"
 namespace btas { typedef FermiQuantum Quantum; }
 
-#include <btas/Dblas.h>
+#include <legacy/Dblas.h>
 namespace btas
 {
 

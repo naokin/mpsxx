@@ -5,7 +5,7 @@ using namespace std;
 #include "FermiQuantum.h"
 namespace btas { typedef FermiQuantum Quantum; };
 
-#include <btas/SDdiagonal.h>
+#include <legacy/SDdiagonal.h>
 #include <contract.h>
 #include "btas_template_specialize.h"
 

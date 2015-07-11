@@ -1,6 +1,6 @@
 #ifndef _BTAS_DBLAS_TEMPLATE_SPECIALIZE
 #define _BTAS_DBLAS_TEMPLATE_SPECIALIZE 1
-#include <btas/Dblas.h>
+#include <legacy/Dblas.h>
 namespace btas
 {
 

@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstring>
 
-#include <btas/DENSE/DArray.h>
+#include <legacy/DENSE/DArray.h>
 
 #include "generate_qc_operators.h"
 #include "driver/parsing_integral.h"

@@ -4,7 +4,7 @@
 #include <iostream>
 #include <iomanip>
 
-#include <btas/QSPARSE/QSDArray.h>
+#include <legacy/QSPARSE/QSDArray.h>
 #include <time_stamp.h>
 
 #include <mpsxx.h>
@@ -262,7 +262,7 @@ double optimize_onesite_merged
     btas::QSTmerge(q_mg_ket, wfn0, wfnc_mg);
 
     compute_merged_block(1, mpo0, lopr, lopr_mg);
-    ropr_mg.ref(ropr);
+    ropr_mg.reference(ropr);
   }
   else {
     const btas::Qshapes<Q>& q_n_ket =-mpo0.qshape(2);
@@ -273,7 +273,7 @@ double optimize_onesite_merged
 
     btas::QSTmerge(wfn0, q_mg_ket, wfnc_mg);
 
-    lopr_mg.ref(lopr);
+    lopr_mg.reference(lopr);
     compute_merged_block(0, mpo0, ropr, ropr_mg);
   }
   cout << "done ( " << fixed << setprecision(2) << setw(8) << ts.lap() << " sec. ) " << endl;

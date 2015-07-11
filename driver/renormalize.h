@@ -1,7 +1,7 @@
 #ifndef _MPSXX_CXX11_RENORMALIZE_H
 #define _MPSXX_CXX11_RENORMALIZE_H 1
 
-#include <btas/QSPARSE/QSDArray.h>
+#include <legacy/QSPARSE/QSDArray.h>
 
 namespace mpsxx {
 
