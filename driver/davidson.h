@@ -87,7 +87,7 @@ double diagonalize
       // solve eigenvalue problem to obtain Ritz value & vector
       btas::DArray<2> rvec;
       btas::DArray<1> rval;
-      Dsyev('V', 'U', heff, rval, rvec);
+      Syev('V', 'U', heff, rval, rvec);
       eval = rval(0);
       std::cout << "\t\t\tmicro iteration [ " << std::setw(2) << m << " ] :: " << std::setprecision(16) << std::setw(24) << std::fixed << eval << std::endl;
       // rotate trial & sigma vectors by Ritz vector

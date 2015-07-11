@@ -44,14 +44,14 @@ using std::endl;
 using std::ostream;
 using std::complex;
 
-//#include <legacy/common/blas_cxx_interface.h>
-
 #include <legacy/common/TVector.h>
 
 #include <legacy/DENSE/TArray.h>
 #include <legacy/SPARSE/STConj.h>
 #include <legacy/QSPARSE/QSDArray.h>
 //#include <legacy/QSPARSE/QSTCONTRACT.h>
+
+#include <mpsxx.h>
 
 using namespace btas;
 
@@ -88,10 +88,7 @@ namespace mpsxx {
     * @param D cutoff block dimension (max dimension of each quantumsector)
     */
    template<class Q>
-      void calc_qdim(int L,const Q &qt,const Qshapes<Q> &qp,std::vector< Qshapes<Q> > &qr,std::vector<Dshapes> &dr,int D){
-
-         //shape of the physical index
-         Dshapes dp(qp.size(),1);
+      void calc_qdim(int L,const Q &qt,const Qshapes<Q> &qp,const Dshapes &dp,std::vector< Qshapes<Q> > &qr,std::vector<Dshapes> &dr,int D){
 
          qr[0] = qp;
          dr[0] = dp;
@@ -307,7 +304,7 @@ namespace mpsxx {
          std::vector< Qshapes<Q> > qr(L);
          std::vector<Dshapes> dr(L);
 
-         calc_qdim(L,qt,qp,qr,dr,D);
+         calc_qdim(L,qt,qp,dp,qr,dr,D);
 
          //now allocate the tensors!
          TVector<Qshapes<Q>,3> qshape;
@@ -343,6 +340,60 @@ namespace mpsxx {
          return A;
 
       }
+
+   /**
+    * create an MPS chain of length L initialized randomly on total Q number qt, with physical quantumnumber qp
+    * @param L length of the chain
+    * @param qt total quantumnumber
+    * @param dp Dshapes object containing the dimensions associated with the physical quantumnumbers
+    * @param qp Qshapes object containing the physical quantumnumbers
+    * @param D maximal dimension of the quantum blocks
+    * @param f_random_generator predefined function which calls a random number generator
+    * @return the MPS chain randomly filled and with correct quantumnumbers and dimensions
+    */
+   template<typename T,class Q>
+      MPS<T,Q> create(int L,const Q &qt,const Qshapes<Q> &qp,const Dshapes &dp,int D,const function<T(void)>& f_random_generator){ 
+
+         std::vector< Qshapes<Q> > qr(L);
+         std::vector<Dshapes> dr(L);
+
+         calc_qdim(L,qt,qp,dp,qr,dr,D);
+
+         //now allocate the tensors!
+         TVector<Qshapes<Q>,3> qshape;
+         TVector<Dshapes,3> dshape;
+
+         //first 0
+         Qshapes<Q> ql(1,Q::zero());
+         Dshapes dl(ql.size(),1);
+
+         qshape = make_array(ql,qp,-qr[0]);
+         dshape = make_array(dl,dp,dr[0]);
+
+         //construct an MPS
+         MPS<T,Q> A(L);
+
+         A[0].resize(Q::zero(),qshape,dshape);
+         A[0].generate(f_random_generator);
+
+         //then the  middle ones
+         for(int i = 1;i < L;++i){
+
+            ql = qr[i - 1];
+            dl = dr[i - 1];
+
+            qshape = make_array(ql,qp,-qr[i]);
+            dshape = make_array(dl,dp,dr[i]);
+
+            A[i].resize(Q::zero(),qshape,dshape);
+            A[i].generate(f_random_generator);
+
+         }
+
+         return A;
+
+      }
+
 
    /**
     * create an MPS chain of length L initialized on a contant number on total Q number qt, with physical quantumnumber qp
@@ -520,7 +571,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(X.size() != Y.size())
-            BTAS_ASSERT(false, "Error: input MP objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input MP objects do not have the same length!");
 
          int L = X.size();
 
@@ -544,7 +595,7 @@ namespace mpsxx {
          qmerge[0] = tmp1.qshape(N-1);
          dmerge[0] = tmp1.dshape(N-1);
 
-         QSTmergeInfo<1> info(qmerge,dmerge);
+         QSTmergeInfo<1,Q> info(qmerge,dmerge);
 
          //then merge
          Y[0].clear();
@@ -843,7 +894,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(A.size() != B.size() || A.size() != O.size())
-            BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -867,7 +918,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info(qmerge,dmerge);
+            QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
             QSTArray<T,4,Q> tmp;
             QSTmerge(info,loc,tmp);
@@ -923,7 +974,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info(qmerge,dmerge);
+            QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
             QSTArray<T,4,Q> tmp;
             QSTmerge(loc,info,tmp);
@@ -974,7 +1025,7 @@ namespace mpsxx {
 
          //first check if length is the same
          if(A.size() != X.size())
-            BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          if(abs(beta) < 1.0e-15){
 
@@ -1005,7 +1056,7 @@ namespace mpsxx {
 
                }
 
-               QSTmergeInfo<2> info(qmerge,dmerge);
+               QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
                //clear the mrows object first
                mrows.clear();
@@ -1037,7 +1088,7 @@ namespace mpsxx {
 
             //first check if we can sum these two:
             if(L != Y.size())
-               BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+               MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
             scal(beta/alpha,Y);
 
@@ -1059,7 +1110,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info1(qmerge1,dmerge1);
+            QSTmergeInfo<2,Q> info1(qmerge1,dmerge1);
 
             //clear the mrows object first
             mrows.clear();
@@ -1096,7 +1147,7 @@ namespace mpsxx {
             qmerge2[0] = tmp1.qshape(2);
             dmerge2[0] = tmp1.dshape(2);
 
-            QSTmergeInfo<1> info2(qmerge2,dmerge2);
+            QSTmergeInfo<1,Q> info2(qmerge2,dmerge2);
 
             //then merge
             Y[0].clear();
@@ -1277,7 +1328,7 @@ namespace mpsxx {
 
          //first check if length is the same
          if(A.size() != X.size())
-            BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -1309,7 +1360,7 @@ namespace mpsxx {
 
          }
 
-         QSTmergeInfo<2> info(qmerge,dmerge);
+         QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
          //clear the mrows object first
          mrows.clear();
@@ -1417,7 +1468,7 @@ namespace mpsxx {
 
          //first check if we can sum these two:
          if(A.size() != B.size())
-            BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+            MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
          int L = A.size();
 
@@ -1446,7 +1497,7 @@ namespace mpsxx {
 
                }
 
-               QSTmergeInfo<2> info(qmerge,dmerge);
+               QSTmergeInfo<2,Q> info(qmerge,dmerge);
 
                //clear the mrows object first
                mrows.clear();
@@ -1478,7 +1529,7 @@ namespace mpsxx {
 
             //first check if we can sum these two:
             if(L != C.size())
-               BTAS_ASSERT(false, "Error: input objects do not have the same length!");
+               MPSXX_THROW(false, "Error: input objects do not have the same length!");
 
             scal(beta/alpha,C);
 
@@ -1505,7 +1556,7 @@ namespace mpsxx {
 
             }
 
-            QSTmergeInfo<2> info1(qmerge1,dmerge1);
+            QSTmergeInfo<2,Q> info1(qmerge1,dmerge1);
 
             //clear the mrows object first
             mrows.clear();
@@ -1543,7 +1594,7 @@ namespace mpsxx {
             qmerge2[0] = tmp1.qshape(3);
             dmerge2[0] = tmp1.dshape(3);
 
-            QSTmergeInfo<1> info2(qmerge2,dmerge2);
+            QSTmergeInfo<1,Q> info2(qmerge2,dmerge2);
 
             //then merge
             C[0].clear();
@@ -1935,7 +1986,7 @@ namespace mpsxx {
 
          for(int i = 0;i < mpx.size();++i){
 
-            char name[50];
+            char name[100];
 
             sprintf(name,"%s/%d.mpx",filename,i);
 

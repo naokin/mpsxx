@@ -268,7 +268,7 @@ void initialize_mpstates
     load(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
     btas::QSDArray<3, Q> lmps(mpss[i-1]);
     mpss[i-1].clear();
-    btas::QSDgemm(btas::NoTrans, btas::NoTrans, 1.0, lmps, gaug, 1.0, mpss[i-1]);
+    btas::Gemm(btas::NoTrans, btas::NoTrans, 1.0, lmps, gaug, 1.0, mpss[i-1]);
     btas::Normalize(mpss[i-1]);
     save(mpss[i-1], get_mpsfile(prefix, WAVEFUNCTION, i-1));
 

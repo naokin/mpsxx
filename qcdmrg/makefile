@@ -15,7 +15,6 @@ BTASLIB= $(BTASDIR)/lib/libbtas.a
 INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)
 
-#SRC_DMRG = dmrg.C main.C btas_template_specialize.C ../driver/fileio.C
 SRC_DMRG = dmrg.C main.C ../driver/fileio.C
 
 OBJ_DMRG = $(SRC_DMRG:.C=.o)
@@ -29,4 +28,4 @@ dmrg	: $(OBJ_DMRG)
 	$(CXX) $(CXXFLAGS) -o dmrg.x $(OBJ_DMRG) $(BTASLIB) $(LIBRARYFLAGS)
 
 clean	:
-	rm *.o; rm *.x; rm *.a;
+	rm *.o; rm *.x; rm *.a; rm ../driver/*.o;

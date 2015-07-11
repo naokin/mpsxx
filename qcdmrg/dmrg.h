@@ -195,7 +195,7 @@ void compute_merged_block
     const btas::Dshapes&    d_n_ket = mpo0.dshape(1);
 
     btas::QSDArray<5, Q> lopr;
-    btas::QSDcontract(1.0, opr0, shape(0,1,2), mpo0, shape(1,3,4,5), 1.0, lopr, shape(0,3,5,2,4));
+    btas::Contract(1.0, opr0, shape(0,1,2), mpo0, shape(1,3,4,5), 1.0, lopr, shape(0,3,5,2,4));
 
     btas::QSTmergeInfo<2, Q> q_mg_bra(btas::make_array(q_l_bra, q_n_bra), btas::make_array(d_l_bra, d_n_bra));
     btas::QSTmergeInfo<2, Q> q_mg_ket(btas::make_array(q_l_ket, q_n_ket), btas::make_array(d_l_ket, d_n_ket));
@@ -216,7 +216,7 @@ void compute_merged_block
     const btas::Dshapes&    d_r_ket = opr0.dshape(0);
 
     btas::QSDArray<5, Q> ropr;
-    btas::QSDcontract(1.0, mpo0, shape(0,1,2,3), opr0, shape(4,3,5), 1.0, ropr, shape(1,4,0,2,5));
+    btas::Contract(1.0, mpo0, shape(0,1,2,3), opr0, shape(4,3,5), 1.0, ropr, shape(1,4,0,2,5));
 
     btas::QSTmergeInfo<2, Q> q_mg_bra(btas::make_array(q_n_bra, q_r_bra), btas::make_array(d_n_bra, d_r_bra));
     btas::QSTmergeInfo<2, Q> q_mg_ket(btas::make_array(q_n_ket, q_r_ket), btas::make_array(d_n_ket, d_r_ket));

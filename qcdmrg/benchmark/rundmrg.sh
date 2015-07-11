@@ -10,6 +10,14 @@ fi
 #generate an ordering
 #../genetic/gaopt -config ../genetic/ga.conf -integral FCIDUMP
 
+if [ ! -d state ]; then
+mkdir state
+fi
+
+if [ ! -d hamiltonian ]; then
+mkdir hamiltonian
+fi
+
 # generate QC-MPO and store on disk
 ../../mpogen/mpogen.x -f FCIDUMP -r reorder.dat -s /work/naokin/qcdmrg/ >& dmrg.log
 
