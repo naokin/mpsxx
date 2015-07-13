@@ -16,26 +16,31 @@ INCLUDEFLAGS= $(BLASINC) $(BOOSTINC) $(BTASINC)
 LIBRARYFLAGS= $(BLASLIB) $(BOOSTLIB)
 
 SRC_MPOGEN  = bit_operator_type.C boundary_opinfo.C gen_qc_operators.C gen_site_operator.C get_product_ops.C integral_component.C ../driver/parsing_integral.C prime_operators.C mpogen.C ../driver/fileio.C
+SRC_NAIVE_MPOGEN  = gen_qc_naive_mpos.C compress_qc_mpos.C ../driver/parsing_integral.C naive_mpogen.C ../driver/fileio.C
 SRC_HUBGEN  = bit_operator_type.C boundary_opinfo.C gen_hubbard_operators.C gen_site_operator.C get_product_ops.C integral_component.C ../driver/parsing_integral.C prime_operators.C hubgen.C ../driver/fileio.C
 SRC_TESTGEN = bit_operator_type.C boundary_opinfo.C get_product_ops.C testgen.C
 
 OBJ_MPOGEN  = $(SRC_MPOGEN:.C=.o)
+OBJ_NAIVE_MPOGEN  = $(SRC_NAIVE_MPOGEN:.C=.o)
 OBJ_HUBGEN  = $(SRC_HUBGEN:.C=.o)
 OBJ_TESTGEN = $(SRC_TESTGEN:.C=.o)
 
 .C.o	:
 	$(CXX) $(CXXFLAGS) $(INCLUDEFLAGS) -c $< -o $@
 
-all	: mpogen hubgen testgen
+all	: mpogen naive_mpogen hubgen
 
 mpogen	: $(OBJ_MPOGEN)
 	$(CXX) $(CXXFLAGS) -o mpogen.x $(OBJ_MPOGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
+naive_mpogen	: $(OBJ_NAIVE_MPOGEN)
+	$(CXX) $(CXXFLAGS) -o naive_mpogen.x $(OBJ_NAIVE_MPOGEN) $(BTASLIB) $(LIBRARYFLAGS)
+
 hubgen	: $(OBJ_HUBGEN)
 	$(CXX) $(CXXFLAGS) -o hubgen.x $(OBJ_HUBGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
-testgen	: $(OBJ_TESTGEN)
-	$(CXX) $(CXXFLAGS) -o testgen.x $(OBJ_TESTGEN) $(BTASLIB) $(LIBRARYFLAGS)
+#testgen	: $(OBJ_TESTGEN)
+#	$(CXX) $(CXXFLAGS) -o testgen.x $(OBJ_TESTGEN) $(BTASLIB) $(LIBRARYFLAGS)
 
 clean	:
 	rm *.o; rm *.x; rm *.a;
