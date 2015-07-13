@@ -43,7 +43,7 @@
  *  MEMO: operator hierarchy: (high) [!, ~], [<<, >>], [==, !=], [&], [^], [|], [&&], [||] (low)
  *  TODO: This algorithm can be also useful in conventional DMRG code?
  */
-std::vector<mpsxx::fermionic::BIT_OPERATOR_TYPE> mpsxx::fermionic::get_product_ops
+std::vector<mpsxx::mpogen::BIT_OPERATOR_TYPE> mpsxx::mpogen::get_product_ops
 (const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const std::vector<size_t>& r_indxs, bool _swap_sweep_dir)
 {
   using namespace bit_operator;
@@ -193,7 +193,7 @@ std::vector<mpsxx::fermionic::BIT_OPERATOR_TYPE> mpsxx::fermionic::get_product_o
   // L = CiCj and S = Dk, etc...
   else if((l_op & NORMAL & TYPE) == DOUBLE && (s_op & NORMAL & TYPE) == SINGLE && (s_op & COMP) == 0) {
     // Checking quantum number
-    Quantum q_ls = get_quantum(l_op) * get_quantum(s_op);
+    fermion q_ls = get_quantum(l_op) * get_quantum(s_op);
     if(abs(q_ls.p()) == 1 && abs(q_ls.s()) == 1) {
       // Needs conjugation due to swap sweep direction?
       BIT_OPERATOR_TYPE conj = _swap_sweep_dir ? COMP : CONJ_S;
@@ -210,7 +210,7 @@ std::vector<mpsxx::fermionic::BIT_OPERATOR_TYPE> mpsxx::fermionic::get_product_o
   // L = Ci and S = CjDk, etc...
   else if((s_op & NORMAL & TYPE) == DOUBLE && (l_op & NORMAL & TYPE) == SINGLE && (l_op & COMP) == 0) {
     // Checking quantum number
-    Quantum q_ls = get_quantum(l_op) * get_quantum(s_op);
+    fermion q_ls = get_quantum(l_op) * get_quantum(s_op);
     if(abs(q_ls.p()) == 1 && abs(q_ls.s()) == 1) {
       // Needs conjugation due to swap sweep direction?
       BIT_OPERATOR_TYPE conj = _swap_sweep_dir ? COMP : CONJ_S;
@@ -227,8 +227,8 @@ std::vector<mpsxx::fermionic::BIT_OPERATOR_TYPE> mpsxx::fermionic::get_product_o
   // L = CiCj and S = DkDl, etc...
   else if((l_op & NORMAL & TYPE) == DOUBLE && (s_op & NORMAL & TYPE) == DOUBLE) {
     // Checking quantum number
-    Quantum q_ls = get_quantum(l_op) * get_quantum(s_op);
-    if(q_ls == Quantum::zero()) {
+    fermion q_ls = get_quantum(l_op) * get_quantum(s_op);
+    if(q_ls == fermion::zero()) {
       if(_swap_sweep_dir)
         ls_ops.push_back(IDEN);
       else

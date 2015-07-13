@@ -2,9 +2,9 @@
 #include <vector>
 #include <cstring>
 
-#include <legacy/DENSE/DArray.h>
+#include <legacy/DENSE/TArray.h>
 
-#include "generate_qc_operators.h"
+#include "gen_qc_operators.h"
 #include "driver/parsing_integral.h"
 
 int main(int argc, char* argv[])
@@ -31,8 +31,8 @@ int main(int argc, char* argv[])
   int Norbs;
   int Nelec;
   double Ecore;
-  btas::DArray<2> oneint;
-  btas::DArray<4> twoint;
+  btas::TArray<double,2> oneint;
+  btas::TArray<double,4> twoint;
 
   cout << "\t****************************************************************************************************" << endl;
   cout << "\t\t\t\tMPSXX::PROTOTYPE::MPO GENERATOR FOR QC "                                                        << endl;
@@ -59,8 +59,8 @@ int main(int argc, char* argv[])
   cout << "\t====================================================================================================" << endl;
   cout << endl;
 
-  MPO<double, fermionic::Quantum> mpos(Norbs);
-  fermionic::generate_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir, prefix);
+  MPOs<double,fermion> mpos(Norbs);
+  gen_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir, prefix);
 
   cout << endl;
 

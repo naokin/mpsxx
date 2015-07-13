@@ -1,16 +1,15 @@
-#ifndef _MPSXX_CXX11_INTEGRAL_COMPONENT_H
-#define _MPSXX_CXX11_INTEGRAL_COMPONENT_H 1
+#ifndef __MPSXX_MPOGEN_INTEGRAL_COMPONENT_H
+#define __MPSXX_MPOGEN_INTEGRAL_COMPONENT_H 1
 
-#include <legacy/DENSE/DArray.h>
+#include <legacy/DENSE/TArray.h>
 
 #include "bit_operator_type.h"
 
-namespace mpsxx     {
-
-namespace fermionic {
+namespace mpsxx {
+namespace mpogen {
 
 /*! Determine 1-particle integral component for complementary operator construction in DMRG */
-double int1e_component(const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const BIT_OPERATOR_TYPE& r_op, const btas::DArray<2>& _int1e);
+double int1e_component (const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const BIT_OPERATOR_TYPE& r_op, const btas::TArray<double,2>& _int1e);
 
 /*! Determine 2-particle integral component for complementary operator construction in DMRG
  *
@@ -79,10 +78,9 @@ double int1e_component(const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s
  *                    -- ( + V[i,j,l,k] )              * C[k,a] x C[l,b] : E
  * 0: D[i,b] x D[j,b] -- ( + V[i,j,l,k] - V[i,j,k,l] ) * C[k,b] x C[l,b] : A
  */
-double int2e_component(const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const BIT_OPERATOR_TYPE& r_op, const btas::DArray<4>& _int2e);
+double int2e_component (const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const BIT_OPERATOR_TYPE& r_op, const btas::TArray<double,4>& _int2e);
 
-}; // namespace fermionic
+} // namespace mpogen
+} // namespace mpsxx
 
-}; // namespace mpsxx
-
-#endif // _MPSXX_CXX11_INTEGRAL_COMPONENT_H
+#endif // __MPSXX_MPOGEN_INTEGRAL_COMPONENT_H

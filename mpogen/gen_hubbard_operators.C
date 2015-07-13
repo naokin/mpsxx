@@ -3,17 +3,17 @@
 
 #include <vector>
 
-#include <legacy/QSPARSE/QSDArray.h>
+#include <legacy/QSPARSE/QSTArray.h>
 
 #include <MpSite.h>
 #include <driver/fileio.h>
 
-#include "generate_hubbard_operators.h"
-#include "generate_site_operator.h"
+#include "gen_hubbard_operators.h"
+#include "gen_site_operator.h"
 #include "prime_operators.h"
 
-void mpsxx::fermionic::generate_hubbard_operators
-(mpsxx::MPO<double, mpsxx::fermionic::Quantum>& mpos, const double& t, const double& u, const std::string& prefix)
+void mpsxx::gen_hubbard_operators
+(mpsxx::MPOs<double, fermion>& mpos, const double& t, const double& u, const std::string& prefix)
 {
   using std::cout;
   using std::endl;
@@ -29,37 +29,37 @@ void mpsxx::fermionic::generate_hubbard_operators
   cout << "\t\t\t+ coupling coefficient U  : " << setw(8) << fixed << u  << endl;
   cout << "\t====================================================================================================" << endl;
 
-  btas::Qshapes<Quantum> qz; // 0 quantum number
-  qz.push_back(Quantum( 0,  0));
+  btas::Qshapes<fermion> qz; // 0 quantum number
+  qz.push_back(fermion( 0,  0));
 
-  btas::Qshapes<Quantum> qi; // quantum index comes in
-  qi.push_back(Quantum( 0,  0)); // 0
-  qi.push_back(Quantum( 1,  1)); // a-
-  qi.push_back(Quantum(-1, -1)); // a+
-  qi.push_back(Quantum( 1, -1)); // b-
-  qi.push_back(Quantum(-1,  1)); // b+
-  qi.push_back(Quantum( 0,  0)); // I
+  btas::Qshapes<fermion> qi; // quantum index comes in
+  qi.push_back(fermion( 0,  0)); // 0
+  qi.push_back(fermion( 1,  1)); // a-
+  qi.push_back(fermion(-1, -1)); // a+
+  qi.push_back(fermion( 1, -1)); // b-
+  qi.push_back(fermion(-1,  1)); // b+
+  qi.push_back(fermion( 0,  0)); // I
 
-  btas::Qshapes<Quantum> qo; // quantum index comes out
-  qo.push_back(Quantum( 0,  0)); // I
-  qo.push_back(Quantum(-1, -1)); // a+
-  qo.push_back(Quantum( 1,  1)); // a-
-  qo.push_back(Quantum(-1,  1)); // b+
-  qo.push_back(Quantum( 1, -1)); // b-
-  qo.push_back(Quantum( 0,  0)); // 0
+  btas::Qshapes<fermion> qo; // quantum index comes out
+  qo.push_back(fermion( 0,  0)); // I
+  qo.push_back(fermion(-1, -1)); // a+
+  qo.push_back(fermion( 1,  1)); // a-
+  qo.push_back(fermion(-1,  1)); // b+
+  qo.push_back(fermion( 1, -1)); // b-
+  qo.push_back(fermion( 0,  0)); // 0
 
   // resize & set to 0
-  mpos[ 0 ].resize(Quantum::zero(), make_array(qz, MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), qo));
+  mpos[ 0 ].resize(fermion::zero(), make_array(qz, MpSite<fermion>::quanta(),-MpSite<fermion>::quanta(), qo));
   for(int i = 1; i < N-1; ++i)
-    mpos[i].resize(Quantum::zero(), make_array(qi, MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), qo));
-  mpos[N-1].resize(Quantum::zero(), make_array(qi, MpSite<Quantum>::quanta(),-MpSite<Quantum>::quanta(), qz));
+    mpos[i].resize(fermion::zero(), make_array(qi, MpSite<fermion>::quanta(),-MpSite<fermion>::quanta(), qo));
+  mpos[N-1].resize(fermion::zero(), make_array(qi, MpSite<fermion>::quanta(),-MpSite<fermion>::quanta(), qz));
 
   // set block elements
-  btas::DArray<4> data_Ip(1, 1, 1, 1); data_Ip = 1.0;
-  btas::DArray<4> data_Im(1, 1, 1, 1); data_Im =-1.0;
-  btas::DArray<4> data_tp(1, 1, 1, 1); data_tp = t;
-  btas::DArray<4> data_tm(1, 1, 1, 1); data_tm =-t;
-  btas::DArray<4> data_Un(1, 1, 1, 1); data_Un = u;
+  btas::TArray<double,4> data_Ip(1, 1, 1, 1); data_Ip = 1.0;
+  btas::TArray<double,4> data_Im(1, 1, 1, 1); data_Im =-1.0;
+  btas::TArray<double,4> data_tp(1, 1, 1, 1); data_tp = t;
+  btas::TArray<double,4> data_tm(1, 1, 1, 1); data_tm =-t;
+  btas::TArray<double,4> data_Un(1, 1, 1, 1); data_Un = u;
   // insert blocks
   mpos[ 0 ].insert(btas::shape(0, 3, 3, 0), data_Un); //  U
   mpos[ 0 ].insert(btas::shape(0, 1, 0, 1), data_tp); //  t a+

@@ -3,8 +3,7 @@
 
 #include "bit_operator_type.h"
 
-mpsxx::fermionic::Quantum mpsxx::fermionic::get_quantum
-(const mpsxx::fermionic::BIT_OPERATOR_TYPE& _op_type)
+fermion mpsxx::mpogen::get_quantum (const mpsxx::mpogen::BIT_OPERATOR_TYPE& _op_type)
 {
   using namespace bit_operator;
   int p = 0; // particle #
@@ -21,11 +20,10 @@ mpsxx::fermionic::Quantum mpsxx::fermionic::get_quantum
       else        { --p; if(op2 & 1) --s; else ++s; }
     }
   }
-  return std::move(Quantum(p, s));
+  return std::move(fermion(p, s));
 }
 
-std::string mpsxx::fermionic::translate
-(const mpsxx::fermionic::BIT_OPERATOR_TYPE& _op_type)
+std::string mpsxx::mpogen::translate (const mpsxx::mpogen::BIT_OPERATOR_TYPE& _op_type)
 {
   using namespace bit_operator;
   std::ostringstream opname;

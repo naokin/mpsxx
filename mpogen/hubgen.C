@@ -2,7 +2,7 @@
 #include <vector>
 #include <cstring>
 
-#include "generate_hubbard_operators.h"
+#include "gen_hubbard_operators.h"
 
 int main(int argc, char* argv[])
 {
@@ -20,8 +20,8 @@ int main(int argc, char* argv[])
     if(strcmp(argv[iarg],"-u") == 0) u = atof(argv[++iarg]);
   }
 
-  MPO<double, fermionic::Quantum> mpos(N);
-  fermionic::generate_hubbard_operators(mpos, t, u);
+  MPOs<double,fermion> mpos(N);
+  gen_hubbard_operators(mpos, t, u);
 
   return 0;
 }

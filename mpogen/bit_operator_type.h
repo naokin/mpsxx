@@ -1,13 +1,12 @@
-#ifndef _MPSXX_CXX11_BIT_OPERATOR_TYPE_H
-#define _MPSXX_CXX11_BIT_OPERATOR_TYPE_H 1
+#ifndef __MPSXX_MPOGEN_BIT_OPERATOR_TYPE_H
+#define __MPSXX_MPOGEN_BIT_OPERATOR_TYPE_H 1
 
 #include <cstring>
 
-#include <symmetry/Fermion/Quantum.h>
+#include <symmetry/fermion.h>
 
-namespace mpsxx     {
-
-namespace fermionic {
+namespace mpsxx {
+namespace mpogen {
 
 typedef unsigned int BIT_OPERATOR_TYPE;
 
@@ -87,13 +86,12 @@ const BIT_OPERATOR_TYPE  INDEX_LIMIT = 4096;
 }; // namespace bit_operator
 
 //! Extract quantum number info from operator type
-Quantum get_quantum(const BIT_OPERATOR_TYPE& _type);
+fermion get_quantum(const BIT_OPERATOR_TYPE& _type);
 
 //! Translate bit-wise operator type into readable string
 std::string translate(const BIT_OPERATOR_TYPE& _type);
 
-}; // namespace fermionic
+} // namespace mpogen
+} // namespace mpsxx
 
-}; // namespace mpsxx
-
-#endif // _MPSXX_CXX11_BIT_OPERATOR_TYPE_H
+#endif // __MPSXX_MPOGEN_BIT_OPERATOR_TYPE_H

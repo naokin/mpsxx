@@ -1,5 +1,5 @@
-#ifndef _MPSXX_FERMIONIC_BOUNDARY_OPINFO_H
-#define _MPSXX_FERMIONIC_BOUNDARY_OPINFO_H 1
+#ifndef __MPSXX_MPOGEN_BOUNDARY_OPINFO_H
+#define __MPSXX_MPOGEN_BOUNDARY_OPINFO_H 1
 
 #include <iostream>
 #include <map>
@@ -7,18 +7,17 @@
 
 #include <legacy/QSPARSE/Qshapes.h>
 
-#include <symmetry/Fermion/Quantum.h>
+#include <symmetry/fermion.h>
+
 #include "bit_operator_type.h"
 
-namespace mpsxx     {
-
-namespace fermionic {
+namespace mpsxx {
 
 //! DMRG operators at certain boundary
 class boundary_opinfo {
 public:
-  typedef std::map<BIT_OPERATOR_TYPE, size_t>::iterator       iterator;
-  typedef std::map<BIT_OPERATOR_TYPE, size_t>::const_iterator const_iterator;
+  typedef std::map<mpogen::BIT_OPERATOR_TYPE, size_t>::iterator       iterator;
+  typedef std::map<mpogen::BIT_OPERATOR_TYPE, size_t>::const_iterator const_iterator;
 
   //! Direction
   enum DIRECTION {
@@ -55,24 +54,22 @@ public:
   inline const_iterator end  () const { return m_bn_ops.end  (); }
   inline       iterator end  ()       { return m_bn_ops.end  (); }
 
-  inline const_iterator find(BIT_OPERATOR_TYPE _type) const { return m_bn_ops.find(_type); }
-  inline       iterator find(BIT_OPERATOR_TYPE _type)       { return m_bn_ops.find(_type); }
+  inline const_iterator find(mpogen::BIT_OPERATOR_TYPE _type) const { return m_bn_ops.find(_type); }
+  inline       iterator find(mpogen::BIT_OPERATOR_TYPE _type)       { return m_bn_ops.find(_type); }
 
-  btas::Qshapes<Quantum> get_qshape() const;
+  btas::Qshapes<fermion> get_qshape() const;
 
   void clean(const btas::Dshapes& _dn_shape);
 
 private:
   DIRECTION
     m_bn_dir;
-  std::map<BIT_OPERATOR_TYPE, size_t>
+  std::map<mpogen::BIT_OPERATOR_TYPE, size_t>
     m_bn_ops;
 };
 
-}; // fermionic
+} // mpsxx
 
-}; // mpsxx
+std::ostream& operator<< (std::ostream& ost, const mpsxx::boundary_opinfo& info);
 
-std::ostream& operator<< (std::ostream& ost, const mpsxx::fermionic::boundary_opinfo& info);
-
-#endif // _MPSXX_FERMIONIC_BOUNDARY_OPINFO_H
+#endif // __MPSXX_MPOGEN_BOUNDARY_OPINFO_H

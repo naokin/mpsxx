@@ -2,11 +2,11 @@
 #include "integral_component.h"
 
 /*! Determine 1-particle integral component for complementary operator construction in DMRG */
-double mpsxx::fermionic::int1e_component
-(const mpsxx::fermionic::BIT_OPERATOR_TYPE& l_op,
- const mpsxx::fermionic::BIT_OPERATOR_TYPE& s_op,
- const mpsxx::fermionic::BIT_OPERATOR_TYPE& r_op,
- const btas::DArray<2>& _int1e)
+double mpsxx::mpogen::int1e_component (
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& l_op,
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& s_op,
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& r_op,
+  const btas::TArray<double,2>& _int1e)
 {
   using namespace bit_operator;
   btas::IVector<2> indxs;
@@ -111,11 +111,11 @@ double mpsxx::fermionic::int1e_component
  *                    -- ( + V[i,j,l,k] )              * C[k,a] x C[l,b] : E
  * 0: D[i,b] x D[j,b] -- ( + V[i,j,l,k] - V[i,j,k,l] ) * C[k,b] x C[l,b] : A
  */
-double mpsxx::fermionic::int2e_component
-(const mpsxx::fermionic::BIT_OPERATOR_TYPE& l_op,
- const mpsxx::fermionic::BIT_OPERATOR_TYPE& s_op,
- const mpsxx::fermionic::BIT_OPERATOR_TYPE& r_op,
- const btas::DArray<4>& _int2e)
+double mpsxx::mpogen::int2e_component (
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& l_op,
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& s_op,
+  const mpsxx::mpogen::BIT_OPERATOR_TYPE& r_op,
+  const btas::TArray<double,4>& _int2e)
 {
   using namespace bit_operator;
   /*! Table of integral type (256 = 4 x 4 x 4 x 4 tensor)

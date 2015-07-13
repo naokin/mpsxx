@@ -15,7 +15,7 @@
 
 int main(int argc, char* argv[])
 {
-  using namespace mpsxx::fermionic;
+  using namespace mpsxx;
 
   size_t N = 10;
   bool enable_swap_sweep_dir = false;
@@ -49,14 +49,14 @@ int main(int argc, char* argv[])
       for(auto l = l_ops.begin(); l != l_ops.end(); ++l) {
         for(auto s = s_ops.begin(); s != s_ops.end(); ++s) {
           // prod. operator O_l*O_s
-          std::vector<BIT_OPERATOR_TYPE> ls_ops;
-          ls_ops = get_product_ops(l->first, s->first, r_indxs, swap_sweep_dir);
+          std::vector<mpogen::BIT_OPERATOR_TYPE> ls_ops;
+          ls_ops = mpogen::get_product_ops(l->first, s->first, r_indxs, swap_sweep_dir);
           // create operator
           for(size_t j = 0; j < ls_ops.size(); ++j) {
             auto r = r_ops.find(ls_ops[j]);
             if(r != r_ops.end()) {
               if(iprint > 0)
-                std::cout << translate(l->first) << " x " << translate(s->first) << " -> " << translate(r->first) << std::endl;
+                std::cout << mpogen::translate(l->first) << " x " << mpogen::translate(s->first) << " -> " << mpogen::translate(r->first) << std::endl;
               ++nnz;
             }
           }
@@ -68,13 +68,13 @@ int main(int argc, char* argv[])
       for(auto r = r_ops.begin(); r != r_ops.end(); ++r) {
         for(auto s = s_ops.begin(); s != s_ops.end(); ++s) {
           // prod. operator O_s*O_r
-          std::vector<BIT_OPERATOR_TYPE> rs_ops = get_product_ops(r->first, s->first, l_indxs, swap_sweep_dir);
+          std::vector<mpogen::BIT_OPERATOR_TYPE> rs_ops = mpogen::get_product_ops(r->first, s->first, l_indxs, swap_sweep_dir);
           // create operator
           for(size_t j = 0; j < rs_ops.size(); ++j) {
             auto l = l_ops.find(rs_ops[j]);
             if(l != l_ops.end()) {
               if(iprint > 0)
-                std::cout << translate(l->first) << " <- " << translate(s->first) << " x " << translate(r->first) << std::endl;
+                std::cout << mpogen::translate(l->first) << " <- " << mpogen::translate(s->first) << " x " << mpogen::translate(r->first) << std::endl;
               ++nnz;
             }
           }

@@ -6,14 +6,15 @@
 #include "bit_operator_type.h"
 
 namespace mpsxx {
+namespace mpogen {
 
-   namespace fermionic {
+std::vector<BIT_OPERATOR_TYPE> get_product_ops (
+  const BIT_OPERATOR_TYPE& l_op,
+  const BIT_OPERATOR_TYPE& s_op,
+  const std::vector<size_t>& r_indxs,
+        bool _swap_sweep_dir = false);
 
-      std::vector<BIT_OPERATOR_TYPE> get_product_ops
-         (const BIT_OPERATOR_TYPE& l_op, const BIT_OPERATOR_TYPE& s_op, const std::vector<size_t>& r_indxs, bool _swap_sweep_dir = false);
-
-   };
-
-};
+} // namespace mpogen
+} // namespace mpsxx
 
 #endif // _MPSXX_FERMIONIC_GET_PRODUCT_OPS_H

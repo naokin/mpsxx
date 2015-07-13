@@ -6,6 +6,8 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 
+#include <MPX_types.h>
+
 template<class T>
 void load(      T& obj, const std::string& f_name)
 {
@@ -24,9 +26,9 @@ void save(const T& obj, const std::string& f_name)
   return;
 }
 
-#include <MPSblas.h>
-
 namespace mpsxx {
+
+enum MPS_TYPE { WAVEFUNCTION, LEFTCANONICAL, RIGHTCANONICAL };
 
 //std::string get_mpofile(const std::string& prefix, const MPO_TYPE& _type, const int& index);
 std::string get_mpofile(const std::string& prefix,                        const int& index);

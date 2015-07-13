@@ -1,43 +1,40 @@
-#ifndef _MPSXX_CXX11_MPSITE_H
-#define _MPSXX_CXX11_MPSITE_H 1
+#ifndef __MPSXX_MPSITE_H
+#define __MPSXX_MPSITE_H
 
-#include <symmetry/Fermion/Quantum.h>
+#include <symmetry/fermion.h>
 
 namespace mpsxx {
 
-   /**
-    * the struct MpSite determines the physical indices of every site
-    */
-   template<class Q>
-      struct MpSite {
+/// the struct MpSite determines the physical indices of every site
+template<class Q>
+struct MpSite {
 
-         //!collection of physical indices
-         enum PHYSICAL_INDEX { vacuum = 0 };
+  /// collection of physical indices
+  enum PHYSICAL_INDEX { vacuum = 0 };
 
-         //! @return collection of quantum numbers corresponding to the physical indices
-         const static btas::Qshapes<Q> quanta() { return btas::Qshapes<Q>(1, Q::zero()); }
+  /// \return collection of quantum numbers corresponding to the physical indices
+  const static btas::Qshapes<Q> quanta() { return btas::Qshapes<Q>(1, Q::zero()); }
 
-      };
+};
 
-   //! template Specializion for fermionic systems: 4 indices
-   namespace fermionic { enum PHYSICAL_INDEX { vacuum = 0, alpha = 1, beta = 2, pair = 3 }; };
+template<>
+struct MpSite<fermion> {
 
-   template<>
-      struct MpSite<fermionic::Quantum> {
+  enum PHYSICAL_INDEX { vacuum = 0, alpha = 1, beta = 2, pair = 3 };
 
-         //!@return the collection of physical quantumnumbers corresponding to the physical indices on a site.
-         const static btas::Qshapes<fermionic::Quantum> quanta() {
-            btas::Qshapes<fermionic::Quantum> q(4);
-            q[fermionic::vacuum] = fermionic::Quantum(0, 0);
-            q[fermionic::alpha ] = fermionic::Quantum(1,+1);
-            q[fermionic::beta  ] = fermionic::Quantum(1,-1);
-            q[fermionic::pair  ] = fermionic::Quantum(2, 0);
+  /// \return the collection of physical quantumnumbers corresponding to the physical indices on a site.
+  const static btas::Qshapes<fermion> quanta()
+  {
+    btas::Qshapes<fermion> q(4);
+    q[vacuum] = fermion(0, 0);
+    q[alpha ] = fermion(1,+1);
+    q[beta  ] = fermion(1,-1);
+    q[pair  ] = fermion(2, 0);
+    return q;
+  }
 
-            return q;
+};
 
-         }
-      };
+} // namespace mpsxx
 
-}; // namespace mpsxx
-
-#endif // _MPSXX_CXX11_MPSITE_H
+#endif // __MPSXX_MPSITE_H
