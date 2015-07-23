@@ -4,8 +4,10 @@
 
 #include <legacy/DENSE/TArray.h>
 
+#include <driver/fileio.h>
 #include "gen_qc_operators.h"
 #include "driver/parsing_integral.h"
+#include "compress_qc_mpos.h"
 
 int main(int argc, char* argv[])
 {
@@ -59,8 +61,15 @@ int main(int argc, char* argv[])
   cout << "\t====================================================================================================" << endl;
   cout << endl;
 
-  MPOs<double,fermion> mpos(Norbs);
-  gen_qc_operators(mpos, oneint, twoint, enable_swap_sweep_dir, prefix);
+  std::vector<MPOs<double,fermion>> mpos(1);
+  mpos[0].resize(Norbs);
+  gen_qc_operators(mpos[0], oneint, twoint, enable_swap_sweep_dir, prefix);
+  std::vector<int> groups(1,1);
+
+  for(size_t i = 0; i < Norbs; ++i) load(mpos[0][i],get_mpofile(prefix,i));
+
+  std::vector<std::vector<MPO<double,fermion>>> comp;
+  compress_qc_mpos(groups,mpos,comp);
 
   cout << endl;
 

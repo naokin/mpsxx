@@ -18,10 +18,12 @@ int main(int argc, char* argv[])
   using namespace mpsxx;
 
   std::string fcidmp = "FCIDUMP";
+  std::string reordr;
   std::string prefix = "./";
 
   for(int iarg = 0; iarg < argc; ++iarg) {
     if(strcmp(argv[iarg],"-f") == 0) fcidmp = argv[++iarg];
+    if(strcmp(argv[iarg],"-r") == 0) reordr = argv[++iarg];
     if(strcmp(argv[iarg],"-s") == 0) prefix = argv[++iarg];
   }
 
@@ -41,7 +43,15 @@ int main(int argc, char* argv[])
   cout << endl;
 
   std::ifstream ifdump(fcidmp.c_str());
-  parsing_fcidump(ifdump, Norbs, Nelec, Ecore, oneint, twoint);
+  if(!reordr.empty()) {
+    std::ifstream ireord(reordr.c_str());
+    std::vector<int> reorder;
+    parsing_reorder(ireord, reorder);
+    parsing_fcidump(ifdump, Norbs, Nelec, Ecore, oneint, twoint, reorder);
+  }
+  else {
+    parsing_fcidump(ifdump, Norbs, Nelec, Ecore, oneint, twoint);
+  }
 
   cout << "\t====================================================================================================" << endl;
   cout << "\t\tGenerating QC MPOs from 1- and 2-particle integrals"                                                << endl;
@@ -52,12 +62,12 @@ int main(int argc, char* argv[])
   std::vector<int> groups = gen_qc_naive_mpos(Norbs, oneint, twoint, mpos);
 
   std::cout << "\t\t" << std::setw(6) << mpos.size() << " operators have generated." << std::endl;
-  std::fill(groups.begin(),groups.end(),1);
+//std::fill(groups.begin(),groups.end(),1);
 
   std::vector<std::vector<MPO<double,fermion>>> comp;
   compress_qc_mpos(groups,mpos,comp);
 
-  for(size_t i = 0; i < mpos[0].size(); ++i) save(mpos[0][i], get_mpofile(prefix, i));
+//for(size_t i = 0; i < comp[0].size(); ++i) save(comp[0][i], get_mpofile(prefix, i));
 
   return 0;
 }

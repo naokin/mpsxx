@@ -640,24 +640,18 @@ int mpsxx::generate_mpos (double factor, std::vector<std::vector<mpsxx::MPO<doub
 /// here, all terms in 1-el part are defined as the same group
 int mpsxx::get_group (size_t n, size_t i, size_t j, mpogen::OpString str)
 {
+  using namespace mpogen;
   size_t h = n/2;
   int g;
-// ALGO 1
-if(0) {
-  if(i < h && j >= h) {
-    if(str & 0x4) // getting spin of the first operator
-      g = i+1;
-    else
-      g =-i-1;
+  if(i == j) {
+    g = 0;
   }
   else {
-    g = 0; // H(L)/H(R) block at the central bond
+    if((str & 0x03) == 0x03) g = 1       + j;
+    if((str & 0x03) == 0x02) g = 1 +   n + j;
+    if((str & 0x03) == 0x01) g = 1 + 2*n + j;
+    if((str & 0x03) == 0x00) g = 1 + 3*n + j;
   }
-}
-// ALGO 2
-if(1) {
-  g = 0;
-}
   return g;
 }
 
@@ -665,77 +659,116 @@ if(1) {
 /// here, indices are divided by the last index 'l'
 int mpsxx::get_group (size_t n, size_t i, size_t j, size_t k, size_t l, mpogen::OpString str)
 {
+  using namespace mpogen;
   size_t h = n/2;
   int g;
-// ALGO 1
-if(0) {
-  if(i < h && j >= h) {
-    if(str & 0x40) // getting spin of the first operator
-      g = i+1;
-    else
-      g =-i-1;
+  // iiii
+  if(i == j && j == k && k == l) {
+    g = 0;
   }
-  else if(j < h && k >= h) {
-    if(str & 0x40) {
-      if(str & 0x10)
-//      g = n+1+(i+h)*n+j;
-        g = n+1+h+j;
-      else
-//      g = n+1+(i+h)*n-j;
-        g = n+1+h-j;
-    }
-    else {
-      if(str & 0x10)
-//      g =-n-1-(i+h)*n-j;
-        g =-n-1-h-j;
-      else
-//      g =-n-1-(i+h)*n+j;
-        g =-n-1-h+j;
-    }
+//else {
+//  if((str & 0x03) == 0x03) g = 1       + l;
+//  if((str & 0x03) == 0x02) g = 1 +   n + l;
+//  if((str & 0x03) == 0x01) g = 1 + 2*n + l;
+//  if((str & 0x03) == 0x00) g = 1 + 3*n + l;
+//}
+  // iiij
+  else if(i == j && j == k) {
+    if((str & 0x03) == 0x03) g = 1       + l;
+    if((str & 0x03) == 0x02) g = 1 +   n + l;
+    if((str & 0x03) == 0x01) g = 1 + 2*n + l;
+    if((str & 0x03) == 0x00) g = 1 + 3*n + l;
   }
-  else if(k < h && l >= l) {
-    if(str & 0x01) // getting spin of the last operator
-      g = l+1;
-    else
-      g =-l-1;
+  // ijjj
+  else if(j == k && k == l) {
+    if((str & 0xc0) == 0xc0) g = 1 + 4*n + i;
+    if((str & 0xc0) == 0x80) g = 1 + 5*n + i;
+    if((str & 0xc0) == 0x40) g = 1 + 6*n + i;
+    if((str & 0xc0) == 0x00) g = 1 + 7*n + i;
   }
+  // iijj
+  else if(i == j && k == l) {
+    if((str & 0x0f) == 0x0f) g = 1 + 8*n + k*n + l;
+    if((str & 0x0f) == 0x0e) g = 1 + 8*n + k*n + l +   n*n;
+    if((str & 0x0f) == 0x0d) g = 1 + 8*n + k*n + l + 2*n*n;
+    if((str & 0x0f) == 0x0c) g = 1 + 8*n + k*n + l + 3*n*n;
+    if((str & 0x0f) == 0x0b) g = 1 + 8*n + k*n + l + 4*n*n;
+    if((str & 0x0f) == 0x0a) g = 1 + 8*n + k*n + l + 5*n*n;
+    if((str & 0x0f) == 0x09) g = 1 + 8*n + k*n + l + 6*n*n;
+    if((str & 0x0f) == 0x08) g = 1 + 8*n + k*n + l + 7*n*n;
+    if((str & 0x0f) == 0x07) g = 1 + 8*n + k*n + l + 8*n*n;
+    if((str & 0x0f) == 0x06) g = 1 + 8*n + k*n + l + 9*n*n;
+    if((str & 0x0f) == 0x05) g = 1 + 8*n + k*n + l +10*n*n;
+    if((str & 0x0f) == 0x04) g = 1 + 8*n + k*n + l +11*n*n;
+    if((str & 0x0f) == 0x03) g = 1 + 8*n + k*n + l +12*n*n;
+    if((str & 0x0f) == 0x02) g = 1 + 8*n + k*n + l +13*n*n;
+    if((str & 0x0f) == 0x01) g = 1 + 8*n + k*n + l +14*n*n;
+    if((str & 0x0f) == 0x00) g = 1 + 8*n + k*n + l +15*n*n;
+  }
+  // iijk
+  else if(i == j) {
+    if((str & 0x0f) == 0x0f) g = 1 + 8*n + k*n + l;
+    if((str & 0x0f) == 0x0e) g = 1 + 8*n + k*n + l +   n*n;
+    if((str & 0x0f) == 0x0d) g = 1 + 8*n + k*n + l + 2*n*n;
+    if((str & 0x0f) == 0x0c) g = 1 + 8*n + k*n + l + 3*n*n;
+    if((str & 0x0f) == 0x0b) g = 1 + 8*n + k*n + l + 4*n*n;
+    if((str & 0x0f) == 0x0a) g = 1 + 8*n + k*n + l + 5*n*n;
+    if((str & 0x0f) == 0x09) g = 1 + 8*n + k*n + l + 6*n*n;
+    if((str & 0x0f) == 0x08) g = 1 + 8*n + k*n + l + 7*n*n;
+    if((str & 0x0f) == 0x07) g = 1 + 8*n + k*n + l + 8*n*n;
+    if((str & 0x0f) == 0x06) g = 1 + 8*n + k*n + l + 9*n*n;
+    if((str & 0x0f) == 0x05) g = 1 + 8*n + k*n + l +10*n*n;
+    if((str & 0x0f) == 0x04) g = 1 + 8*n + k*n + l +11*n*n;
+    if((str & 0x0f) == 0x03) g = 1 + 8*n + k*n + l +12*n*n;
+    if((str & 0x0f) == 0x02) g = 1 + 8*n + k*n + l +13*n*n;
+    if((str & 0x0f) == 0x01) g = 1 + 8*n + k*n + l +14*n*n;
+    if((str & 0x0f) == 0x00) g = 1 + 8*n + k*n + l +15*n*n;
+  }
+  // ijjk
+  else if(j == k) {
+    if((str & 0xc0) == 0xc0) g = 1 + 4*n + i;
+    if((str & 0xc0) == 0x80) g = 1 + 5*n + i;
+    if((str & 0xc0) == 0x40) g = 1 + 6*n + i;
+    if((str & 0xc0) == 0x00) g = 1 + 7*n + i;
+  }
+  // ijkk
+  else if(k == l) {
+    if((str & 0x0f) == 0x0f) g = 1 + 8*n + k*n + l;
+    if((str & 0x0f) == 0x0e) g = 1 + 8*n + k*n + l +   n*n;
+    if((str & 0x0f) == 0x0d) g = 1 + 8*n + k*n + l + 2*n*n;
+    if((str & 0x0f) == 0x0c) g = 1 + 8*n + k*n + l + 3*n*n;
+    if((str & 0x0f) == 0x0b) g = 1 + 8*n + k*n + l + 4*n*n;
+    if((str & 0x0f) == 0x0a) g = 1 + 8*n + k*n + l + 5*n*n;
+    if((str & 0x0f) == 0x09) g = 1 + 8*n + k*n + l + 6*n*n;
+    if((str & 0x0f) == 0x08) g = 1 + 8*n + k*n + l + 7*n*n;
+    if((str & 0x0f) == 0x07) g = 1 + 8*n + k*n + l + 8*n*n;
+    if((str & 0x0f) == 0x06) g = 1 + 8*n + k*n + l + 9*n*n;
+    if((str & 0x0f) == 0x05) g = 1 + 8*n + k*n + l +10*n*n;
+    if((str & 0x0f) == 0x04) g = 1 + 8*n + k*n + l +11*n*n;
+    if((str & 0x0f) == 0x03) g = 1 + 8*n + k*n + l +12*n*n;
+    if((str & 0x0f) == 0x02) g = 1 + 8*n + k*n + l +13*n*n;
+    if((str & 0x0f) == 0x01) g = 1 + 8*n + k*n + l +14*n*n;
+    if((str & 0x0f) == 0x00) g = 1 + 8*n + k*n + l +15*n*n;
+  }
+  // ijkl
   else {
-    g = 0; // H(L)/H(R) block at the central bond
+    if((str & 0x0f) == 0x0f) g = 1 + 8*n + k*n + l;
+    if((str & 0x0f) == 0x0e) g = 1 + 8*n + k*n + l +   n*n;
+    if((str & 0x0f) == 0x0d) g = 1 + 8*n + k*n + l + 2*n*n;
+    if((str & 0x0f) == 0x0c) g = 1 + 8*n + k*n + l + 3*n*n;
+    if((str & 0x0f) == 0x0b) g = 1 + 8*n + k*n + l + 4*n*n;
+    if((str & 0x0f) == 0x0a) g = 1 + 8*n + k*n + l + 5*n*n;
+    if((str & 0x0f) == 0x09) g = 1 + 8*n + k*n + l + 6*n*n;
+    if((str & 0x0f) == 0x08) g = 1 + 8*n + k*n + l + 7*n*n;
+    if((str & 0x0f) == 0x07) g = 1 + 8*n + k*n + l + 8*n*n;
+    if((str & 0x0f) == 0x06) g = 1 + 8*n + k*n + l + 9*n*n;
+    if((str & 0x0f) == 0x05) g = 1 + 8*n + k*n + l +10*n*n;
+    if((str & 0x0f) == 0x04) g = 1 + 8*n + k*n + l +11*n*n;
+    if((str & 0x0f) == 0x03) g = 1 + 8*n + k*n + l +12*n*n;
+    if((str & 0x0f) == 0x02) g = 1 + 8*n + k*n + l +13*n*n;
+    if((str & 0x0f) == 0x01) g = 1 + 8*n + k*n + l +14*n*n;
+    if((str & 0x0f) == 0x00) g = 1 + 8*n + k*n + l +15*n*n;
   }
-}
-// ALGO 2
-if(1) {
-  if(i >= h) {
-    if(str & 0x40) // getting spin of the first operator
-      g = i+1;
-    else
-      g =-i-1;
-  }
-  else if(i < h && j >= h) {
-    if(str & 0x10) // getting spin of the first operator
-      g = j+1;
-    else
-      g =-j-1;
-  }
-  else if(j < h && k >= h) {
-    if(str & 0x04)
-      g = k+1;
-    else
-      g =-k-1;
-  }
-  else if(k < h && l >= l) {
-    if(str & 0x04) // getting spin of the last operator
-      g = k+1;
-    else
-      g =-k-1;
-  }
-  else {
-    if(str & 0x01) // getting spin of the last operator
-      g = l+1;
-    else
-      g =-l-1;
-  }
-}
   return g;
 }
 

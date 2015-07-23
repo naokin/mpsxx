@@ -6,7 +6,7 @@
 #include <boost/archive/binary_iarchive.hpp>
 #include <boost/archive/binary_oarchive.hpp>
 
-#include <MPX_types.h>
+#include <MPX_Types.h>
 
 template<class T>
 void load(      T& obj, const std::string& f_name)

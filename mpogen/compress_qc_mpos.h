@@ -6,7 +6,7 @@
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 
-#include <MPX_types.h>
+#include <MPX_Types.h>
 #include <symmetry/fermion.h>
 
 namespace mpsxx {

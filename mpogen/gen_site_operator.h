@@ -4,7 +4,7 @@
 #include <legacy/DENSE/TArray.h>
 #include <legacy/QSPARSE/QSTArray.h>
 
-#include <MPX_types.h>
+#include <MPX_Types.h>
 
 #include "bit_operator_type.h"
 

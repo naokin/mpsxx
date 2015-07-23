@@ -1,5 +1,5 @@
-CXX=g++
-CXXFLAGS=-g -O3 -fopenmp
+CXX=/homec/naokin/gnu/gcc/4.8.4/bin/g++
+CXXFLAGS=-g -std=c++11 -O3 -D_HAS_CBLAS -D_HAS_INTEL_MKL
 
 BLASDIR=/home100/opt/intel/mkl
 BLASINC=-I$(BLASDIR)/include
@@ -11,22 +11,21 @@ BOOSTLIB=-L$(BOOSTDIR)/lib -lboost_serialization
 
 BTASDIR=/homec/naokin/devel/btas
 BTASINC=-I$(BTASDIR)/include
-BTASLIB=  $(BTASDIR)/lib
+BTASLIB=-L$(BTASDIR)/lib -lbtas
 
 INCLUDEFLAGS=-I. $(BLASINC) $(BOOSTINC) $(BTASINC)
-LIBRARYFLAGS=    $(BLASLIB) $(BOOSTLIB)
+LIBRARYFLAGS=    $(BLASLIB) $(BOOSTLIB) $(BTASLIB)
 
-SRC_SAMPLE = main.C dmrg.C lrt.C driver.C btas_template_specialize.C
+SRC_DMRG = main.cpp hubbard.cpp optimize.cpp
+OBJ_DMRG = $(SRC_DMRG:.cpp=.o)
 
-OBJ_SAMPLE = $(SRC_SAMPLE:.C=.o)
-
-.C.o	:
+.cpp.o	:
 	$(CXX) $(CXXFLAGS) $(INCLUDEFLAGS) -c $< -o $@
 
 all	: dmrg.x
 
-dmrg.x	: $(OBJ_SAMPLE)
-	$(CXX) $(CXXFLAGS) $(LIBRARYFLAGS) -o dmrg.x $(OBJ_SAMPLE) $(BTASLIB)/libbtas.a
+dmrg.x	: $(OBJ_DMRG)
+	$(CXX) $(CXXFLAGS) $(LIBRARYFLAGS) -o dmrg.x $(OBJ_DMRG)
 
 clean	:
 	rm *.o; rm *.x; rm *.a;

@@ -1,14 +1,14 @@
 #ifndef _MPSXX_CXX11_INITIALIZE_MPSTATES_H
 #define _MPSXX_CXX11_INITIALIZE_MPSTATES_H 1
 
-#include <MPSblas.h>
+#include <MPX_Types.h>
 
 #include <driver/canonicalize.h>
 #include <driver/renormalize.h>
 #include <driver/guesswave.h>
 #include <driver/fileio.h>
 
-#include <symmetry/Fermion/Quantum.h>
+#include <symmetry/fermion.h>
 
 namespace mpsxx {
 
@@ -91,33 +91,33 @@ std::vector<btas::Qshapes<Q>> generate_quantum_states
 
 //! Specialize for Fermion
 template<>
-std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
-(const std::vector<btas::Qshapes<fermionic::Quantum>>& sites, const fermionic::Quantum& qt, size_t _max_quantum_blocks)
+std::vector<btas::Qshapes<fermion>> generate_quantum_states
+(const std::vector<btas::Qshapes<fermion>>& sites, const fermion& qt, size_t _max_quantum_blocks)
 {
   size_t N = sites.size();
 
   // zero quantum number
-  btas::Qshapes<fermionic::Quantum> qz(1, fermionic::Quantum::zero());
+  btas::Qshapes<fermion> qz(1, fermion::zero());
 
   // boundary quantum numbers
-  std::vector<btas::Qshapes<fermionic::Quantum>> qb(N);
+  std::vector<btas::Qshapes<fermion>> qb(N);
 
   // generate quantum number blocks for MPS
   qb[0] = sites[0];
   for(size_t i = 1; i < N-1; ++i) {
-    btas::Qshapes<fermionic::Quantum> qb_bare = qb[i-1] & sites[i]; // get unique elements of { q(l) x q(n) }
+    btas::Qshapes<fermion> qb_bare = qb[i-1] & sites[i]; // get unique elements of { q(l) x q(n) }
     qb[i].clear();
     qb[i].reserve(qb_bare.size());
     for(size_t j = 0; j < qb_bare.size(); ++j)
       if(qb_bare[j].p() <= qt.p()) qb[i].push_back(qb_bare[j]);
   }
-  qb[N-1] = btas::Qshapes<fermionic::Quantum>(1, qt); // used for checking quantum states
+  qb[N-1] = btas::Qshapes<fermion>(1, qt); // used for checking quantum states
 
   // reduce zero quantum blocks
   for(size_t i = N-1; i > 0; --i) {
-    const btas::Qshapes<fermionic::Quantum>& qn = sites[i];
-          btas::Qshapes<fermionic::Quantum>& ql = qb[i-1];
-          btas::Qshapes<fermionic::Quantum>& qr = qb[i];
+    const btas::Qshapes<fermion>& qn = sites[i];
+          btas::Qshapes<fermion>& ql = qb[i-1];
+          btas::Qshapes<fermion>& qr = qb[i];
 
     // check non-zero for each ql index
     auto lt = ql.begin();
@@ -136,14 +136,14 @@ std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
     assert(ql.size() > 0);
   }
   for(size_t i = 0; i < N-1; ++i) {
-    const btas::Qshapes<fermionic::Quantum>& qn = sites[i];
-          btas::Qshapes<fermionic::Quantum>& ql = qb[i];
-          btas::Qshapes<fermionic::Quantum>& qr = qb[i+1];
+    const btas::Qshapes<fermion>& qn = sites[i];
+          btas::Qshapes<fermion>& ql = qb[i];
+          btas::Qshapes<fermion>& qr = qb[i+1];
 
     // further reduction
     if(_max_quantum_blocks > 0 && ql.size() > _max_quantum_blocks) {
       size_t offs = (ql.size()-_max_quantum_blocks)/2;
-      ql = btas::Qshapes<fermionic::Quantum>(ql.begin()+offs, ql.begin()+offs+_max_quantum_blocks);
+      ql = btas::Qshapes<fermion>(ql.begin()+offs, ql.begin()+offs+_max_quantum_blocks);
 
       // check non-zero for each qr index
       auto rt = qr.begin();
@@ -175,7 +175,7 @@ std::vector<btas::Qshapes<fermionic::Quantum>> generate_quantum_states
  */
 template<class Q, class Generator>
 void initialize_mpstates
-(MPO<double, Q>& mpos, MPS<double, Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
+(MPOs<double, Q>& mpos, MPSs<double, Q>& mpss, const Q& qt, Generator gen, const std::string& prefix = "./", size_t _max_quantum_blocks = 0)
 {
   using std::cout;
   using std::endl;

@@ -1,4 +1,8 @@
-#include <symmetry/Fermion/Quantum.h>
+
+#include <random>
+#include <functional>
+
+#include <symmetry/fermion.h>
 
 #include "dmrg.h"
 #include "initialize_mpstates.h"
@@ -6,7 +10,7 @@
 /**
  * simple random number generator
 */
-double rgen() { return 2.0*(static_cast<double>(rand())/RAND_MAX)-1.0; }
+//double rgen() { return 2.0*(static_cast<double>(rand())/RAND_MAX)-1.0; }
 
 /**
  * The main dmrg routine.
@@ -25,11 +29,14 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
   const size_t N = input.N_sites;
   const int    M = input.N_max_states;
 
-  MPO<double, fermionic::Quantum> mpos(N);
-  MPS<double, fermionic::Quantum> mpss(N);
+  std::uniform_real_distribution<double> dist(-1.0,1.0);
+  std::mt19937 rgen;
+
+  MPOs<double, fermion> mpos(N);
+  MPSs<double, fermion> mpss(N);
 
   if(!input.restart)
-    initialize_mpstates(mpos, mpss, fermionic::Quantum(input.N_elecs, input.N_spins), rgen, input.prefix, input.N_max_states);
+    initialize_mpstates(mpos, mpss, fermion(input.N_elecs, input.N_spins), std::bind(dist,rgen), input.prefix, input.N_max_states);
 
   double esav = 1.0e8;
 
@@ -56,6 +63,7 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 
   }
 
+/*
   std::ifstream fin("wave-mps_site-0.tmp");
   boost::archive::binary_iarchive iar(fin);
   iar >> mpss[0];
@@ -72,7 +80,7 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 
   }
 
-  mpsxx::save_mpx(mpss,"state");
+//mpsxx::save_mpx(mpss,"state");
 
   std::ifstream fin4("mpo_site-0.tmp");
   boost::archive::binary_iarchive iar4(fin4);
@@ -90,8 +98,8 @@ double mpsxx::dmrg(const mpsxx::DmrgInput& input)
 
   }
 
-  mpsxx::save_mpx(mpos,"hamiltonian");
-
+//mpsxx::save_mpx(mpos,"hamiltonian");
+*/
   return esav;
 
 }
