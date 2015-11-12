@@ -1,0 +1,426 @@
+Block  Copyright (C) 2012  Garnet K.-L. Chan
+This program comes with ABSOLUTELY NO WARRANTY; for details see license file.
+This is free software, and you are welcome to redistribute it
+under certain conditions; see license file for details.
+Reading input file
+m_hf_occ_user integral
+Fiedler-vector orbital ordering: 4 1 2 3 
+
+open orbs   :
+closed orbs :
+Initial HF occupancy guess: 1 1 1 1 0 0 0 0 
+Checking input for errors
+Summary of input
+----------------
+Total number of orbitals                           :   4
+Symmetry of the targeted wavefunctions             :   4:0:1
+Number of wavefunctions targeted                   :   1
+Symmetry of the molecule                           :   c1
+
+Schedule
+--------
+Iter       : # States              Davidson_tol          Random_noise        
+0          : 50                    1.000000e-04          1.000000e-04        
+4          : 50                    1.000000e-05          1.000000e-05        
+6          : 50                    1.000000e-06          1.000000e-06        
+8          : 50                    1.000000e-07          0.000000e+00        
+Switching from twodot to onedot algorithm          :   12
+Maximum sweep iterations                           :   100
+
+
+
+			 Starting sweep 0 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -2.220446049250e-16
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376204795       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376204795
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376204795        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+
+
+			 Starting sweep 1 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.030
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 2
+
+
+			 Starting sweep 2 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 3
+
+
+			 Starting sweep 3 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 4
+
+
+			 Starting sweep 4 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 5
+
+
+			 Starting sweep 5 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 6
+
+
+			 Starting sweep 6 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 2.220e-16  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.030
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 7
+
+
+			 Starting sweep 7 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376320240       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376320240
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376320240        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 8
+
+
+			 Starting sweep 8 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321440       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321440
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 1.110e-16  Sweep Energy = -3.1376321440        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 9
+
+
+			 Starting sweep 9 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321440       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321440
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376321440        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.020
+			 Elapsed Sweep Wall Time (seconds): 1.000
+			 Finished Sweep Iteration 10
+
+
+			 Starting sweep 10 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321440       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321440
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 1.110e-16  Sweep Energy = -3.1376321440        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 11
+
+
+			 Starting sweep 11 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321440       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321440
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376321440        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.010
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 12
+
+			 Switching from two dot to one dot ... 
+
+			 Starting sweep 12 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Block Iteration :: 1
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.0000000000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321613
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376321613        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.070
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 13
+
+
+			 Starting sweep 13 in backwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Block Iteration :: 1
+			 ============================
+			 System  Block			 Sites ::  2 3     # states: 10    # states: 10
+			 Environment Block			 Sites ::  0 1     # states: 10    # states: 10
+
+
+
+			 Total discarded weight -0.0000000000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321613
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376321613        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.050
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 14
+
+
+			 Starting sweep 14 in forwards direction
+			 ============================================================================ 
+
+			 Block Iteration :: 0
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Block Iteration :: 1
+			 ============================
+			 System  Block			 Sites ::  0 1     # states: 10    # states: 10
+			 Environment Block			 Sites ::  2 3     # states: 10    # states: 10
+
+
+
+			 Total discarded weight 0.0000000000
+
+			 Total block energy for State [ 0 ] with 50 States :: -3.1376321613       
+
+			 Finished Sweep with 50 states and sweep energy for State [ 0 ] with Spin [ 0 ] :: -3.1376321613
+
+			 Largest Error for Sweep with 50 states is 0.0000000000
+			 M = 50      state = 0     Largest Discarded Weight = 0.000e+00  Sweep Energy = -3.1376321613        
+			 ============================================================================ 
+			 Elapsed Sweep CPU  Time (seconds): 0.040
+			 Elapsed Sweep Wall Time (seconds): 0.000
+			 Finished Sweep Iteration 15
+
+
+			 BLOCK CPU  Time (seconds): 0.500
+			 BLOCK Wall Time (seconds): 2.000

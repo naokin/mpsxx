@@ -1,0 +1,1046 @@
+	****************************************************************************************************
+				MPSXX::PROTOTYPE::DMRG::OPTIMIZATION 
+	****************************************************************************************************
+	====================================================================================================
+		SWEEP ITERATION [    0 ] :: ROOT =  0
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	====================================================================================================
+		SITE [   0 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523145
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523145
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   1 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523199
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523199
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   2 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523216
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523216
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   3 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523163
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523163
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   4 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523323
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523323
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   5 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523252
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523252
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   6 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523270
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523270
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   7 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523305
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523305
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   8 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523234
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523234
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   9 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523252
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523252
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [  10 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523305
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523305
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	====================================================================================================
+		SITE [  11 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523305
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523305
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [  10 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523341
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523341
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   9 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523199
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523199
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   8 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523110
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523110
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   7 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523163
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523163
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   6 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523145
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523145
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   5 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523110
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523110
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   4 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523128
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523128
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   3 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   2 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   1 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523181
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523181
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+	====================================================================================================
+		SWEEP ITERATION [    0 ] :: ROOT =  0 FINISHED
+			Sweep Energy =     -11.8406372775523341 ( delta E = -1.18e+01 ) 
+
+	====================================================================================================
+		SWEEP ITERATION [    1 ] :: ROOT =  0
+	====================================================================================================
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			FORWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	====================================================================================================
+		SITE [   0 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523128
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523128
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   1 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   2 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523145
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523145
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   3 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   4 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523145
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523145
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   5 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   6 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523057
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523057
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   7 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   8 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523074
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523074
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [   9 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	====================================================================================================
+		SITE [  10 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523216
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523216
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction of this site (sys)
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+			BACKWARD SWEEP
+	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+	====================================================================================================
+		SITE [  11 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523234
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523234
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [  10 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523234
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523234
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   9 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523163
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523163
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   8 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523092
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523092
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   7 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523145
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523145
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   6 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523163
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523163
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   5 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523181
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523181
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   4 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523181
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.01 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.02 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523181
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   3 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.01 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523110
+			--------------------------------------------------
+		done (     0.01 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523110
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   2 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523128
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.01 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523128
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+		SITE [   1 ] 
+	----------------------------------------------------------------------------------------------------
+		loading operators and wavefunction of next site (env)
+		optimizing wavefunction: 1-site algorithm 
+		computing diagonal elements...
+		done (     0.00 sec. ) 
+		optimizing wavefunction (Davidson solver)...
+			macro iteration [  0 ] 
+			--------------------------------------------------
+			micro iteration [  1 ] ::     -11.8406372775523039
+			--------------------------------------------------
+		done (     0.00 sec. ) 
+		doing singular value decomposition on wavefunction...
+		done (     0.00 sec. ) 
+		renormalizing operators to the next...
+		done (     0.00 sec. ) 
+		--------------------------------------------------------------------------------
+		Total time for optimization:     0.00 sec. 
+		--------------------------------------------------------------------------------
+			Energy =     -11.8406372775523039
+		--------------------------------------------------------------------------------
+		saving operators and wavefunction for this site (sys)
+	====================================================================================================
+	====================================================================================================
+		SWEEP ITERATION [    1 ] :: ROOT =  0 FINISHED
+			Sweep Energy =     -11.8406372775523234 ( delta E = 1.07e-14 ) 
+
+	====================================================================================================
+			Sweep Energy =     -11.8406372775523234
+
